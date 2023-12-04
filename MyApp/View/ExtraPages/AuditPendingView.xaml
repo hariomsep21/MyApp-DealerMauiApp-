@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.AuditPendingView"
+                         xmlns:model="clr-namespace:MyApp.Model"
+             xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
+Title="Stock Audit"
+x:DataType="viewmodel:CarViewModel">
+
+    <ScrollView>
+        <StackLayout Margin="0" >
+            <CollectionView x:Name="collectionViewName"
+                ItemsSource="{Binding PendingAuditCars}"
+                SelectionMode="None" Margin="0,16,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Car" >
+
+                        <Frame Style="{StaticResource FrameAuditDue}" CornerRadius="8" HasShadow="True"   VerticalOptions="Start" HorizontalOptions="Center" Margin="0,0,0,16">
+                            <Grid RowDefinitions="auto,auto">
+                                <Grid Grid.Row="0" ColumnDefinitions="auto,auto">
+                                    <Image Source="car.png"  HorizontalOptions="Start"  HeightRequest="56" WidthRequest="56" VerticalOptions="Center" Margin="15,10,0,0"/>
+                                    <VerticalStackLayout Grid.Column ="1" Margin="20,10,0,0">
+                                        <Label Style="{StaticResource LabelPrimaryMedium}"   HorizontalOptions="Start"  VerticalOptions="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Name}" />
+                                                    <Span Text=" and " />
+                                                    <Span Text="{Binding Variant}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="{Binding PurchaseId, StringFormat='Purchase Id: {0:C}'}" HorizontalOptions="Start" FontSize="10" TextColor="Black"  VerticalOptions="Start"  />
+                                        <Label Text="{Binding RemainingDays, StringFormat=' {0} day left to Verify'}" HorizontalOptions="Start" FontSize="12" TextColor="#4AA09B" VerticalOptions="Start"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                                <Grid Grid.Row="1" ColumnDefinitions="auto,auto" Margin="0,15,0,0" >
+                                    <Frame Padding="0" IsVisible="{Binding IsVerified, Converter={StaticResource InvertedBooleanConverter}}" BorderColor="#6F7978" CornerRadius="100" HeightRequest="40" WidthRequest="216" Margin="15,0,5,0" Background="#FAFDFB">
+                                        <Picker
+    Title="Status"
+    FontSize="14"
+    TitleColor="#4AA09B"
+    Margin="15,0,15,0"
+    TextColor="#4AA09B"
+    ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.Status}"
+    SelectedItem="{Binding SelectedStatus}">
+                                        </Picker>
+
+
+
+                                    </Frame>
+                                    <Button IsVisible="{Binding IsVerified, Converter={StaticResource InvertedBooleanConverter}}" Grid.Column="1" BackgroundColor="#4AA09B" Text="Verify" HeightRequest="40" WidthRequest="87" CommandParameter="{Binding .}"   Command="{Binding BindingContext.ShowPopupCommand, Source={x:Reference collectionViewName}}" CornerRadius="100" Margin="3,0,0,0"/>
+                                    <Frame VerticalOptions="Center" CornerRadius="100" IsVisible="{Binding IsVerified}" Padding="0" WidthRequest="313" HeightRequest="40" BorderColor="#6F7978" Background="#FAFDFB" Margin="15,0,0,0">
+                                        <HorizontalStackLayout HorizontalOptions="Center">
+                                            <Label Text="Sold" TextColor="#4AA09B" VerticalOptions="Center" FontSize="14" FontAttributes="Bold"  HorizontalOptions="Center"/>
+                                            <Image Source="sold.png" VerticalOptions="Center" HeightRequest="15" WidthRequest="15" Margin="3,0,0,0"  HorizontalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                        
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+
+
+</ContentPage>

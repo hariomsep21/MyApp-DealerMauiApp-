@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.ProcurementClose"
+             Title="ProcurementClose">
+    <VerticalStackLayout>
+
+            
+       
+        <Frame WidthRequest="343" HeightRequest="206" Padding="15" VerticalOptions="Start" HasShadow="True" BackgroundColor="#F2F4F3" Margin="0,20,0,0">
+            <Grid RowDefinitions="auto,auto,*">
+                <Grid Grid.Row="0" ColumnDefinitions="80*,20*">
+                    <VerticalStackLayout Grid.Column="0" Margin="0,15,40,0">
+                        <Label Text="Car Name &amp; Variant" FontSize="16" FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                        <Label Text="Purchase ID: 77553775" FontSize="14"/>
+                    </VerticalStackLayout>
+                    <Image Source="bigcar.png" Grid.Column="1"  WidthRequest="144" HeightRequest="72" />
+                </Grid>
+                <Grid Grid.Row="1" ColumnDefinitions="50*,50*" Margin="0,5,0,0">
+                    <VerticalStackLayout >
+                        <Label Text="Amount Paid" FontSize="12" TextColor="#6F7978" Grid.Column="0" />
+                        <Label Text="₹85,000" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout  Grid.Column="1">
+                        <Label Text="Closed on" FontSize="12" TextColor="#6F7978" Grid.Column="0"  />
+                        <Label Text="22/08/2023" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                    </VerticalStackLayout>
+
+
+                </Grid>
+                <Grid Grid.Row="2" ColumnDefinitions="40*,60*" Margin="0,20,0,0">
+                    <Button BackgroundColor="Transparent" HeightRequest="40" TextColor="#4AA09B" BorderColor="#6F7978" BorderWidth="1"  Text="Invoice" CornerRadius="100" ImageSource="greendownload.png" WidthRequest="126" VerticalOptions="Center" >
+
+                    </Button>
+
+                    <Button BackgroundColor="#4AA09B" HeightRequest="40" Grid.Column="1" ImageSource="download.png" Text="Payment Details" WidthRequest="177" CornerRadius="100" VerticalOptions="Center" />
+
+                </Grid>
+            </Grid>
+        </Frame>
+
+
+
+        <Frame WidthRequest="343" HeightRequest="206" Padding="15" VerticalOptions="Start" HasShadow="True" BackgroundColor="#F2F4F3" Margin="0,20,0,0">
+            <Grid RowDefinitions="auto,auto,*">
+                <Grid Grid.Row="0" ColumnDefinitions="80*,20*">
+                    <VerticalStackLayout Grid.Column="0" Margin="0,15,40,0">
+                        <Label Text="Car Name &amp; Variant" FontSize="16" FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                        <Label Text="Purchase ID: 77553775" FontSize="14"/>
+                    </VerticalStackLayout>
+                    <Image Source="bigcar.png" Grid.Column="1"  WidthRequest="144" HeightRequest="72" />
+                </Grid>
+                <Grid Grid.Row="1" ColumnDefinitions="50*,50*" Margin="0,5,0,0">
+                    <VerticalStackLayout >
+                        <Label Text="Amount Paid" FontSize="12" TextColor="#6F7978" Grid.Column="0" />
+                        <Label Text="₹85,000" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout  Grid.Column="1">
+                        <Label Text="Closed on" FontSize="12" TextColor="#6F7978" Grid.Column="0"  />
+                        <Label Text="22/08/2023" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                    </VerticalStackLayout>
+
+
+                </Grid>
+                <Grid Grid.Row="2" ColumnDefinitions="40*,60*" Margin="0,20,0,0">
+                    <Button BackgroundColor="Transparent" HeightRequest="40" TextColor="#4AA09B" BorderColor="#6F7978" BorderWidth="1"  Text="Invoice" CornerRadius="100" ImageSource="greendownload.png" WidthRequest="126" VerticalOptions="Center" >
+
+                    </Button>
+
+                    <Button BackgroundColor="#4AA09B" HeightRequest="40" Grid.Column="1" ImageSource="download.png" Text="Payment Details" WidthRequest="177" CornerRadius="100" VerticalOptions="Center" />
+
+                </Grid>
+            </Grid>
+        </Frame>
+
+
+
+        <Frame WidthRequest="343" HeightRequest="206" Padding="15" VerticalOptions="Start" HasShadow="True" BackgroundColor="#F2F4F3" Margin="0,20,0,0">
+            <Grid RowDefinitions="auto,auto,*">
+                <Grid Grid.Row="0" ColumnDefinitions="80*,20*">
+                    <VerticalStackLayout Grid.Column="0" Margin="0,15,40,0">
+                        <Label Text="Car Name &amp; Variant" FontSize="16" FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                        <Label Text="Purchase ID: 77553775" FontSize="14"/>
+                    </VerticalStackLayout>
+                    <Image Source="bigcar.png" Grid.Column="1"  WidthRequest="144" HeightRequest="72" />
+                </Grid>
+                <Grid Grid.Row="1" ColumnDefinitions="50*,50*" Margin="0,5,0,0">
+                    <VerticalStackLayout >
+                        <Label Text="Amount Paid" FontSize="12" TextColor="#6F7978" Grid.Column="0" />
+                        <Label Text="₹85,000" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout  Grid.Column="1">
+                        <Label Text="Closed on" FontSize="12" TextColor="#6F7978" Grid.Column="0"  />
+                        <Label Text="22/08/2023" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                    </VerticalStackLayout>
+
+
+                </Grid>
+                <Grid Grid.Row="2" ColumnDefinitions="40*,60*" Margin="0,20,0,0">
+                    <Button BackgroundColor="Transparent" HeightRequest="40" TextColor="#4AA09B" BorderColor="#6F7978" BorderWidth="1"  Text="Invoice" CornerRadius="100" ImageSource="greendownload.png" WidthRequest="126" VerticalOptions="Center" >
+
+                    </Button>
+
+                    <Button BackgroundColor="#4AA09B" Grid.Column="1" HeightRequest="40" ImageSource="download.png" Text="Payment Details" WidthRequest="177" CornerRadius="100" VerticalOptions="Center" />
+
+                </Grid>
+            </Grid>
+        </Frame>
+    </VerticalStackLayout>
+
+</ContentPage>

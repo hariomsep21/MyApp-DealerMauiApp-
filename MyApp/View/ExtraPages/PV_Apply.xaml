@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.PV_Apply"
+             Title="Purchase Vehicle">
+
+    <ScrollView>
+        <Grid>
+            <Grid Margin="10,62,10,0"  x:Name="SectionA">
+
+                <HorizontalStackLayout Spacing="9">
+                    <Button Text="Aggregator" x:Name="SignButton"  WidthRequest="110" HeightRequest="32" Padding="0,0,0,2" FontSize="Small"  BackgroundColor="#cce8e5" TextColor="Black" BorderWidth="0" CornerRadius="12" VerticalOptions="Start"/>
+                    <Button Text="Open Market" WidthRequest="110" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" CornerRadius="12" VerticalOptions="Start"  BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="1"/>
+                    <Button Text="New Car Dealer" WidthRequest="130" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" CornerRadius="12" VerticalOptions="Start"  BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="1"/>
+                </HorizontalStackLayout>
+
+                <VerticalStackLayout Margin="0,60,0,0" Spacing="15">
+                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">
+                        <Entry Placeholder="Purchase Amount" PlaceholderColor="Black"  WidthRequest="343" HeightRequest="56" Margin="40,0,0,0" MaxLength="8"/>
+                    </Frame>
+
+                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Picker Grid.Column="0" Title="Make" WidthRequest="313" HeightRequest="56" Margin="20,0,0,0" TextColor="Black">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Toyota</x:String>
+                                        <x:String>Honda</x:String>
+                                        <x:String>Ford</x:String>
+                                        <x:String>Chevrolet</x:String>
+                                        <x:String>Nissan</x:String>
+                                        <x:String>Hyundai</x:String>
+                                        <x:String>Volkswagen</x:String>
+                                        <x:String>BMW</x:String>
+                                        <x:String>Mercedes-Benz</x:String>
+                                        <x:String>Audi</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+
+                            <Image Grid.Column="1" Source="downicon.png" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Picker Grid.Column="0" Title="Model" WidthRequest="313" HeightRequest="56" Margin="20,0,0,0" TextColor="Black">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Corolla</x:String>
+                                        <x:String>Civic</x:String>
+                                        <x:String>Mustang</x:String>
+                                        <x:String>Cruze</x:String>
+                                        <x:String>Altima</x:String>
+                                        <x:String>Elantra</x:String>
+                                        <x:String>Passat</x:String>
+                                        <x:String>3 Series</x:String>
+                                        <x:String>C-Class</x:String>
+                                        <x:String>A4</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+
+                            <Image Grid.Column="1" Source="downicon" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Picker Grid.Column="0" Title="Year Of registration" WidthRequest="313" HeightRequest="56" Margin="20,0,0,0" TextColor="Black">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:Int32}">
+                                        <x:Int32>2023</x:Int32>
+                                        <x:Int32>2022</x:Int32>
+                                        <x:Int32>2021</x:Int32>
+                                        <x:Int32>2020</x:Int32>
+                                        <x:Int32>2019</x:Int32>
+                                        <x:Int32>2018</x:Int32>
+                                        <x:Int32>2017</x:Int32>
+                                        <x:Int32>2016</x:Int32>
+                                        <x:Int32>2015</x:Int32>
+                                        <x:Int32>2014</x:Int32>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+
+                            <Image Grid.Column="1" Source="downicon" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Picker Grid.Column="0" Title="Variant" WidthRequest="313" HeightRequest="56" Margin="20,0,0,0" TextColor="Black">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Toyota</x:String>
+                                        <x:String>Honda</x:String>
+                                        <x:String>Ford</x:String>
+                                        <x:String>Chevrolet</x:String>
+                                        <x:String>Nissan</x:String>
+                                        <x:String>Hyundai</x:String>
+                                        <x:String>Volkswagen</x:String>
+                                        <x:String>BMW</x:String>
+                                        <x:String>Mercedes-Benz</x:String>
+                                        <x:String>Audi</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+
+                            <Image Grid.Column="1" Source="downicon.png"  VerticalOptions="Center" HorizontalOptions="End" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="imageNameLabel" Text="Price Breakup" Grid.Column="0" Margin="5,0,0,0"/>
+
+                            <ImageButton Grid.Column="1" Source="plusicon" VerticalOptions="Center" HorizontalOptions="End" Clicked="capturedImage_Clicked" x:Name="capturedImage"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label  Text="Stock-In " Grid.Column="0" Margin="5,0,0,0" />
+
+                            <ImageButton Grid.Column="1" Source="plusicon" VerticalOptions="Center" HorizontalOptions="End" Clicked="capturedImage_Clicked" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="RC Availability" Grid.Column="0"  Margin="5,0,0,0"/>
+
+                            <ImageButton Grid.Column="1" Source="plusicon" VerticalOptions="Center" HorizontalOptions="End" Clicked="capturedImage_Clicked"/>
+                        </Grid>
+                    </Frame>
+
+
+                    <Button Text="Submit" BackgroundColor="#4AA09B" CornerRadius="22" HorizontalOptions="Center" WidthRequest="343" HeightRequest="40" Margin="0,10,0,10"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

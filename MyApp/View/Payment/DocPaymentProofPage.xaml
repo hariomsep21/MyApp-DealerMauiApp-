@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.DocPaymentProofPage"
+             Title="Payment" Shell.TabBarIsVisible="False"
+             xmlns:local="clr-namespace:MyApp.ViewModel" BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <!-- Define a custom toolbar item with the "+" icon -->
+        <ToolbarItem
+      IconImageSource="notifications_none.png"
+      Priority="0"
+      Order="Primary"
+         Clicked="ToolbarItem_Clicked"
+      />
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.BindingContext>
+        <local:DocViewModel/>
+    </ContentPage.BindingContext>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackCommand}"
+                   IsEnabled="False"  />
+    </Shell.BackButtonBehavior>
+    <!--<VerticalStackLayout Spacing="30" Margin="25,25,0,0">
+        <Grid>
+            <Label 
+            Text="Upload Payment Proof" 
+            FontSize="16" 
+            FontAttributes="Bold"/>
+            <Label 
+            Text="Please upload payment proof for any external transactions." 
+            FontSize="14" 
+            Margin="0,30,0,0"/>
+        </Grid>
+        <ImageButton
+            x:Name="capturedImage"
+            Source="{Binding CapturedImageSource}"
+            Style="{StaticResource ImageButton1}"
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="capturedImage_Clicked"
+            HorizontalOptions="Start"
+            BorderColor="Gray"
+            BorderWidth="3"/>
+        <Button Text="Submit" BackgroundColor="#4AA09B" CornerRadius="22" HorizontalOptions="Center" WidthRequest="343" HeightRequest="40" Margin="0,320,25,0" Clicked="Button_Clicked"/>
+    </VerticalStackLayout>-->
+
+
+    <Grid RowDefinitions="*,auto">
+        <VerticalStackLayout Grid.Row="0" Margin="16">
+            <Label 
+            Text="Upload Payment Proof" 
+            FontSize="16" 
+            FontAttributes="Bold" TextColor="#191C1C"/>
+            <Label 
+            Text="Please upload payment proof for any external transactions." 
+            FontSize="14" 
+            Margin="0,0,0,0" TextColor="#3F4948"/>
+            <Grid>
+                <ImageButton Margin="0,16,0,0"
+                 x:Name="capturedImage"
+                 Source="{Binding CapturedImageSource}"
+                 Style="{StaticResource ImageButton1}"
+                 SemanticProperties.Hint="Counts the number of times you click"
+                 Clicked="capturedImage_Clicked"
+                 HorizontalOptions="Start"
+                 BorderColor="Gray"
+                 BorderWidth="3"/>
+
+                <Label x:Name="plusicon" Text="+" FontSize="Large" FontAttributes="Bold" TextColor="#4AA09B" Padding="40,49,0,0" VerticalOptions="Start" HorizontalOptions="Start" />
+            </Grid>
+
+
+        </VerticalStackLayout>
+        <Button Text="Submit" BackgroundColor="#4AA09B" TextColor="White" CornerRadius="22" HorizontalOptions="Center" WidthRequest="343" HeightRequest="40" Grid.Row="1" Margin="0,0,0,10" Clicked="Button_Clicked"/>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.MainPage" 
+              ios:Page.UseSafeArea="True"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:model="clr-namespace:MyApp.Model"
+              xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
+ Title="Payment"
+ x:DataType="viewmodel:CarViewModel">
+ 
+    <ScrollView>
+        <StackLayout Margin="0" >
+            <CollectionView
+                    ItemsSource="{Binding Cars}"
+                    SelectionMode="None" Margin="0,16,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Car">
+                        <Frame Style="{StaticResource PaymentFrame}" HorizontalOptions="Center"    >
+                            <Grid ColumnDefinitions="auto,auto,auto"  Padding="10,0,0,0">
+                                <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
+                                <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
+                                    <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Name}" />
+                                                <Span Text=" and " />
+                                                <Span Text="{Binding Variant}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <Label Text="{Binding AmountDue, StringFormat='Amount Due {0:C}'}" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
+                                    <Label Text="{Binding PurchaseId, StringFormat='Purchase Id: {0:C}'}" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10"/>
+                                </Grid>
+                                <Button Grid.Column="2"  Text="Pay" FontSize="10" BackgroundColor="#4AA09B" TextColor="White" CornerRadius="12" HorizontalOptions="Center" Margin="22,0,20,0" Padding="-30"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
+
+
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
+
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.ProcurementInProcess"
+             Title="ProcurementInProcess">
+    <VerticalStackLayout>
+    <Frame WidthRequest="343" HeightRequest="166" Padding="15" HasShadow="True" VerticalOptions="Start" BackgroundColor="#F2F4F3" Margin="0,20,0,0">
+        <Grid RowDefinitions="auto,auto,*">
+            <Grid Grid.Row="0" ColumnDefinitions="70*,30*" Margin="0,0,0,0">
+
+                <Label Text="Applied on 23/05/2023"  TextColor="#6F7978" FontSize="12"/>
+                    <Label Text="11:54 AM" Grid.Column="1" TextColor="#6F7978" HorizontalOptions="End" FontSize="12"/>
+
+            </Grid>
+            <Grid Grid.Row="1" ColumnDefinitions="80*,20*">
+                <VerticalStackLayout Grid.Column="0" Margin="0,15,40,0">
+                    <Label Text="Car Name &amp; Variant" FontSize="16" FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                    <Label Text="Purchase ID: 77553775" FontSize="14"/>
+                </VerticalStackLayout>
+                <Image Source="bigcar.png" Grid.Column="1"  WidthRequest="144" HeightRequest="72" />
+            </Grid>
+            <Grid Grid.Row="2" ColumnDefinitions="50*,50*" Margin="0,10,0,0">
+                <VerticalStackLayout >
+                    <Label Text="Purchase Amount" FontSize="12" TextColor="#191C1C" Grid.Column="0" />
+                    <Label Text="₹85,000" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                </VerticalStackLayout>
+                <VerticalStackLayout  Grid.Column="1" Margin="0,5,0,0">
+                    <Button Text="InProcess" BackgroundColor="Transparent" CornerRadius="8" FontSize="12" Padding="0,0,0,0" BorderColor="#6F7978" BorderWidth="1" WidthRequest="88" HeightRequest="24" TextColor="#E27816" Grid.Column="0" HorizontalOptions="End" />
+             
+                </VerticalStackLayout>
+
+
+            </Grid>
+        
+        </Grid>
+    </Frame>
+
+
+
+    <Frame WidthRequest="343" HeightRequest="166" Padding="15" HasShadow="True" VerticalOptions="Start" BackgroundColor="#F2F4F3" Margin="0,20,0,0">
+        <Grid RowDefinitions="auto,auto,*">
+            <Grid Grid.Row="0" ColumnDefinitions="70*,30*" Margin="0,0,0,0">
+
+                <Label Text="Applied on 23/05/2023"  TextColor="#6F7978" FontSize="12"/>
+                <Label Text="11:54 AM" Grid.Column="1" TextColor="#6F7978" HorizontalOptions="End" FontSize="12"/>
+
+            </Grid>
+            <Grid Grid.Row="1" ColumnDefinitions="80*,20*">
+                <VerticalStackLayout Grid.Column="0" Margin="0,15,40,0">
+                    <Label Text="Car Name &amp; Variant" FontSize="16" FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                    <Label Text="Purchase ID: 77553775" FontSize="14"/>
+                </VerticalStackLayout>
+                <Image Source="bigcar.png" Grid.Column="1"  WidthRequest="144" HeightRequest="72" />
+            </Grid>
+            <Grid Grid.Row="2" ColumnDefinitions="50*,50*" Margin="0,10,0,0">
+                <VerticalStackLayout >
+                    <Label Text="Purchase Amount" FontSize="12" TextColor="#191C1C" Grid.Column="0" />
+                    <Label Text="₹85,000" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                </VerticalStackLayout>
+                <VerticalStackLayout  Grid.Column="1" Margin="0,5,0,0">
+                        <Button Text="Rejected" BackgroundColor="Transparent" CornerRadius="8" FontSize="12" Padding="0,0,0,0" BorderColor="#6F7978" BorderWidth="1" WidthRequest="88" HeightRequest="24" TextColor="#BA1A1A" Grid.Column="0" HorizontalOptions="End" />
+
+                </VerticalStackLayout>
+
+
+            </Grid>
+
+        </Grid>
+    </Frame>
+
+        <Frame WidthRequest="343" HeightRequest="166" Padding="15" VerticalOptions="Start" HasShadow="True" BackgroundColor="#F2F4F3" Margin="0,20,0,0">
+            <Grid RowDefinitions="auto,auto,*">
+                <Grid Grid.Row="0" ColumnDefinitions="70*,30*" Margin="0,0,0,0">
+
+                    <Label Text="Applied on 23/05/2023"  TextColor="#6F7978" FontSize="12"/>
+                    <Label Text="11:54 AM" Grid.Column="1" TextColor="#6F7978" HorizontalOptions="End" FontSize="12"/>
+
+                </Grid>
+                <Grid Grid.Row="1" ColumnDefinitions="80*,20*">
+                    <VerticalStackLayout Grid.Column="0" Margin="0,15,40,0">
+                        <Label Text="Car Name &amp; Variant" FontSize="16" FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                        <Label Text="Purchase ID: 77553775" FontSize="14"/>
+                    </VerticalStackLayout>
+                    <Image Source="bigcar.png" Grid.Column="1"  WidthRequest="144" HeightRequest="72" />
+                </Grid>
+                <Grid Grid.Row="2" ColumnDefinitions="50*,50*" Margin="0,10,0,0">
+                    <VerticalStackLayout >
+                        <Label Text="Purchase Amount" FontSize="12" TextColor="#191C1C" Grid.Column="0" />
+                        <Label Text="₹85,000" FontSize="10" TextColor="#3F4948" FontAttributes="Bold" CharacterSpacing="2" Grid.Column="0" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout  Grid.Column="1" Margin="0,5,0,0">
+                        <Button Text="Approved" BackgroundColor="Transparent" CornerRadius="8" FontSize="12" Padding="0,0,0,0" BorderColor="#6F7978" BorderWidth="1" WidthRequest="88" HeightRequest="24" TextColor="#379B56" Grid.Column="0" HorizontalOptions="End" />
+
+                    </VerticalStackLayout>
+
+
+                </Grid>
+
+            </Grid>
+        </Frame>
+
+
+    </VerticalStackLayout>
+</ContentPage>

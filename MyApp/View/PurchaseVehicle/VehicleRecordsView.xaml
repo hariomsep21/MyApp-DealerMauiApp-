@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:local="clr-namespace:MyApp.ViewModel"
+             x:Class="MyApp.VehicleRecordsView"
+             Title="Vehicle_Records" BackgroundColor="White">
+   
+        <!-- Set the binding context to the view model -->
+        <ContentPage.BindingContext>
+            <local:VehicleRecordsViewModel/>
+        </ContentPage.BindingContext>
+    <ScrollView>
+        <Grid>
+            <!-- Frame for vehicle information -->
+            <Frame HeightRequest="155" WidthRequest="343" Margin="0,20,0,0" VerticalOptions="Start" HorizontalOptions="Center" HasShadow="True">
+                <VerticalStackLayout Spacing="5" HeightRequest="155" WidthRequest="343" Margin="30,20,0,0">
+                    <Label Text="{Binding CarNameAndVariant}" FontSize="16" FontAttributes="Bold"/>
+                    <Label Text="{Binding PurchaseID}" FontSize="14"/>
+                    <Image Source="redcar.png" HeightRequest="80" Margin="0,10,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Grid for displaying statuses -->
+            <Grid VerticalOptions="StartAndExpand" Margin="0,200,0,0">
+                <VerticalStackLayout Spacing="15" Margin="0,0,0,40">
+                    <!-- Bind labels and images to view model properties -->
+                    <Grid ColumnDefinitions="auto,*" BackgroundColor="#f7faf8" HeightRequest="48">
+                        <Label Text="Challan" WidthRequest="257" FontSize="16" Margin="15,10,0,10" FontAttributes="Bold" />
+                        <Image Grid.Column="1" Source="{Binding ChallanStatusIcon}" WidthRequest="56" HeightRequest="24" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,*" BackgroundColor="#f7faf8" HeightRequest="48">
+                        <Label Text="RSStatus" WidthRequest="257" FontSize="16" Margin="15,10,0,10" FontAttributes="Bold" />
+                        <Image Grid.Column="1" Source="{Binding RSStatusIcon}" WidthRequest="56" HeightRequest="24" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,*" BackgroundColor="#f7faf8" HeightRequest="48">
+                        <Label Text="Fitness" WidthRequest="257" FontSize="16" Margin="15,10,0,10" FontAttributes="Bold" />
+                        <Image Grid.Column="1" Source="{Binding FitnessStatusIcon}" WidthRequest="56" HeightRequest="24" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,*" BackgroundColor="#f7faf8" HeightRequest="48">
+                        <Label Text="OwnerName" WidthRequest="257" FontSize="16" Margin="15,10,0,10" FontAttributes="Bold" />
+                        <Image Grid.Column="1" Source="{Binding OwnerNameStatusIcon}" WidthRequest="56" HeightRequest="24" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,*" BackgroundColor="#f7faf8" HeightRequest="48">
+                        <Label Text="Hypothecation" WidthRequest="257" FontSize="16" Margin="15,10,0,10" FontAttributes="Bold" />
+                        <Image Grid.Column="1" Source="{Binding HypothecationStatusIcon}" WidthRequest="56" HeightRequest="24" />
+                    </Grid>
+                    <Grid ColumnDefinitions="auto,*" BackgroundColor="#f7faf8" HeightRequest="48">
+                        <Label Text="BlackList" WidthRequest="257" FontSize="16" Margin="15,10,0,10" FontAttributes="Bold" />
+                        <Image Grid.Column="1" Source="{Binding BlackListStatusIcon}" WidthRequest="56" HeightRequest="24" />
+                    </Grid>
+                </VerticalStackLayout>
+
+
+                <!-- Display the list of properties with false values in a ListView -->
+
+
+
+
+                <StackLayout  Orientation="Horizontal" Margin="40,400,0,0" 
+   IsVisible="{Binding HasFalseProperties}">
+                    <Label Text="Action Required: Pay " FontSize="16" TextColor="Red" FontAttributes="Bold"/>
+                    <ListView ItemsSource="{Binding FalseProperties}" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding}" TextColor="Red" FontSize="16" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+
+
+            </Grid>
+
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

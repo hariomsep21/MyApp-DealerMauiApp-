@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.PV_Document"
+             Title="Document">
+    <Grid>
+        
+        <Grid Margin="10,62,10,0"  x:Name="SectionA">
+
+            <HorizontalStackLayout Spacing="9">
+                <Button Text="Sign Documents" x:Name="SignButton" Clicked="OnSignButtonClicked" WidthRequest="166" HeightRequest="32" Padding="0,0,0,2" FontSize="Small"  BackgroundColor="#cce8e5" TextColor="Black" BorderWidth="0" CornerRadius="12" VerticalOptions="Start"/>
+                <Button Text="Download Documents" Clicked="OnDownloadButtonClicked" WidthRequest="166" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" CornerRadius="12" VerticalOptions="Start"  BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="1"/>
+
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout Margin="0,60,0,0" Spacing="20">
+                <Frame WidthRequest="343" HeightRequest="227" HasShadow="True">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Car Name Variant" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="Purchase ID:77553775" FontSize="Default"/>
+                        <Image Source="redcar" WidthRequest="343" HeightRequest="83" Margin="4,10,4,0"/>
+                        <HorizontalStackLayout Margin="0,10,0,0" Spacing="9">
+                            <Button ImageSource="downloadicon.png" Text="Dealer Application Form" WidthRequest="225" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" BackgroundColor="White" TextColor="#4AA09B" BorderColor="Black" BorderWidth="0.6" CornerRadius="12" VerticalOptions="Start"/>
+                            <Button Text="Sign" TextColor="White"  WidthRequest="65" HeightRequest="32" CornerRadius="22" Padding="0,0,0,2" BackgroundColor="#4AA09B"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                </Frame>
+                <Frame WidthRequest="343" HeightRequest="227" HasShadow="True">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Car Name Variant" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="Purchase ID:77553775" FontSize="Default"/>
+                        <Image Source="redcar" WidthRequest="343" HeightRequest="83" Margin="4,10,4,0"/>
+                        <HorizontalStackLayout Margin="0,10,0,0" Spacing="9">
+                            <Button ImageSource="downloadicon.png" Text="Dealer Application Form" WidthRequest="225" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" BackgroundColor="White" TextColor="#4AA09B" BorderColor="Black" BorderWidth="0.6" CornerRadius="12" VerticalOptions="Start"/>
+                            <Button Text="Sign" TextColor="White"  WidthRequest="65" HeightRequest="32" CornerRadius="22" Padding="0,0,0,2" BackgroundColor="#4AA09B"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                </Frame>
+            </VerticalStackLayout>
+        </Grid>
+        <Grid  Margin="10,62,10,0"  x:Name="SectionB">
+
+            <HorizontalStackLayout Spacing="9">
+                <Button Text="Sign Documents"  Clicked="OnSignButtonClicked" WidthRequest="166" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="1" CornerRadius="12" VerticalOptions="Start"/>
+                <Button Text="Download Documents"  x:Name="DownloadButton"  WidthRequest="166" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" BackgroundColor="#cce8e5" TextColor="Black" BorderWidth="0" CornerRadius="12" VerticalOptions="Start"/>
+
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout Margin="0,60,0,0" Spacing="20">
+                <Frame WidthRequest="343" HeightRequest="227" HasShadow="True">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Car Name Variant" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="Purchase ID:77553775" FontSize="Default"/>
+                        <Image Source="redcar" WidthRequest="343" HeightRequest="83" Margin="4,10,4,0"/>
+                        <HorizontalStackLayout Margin="0,10,0,0" Spacing="9">
+                            <Button ImageSource="downloadicon.png" Text="Dealer Application Form" WidthRequest="301" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" BackgroundColor="White" TextColor="#4AA09B" BorderColor="Black" BorderWidth="0.6" CornerRadius="12" VerticalOptions="Start"/>
+                            <!--<Button Text="Sign" TextColor="White"  WidthRequest="65" HeightRequest="32" CornerRadius="22" Padding="0,0,0,2" BackgroundColor="#4AA09B"/>-->
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                </Frame>
+                <Frame WidthRequest="343" HeightRequest="227" HasShadow="True">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Car Name Variant" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="Purchase ID:77553775" FontSize="Default"/>
+                        <Image Source="redcar" WidthRequest="343" HeightRequest="83" Margin="4,10,4,0"/>
+                        <HorizontalStackLayout Margin="0,10,0,0" Spacing="9">
+                            <Button ImageSource="downloadicon.png" Text="Dealer Application Form" WidthRequest="301" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" BackgroundColor="White" TextColor="#4AA09B" BorderColor="Black" BorderWidth="0.6" CornerRadius="12" VerticalOptions="Start"/>
+                            <!--<Button Text="Sign" TextColor="White"  WidthRequest="65" HeightRequest="32" CornerRadius="22" Padding="0,0,0,2" BackgroundColor="#4AA09B"/>-->
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                </Frame>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

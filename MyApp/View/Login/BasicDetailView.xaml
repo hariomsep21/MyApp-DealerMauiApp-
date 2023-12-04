@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.View.Login.BasicDetailView"
+             xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
+             x:DataType="viewmodel:DropDownStateViewModel"
+             Shell.TabBarIsVisible="False"
+             Title="Details" Shell.TitleColor="Black" BackgroundColor="White">
+
+    <Grid RowDefinitions="*,auto">
+        <VerticalStackLayout  Grid.Row="0" Spacing="15" >
+            <Frame Padding="0" HeightRequest="56" WidthRequest="343" CornerRadius="4" Margin="0,15,0,0" HasShadow="True" BorderColor="Black">
+                <Entry Placeholder="Enter Name"  FontSize="16" x:Name="Entername" TextColor="#3F4948" PlaceholderColor="Black" VerticalOptions="Center" Margin="13,0,0,0" />
+            </Frame>
+            <Frame Padding="0" HeightRequest="56" WidthRequest="343" CornerRadius="4" Margin="0,0,0,0" HasShadow="True"  BorderColor="Black">
+                <Entry Placeholder="Enter Email Id" FontSize="16"  x:Name="EmailId"   TextColor="#3F4948" PlaceholderColor="Black" VerticalOptions="Center" Margin="13,0,0,0" />
+            </Frame>
+            <!--<Frame Padding="0" HeightRequest="56" WidthRequest="343" CornerRadius="4" Margin="0,0,0,0" HasShadow="True"  BorderColor="Black">
+                <Picker x:Name="StatePicker" Title="State" TitleColor="#3F4948" FontSize="16" TextColor="Black" VerticalOptions="Center" Margin="13,0,0,0"
+        ItemsSource="{Binding StateList}" SelectedItem="{Binding StateList}" >
+                    <Picker.ItemDisplayBinding>
+                        <Binding Path="StateName" />
+                    </Picker.ItemDisplayBinding>
+                </Picker>
+
+            </Frame>-->
+        </VerticalStackLayout>
+        <Button Clicked="Button_Clicked" Style="{StaticResource LargeButtonColor}" Grid.Row="1" Text="Submit" VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,0,10"/>
+    </Grid>
+</ContentPage>

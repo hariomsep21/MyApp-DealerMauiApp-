@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.NewCar"
+             Title="NewCar">
+    <Grid RowDefinitions="*,auto">
+        <ScrollView>
+            <VerticalStackLayout>
+                <Frame WidthRequest="343" HeightRequest="56"  Padding="10,7,0,7" Margin="0,50,0,0"  BorderColor="Black">
+                    <Entry Placeholder="Purchase Amount" FontSize="16" PlaceholderColor="#3F4948"/>
+
+                </Frame>
+                <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
+                    <Entry Placeholder="Vehicle Number" FontSize="16" PlaceholderColor="#3F4948"/>
+
+                </Frame>
+
+
+                <Frame WidthRequest="343" HeightRequest="56"  Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
+                    <Grid ColumnDefinitions="*,auto">
+                        <Entry Placeholder="Odometer Picture" FontSize="16" PlaceholderColor="#3F4948"/>
+                        <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
+                    </Grid>
+
+                </Frame>
+                <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
+                    <Grid ColumnDefinitions="*,auto">
+                        <Entry Placeholder="Vehicle Picture from Front" FontSize="16" PlaceholderColor="#3F4948"/>
+                        <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
+                    </Grid>
+                </Frame>
+                <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
+                    <Grid ColumnDefinitions="*,auto">
+                        <Entry Placeholder="Vehicle Picture from Back " FontSize="16" PlaceholderColor="#3F4948"/>
+                        <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
+                    </Grid>
+                </Frame>
+                <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
+                    <Grid ColumnDefinitions="*,auto">
+                        <Entry Placeholder="Invoice" FontSize="16" PlaceholderColor="#3F4948"/>
+                        <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
+                    </Grid>
+                </Frame>
+                <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
+                    <Grid ColumnDefinitions="*,auto">
+                        <Entry Placeholder="Picture of Original RC " FontSize="16" PlaceholderColor="#3F4948"/>
+                        <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
+                    </Grid>
+                </Frame>
+               
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button Style="{StaticResource LargeButtonColor}" Clicked="Button_Clicked"  Grid.Row="1" Text="Submit"  Margin="0,0,0,30"/>
+    </Grid>
+</ContentPage>

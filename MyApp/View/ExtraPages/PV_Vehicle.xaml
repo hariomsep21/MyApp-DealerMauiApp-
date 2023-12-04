@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.PV_Vehicle"
+             Title="PV_Vehicle">
+    <VerticalStackLayout Spacing="0">
+        <Frame WidthRequest="343" HeightRequest="82" BackgroundColor="#F7FAF8" Margin="0,20,0,0" BorderColor="Transparent">
+            <HorizontalStackLayout Spacing="20">
+                <Image Source="car.png" WidthRequest="56" HeightRequest="64"/>
+                <VerticalStackLayout>
+                    <Label Text="Car Name and variant" FontSize="12" TextColor="Black"/>
+                    <Label Text="Purchase id:2345678" TextColor="Black" FontSize="10" Padding="0,3,0,0"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Spacing="5" >
+                    <Button Text="View" FontSize="Micro" CornerRadius="20" BackgroundColor="#4AA09B" TextColor="White" WidthRequest="44" HeightRequest="20" Padding="0,0,0,0" Clicked="Button_Clicked"/>
+                    <Label Text="Action Required" TextColor="Red" FontSize="10" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </Frame>
+        <Frame WidthRequest="343" HeightRequest="82" BackgroundColor="#F7FAF8" Margin="0,20,0,0" BorderColor="Transparent">
+            <HorizontalStackLayout Spacing="20">
+                <Image Source="car.png" WidthRequest="56" HeightRequest="64"/>
+                <VerticalStackLayout>
+                    <Label Text="Car Name and variant" FontSize="12" TextColor="Black"/>
+                    <Label Text="Purchase id:2345678" TextColor="Black" FontSize="10" Padding="0,3,0,0"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Spacing="5"  Margin="0,0,0,0" >
+                    <Button Text="View" FontSize="Micro" CornerRadius="20" BackgroundColor="White" TextColor="#4AA09B" WidthRequest="44" HeightRequest="20" Padding="0,0,0,0" Clicked="Button_Clicked" />
+                    <Label Text="No Action Required" TextColor="#4AA09B" FontSize="10" Padding="0,0,0,0"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

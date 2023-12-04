@@ -1,0 +1,14 @@
+﻿using MyApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyApp.Service
+{
+    public interface IAgg_DropDownMakeService
+    {
+        Task<IEnumerable<Agg_DropDownMakeDTO>> GetMakeData();
+    }
+}
