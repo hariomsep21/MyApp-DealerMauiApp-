@@ -8,7 +8,28 @@
        xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
              x:Class="MyApp.PaymentView"
              Title="Payment"   x:DataType="viewmodel:PaymentViewModel" Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <Style TargetType="tabview:SfTabItem" x:Key="TabItemStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#4AA09B" />
 
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Black" />
+
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <!-- Define a custom toolbar item with the "+" icon -->
         <ToolbarItem
@@ -29,7 +50,7 @@
     <tabview:SfTabView x:Name="tabView"  IndicatorBackground="#4AA09B"  
                            >
         <tabview:SfTabView.Items >
-            <tabview:SfTabItem Header="Payment Due"    FontSize="16"   >
+            <tabview:SfTabItem Header="Payment Due"    FontSize="16"  Style="{StaticResource TabItemStyle}" >
                 <tabview:SfTabItem.Content>
                     <ScrollView>
                         <StackLayout Margin="0" >
@@ -97,7 +118,7 @@
 
             </tabview:SfTabItem>
 
-            <tabview:SfTabItem Header="Payment History"  FontSize="16" >
+            <tabview:SfTabItem Header="Payment History"  FontSize="16" Style="{StaticResource TabItemStyle}" >
                 <tabview:SfTabItem.Content>
                     <Grid RowDefinitions="*,auto">
                         <ScrollView>

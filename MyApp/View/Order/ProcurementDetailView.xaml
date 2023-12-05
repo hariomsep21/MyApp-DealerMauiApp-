@@ -9,6 +9,28 @@ xmlns:model="clr-namespace:MyApp.Model"
        
  xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
              Title="Procurement Detail" x:DataType="viewmodel:ProcurementViewModel" BackgroundColor="White">
+    <ContentPage.Resources>
+        <Style TargetType="tabview:SfTabItem" x:Key="TabItemStyle">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#4AA09B" />
+
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Black" />
+
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <!-- Define a custom toolbar item with the "+" icon -->
         <ToolbarItem
@@ -25,7 +47,7 @@ xmlns:model="clr-namespace:MyApp.Model"
         <tabview:SfTabView.Items >
 
 
-            <tabview:SfTabItem Header="Open"  FontSize="16" >
+            <tabview:SfTabItem Header="Open"  FontSize="16" Style="{StaticResource TabItemStyle}" >
                 <tabview:SfTabItem.Content>
                     <Grid RowDefinitions="auto,*">
                         <Picker x:Name="myPicker" BackgroundColor="White" Grid.Row="0" Opacity="0" TextColor="Black" ItemsSource="{Binding Filters}" SelectedItem="{Binding SelectedFilter}"  ZIndex="1" VerticalOptions="Center" WidthRequest="48" HeightRequest="40" HorizontalOptions="End" Margin="0,25,7,0">
@@ -208,7 +230,7 @@ SelectionMode="None" Grid.Row="0" Margin="0,16,0,0">
 
             </tabview:SfTabItem>
 
-            <tabview:SfTabItem Header="Closed"  FontSize="16" >
+            <tabview:SfTabItem Header="Closed"  FontSize="16" Style="{StaticResource TabItemStyle}">
                 <tabview:SfTabItem.Content>
 
                     <ScrollView>
@@ -340,7 +362,7 @@ SelectionMode="None" Grid.Row="0" Margin="0,16,0,0">
                 </tabview:SfTabItem.Content>
 
             </tabview:SfTabItem>
-            <tabview:SfTabItem Header="In Process"    FontSize="16"   >
+            <tabview:SfTabItem Header="In Process"    FontSize="16" Style="{StaticResource TabItemStyle}"  >
                 <tabview:SfTabItem.Content>
 
                     <ScrollView>

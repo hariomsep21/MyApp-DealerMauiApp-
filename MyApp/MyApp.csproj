@@ -72,6 +72,7 @@
 	  <None Remove="Resources\Images\downloadicon.png" />
 	  <None Remove="Resources\Images\draghandle.png" />
 	  <None Remove="Resources\Images\dropdown.png" />
+	  <None Remove="Resources\Images\dropdowngreen.png" />
 	  <None Remove="Resources\Images\emailicon.png" />
 	  <None Remove="Resources\Images\failed.png" />
 	  <None Remove="Resources\Images\green.png" />
@@ -109,6 +110,7 @@
 	  <None Remove="Resources\Images\smallicon.png" />
 	  <None Remove="Resources\Images\sold.png" />
 	  <None Remove="Resources\Images\stepper.png" />
+	  <None Remove="Resources\Images\steppertick.png" />
 	  <None Remove="Resources\Images\stepper_dark.png" />
 	  <None Remove="Resources\Images\whatappicon.png" />
 	</ItemGroup>
