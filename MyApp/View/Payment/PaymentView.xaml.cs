@@ -5,14 +5,29 @@ namespace MyApp;
 
 public partial class PaymentView : ContentPage
 {
-    public PaymentView(CarViewModel carView)
+    
+         private readonly PaymentViewModel _viewModel;
+
+    public PaymentView(PaymentViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = carView;
-      
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
     }
 
-    private void ToolbarItem_Clicked(object sender, EventArgs e)
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+    await _viewModel.LoadDuePayments();
+        await _viewModel.LoadPaymentStatus();
+    }
+
+private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(NotificationPage));
     }

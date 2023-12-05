@@ -36,10 +36,10 @@ xmlns:model="clr-namespace:MyApp.Model"
                     <ScrollView>
                         <StackLayout Margin="0" >
                             <CollectionView x:Name="collectionViewName"
-            ItemsSource="{Binding PendingAuditCars}"
+            ItemsSource="{Binding PendingAudit}"
             SelectionMode="None" Margin="0,16,0,0">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="model:Car" >
+                                    <DataTemplate x:DataType="model:UpcomingAuditModel" >
 
                                         <Frame Style="{StaticResource FrameAuditDue}" CornerRadius="8" HasShadow="True"   VerticalOptions="Start" HorizontalOptions="Center" Margin="0,0,0,16">
                                             <Grid RowDefinitions="auto,auto">
@@ -49,14 +49,14 @@ xmlns:model="clr-namespace:MyApp.Model"
                                                         <Label Style="{StaticResource LabelPrimaryMedium}"   HorizontalOptions="Start"  VerticalOptions="Start">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{Binding Name}" />
+                                                                    <Span Text="{Binding CarName}" />
                                                                     <Span Text=" and " />
                                                                     <Span Text="{Binding Variant}" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
-                                                        <Label Text="{Binding PurchaseId, StringFormat='Purchase Id- {0:C}'}" HorizontalOptions="Start" FontSize="10" TextColor="Black"  VerticalOptions="Start"  />
-                                                        <Label Text="{Binding RemainingDays, StringFormat=' {0} day left to Verify'}" HorizontalOptions="Start" FontSize="12" TextColor="#4AA09B" VerticalOptions="Start"/>
+                                                        <Label Text="{Binding CarId, StringFormat='Purchase Id- {0:C}'}" HorizontalOptions="Start" FontSize="10" TextColor="Black"  VerticalOptions="Start"  />
+                                                        <Label Text="{Binding DaysLeftToVerify}" HorizontalOptions="Start" FontSize="12" TextColor="#4AA09B" VerticalOptions="Start"/>
                                                     </VerticalStackLayout>
                                                 </Grid>
                                                 <Grid Grid.Row="1" ColumnDefinitions="auto,auto" Margin="0,15,0,0" >
@@ -121,10 +121,10 @@ SelectedItem="{Binding SelectedStatus}">
                     <ScrollView>
                         <StackLayout Margin="0" >
                             <CollectionView
-                 ItemsSource="{Binding FewCarsAudit}"
+                 ItemsSource="{Binding StatusAudit}"
                  SelectionMode="None" Margin="0,16,0,0">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate>
+                                    <DataTemplate x:DataType="model:UpcomingAuditModel">
                                         <Frame Style="{StaticResource PaymentFrame}" HeightRequest="72" HasShadow="True" HorizontalOptions="Center" >
                                             <Grid ColumnDefinitions="auto,*,40"  Padding="10,0,0,0">
                                                 <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
@@ -132,17 +132,17 @@ SelectedItem="{Binding SelectedStatus}">
                                                     <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding Name}" />
+                                                                <Span Text="{Binding CarName}" />
                                                                 <Span Text=" and " />
                                                                 <Span Text="{Binding Variant}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
-                                                    <Label Text="{Binding PurchaseId, StringFormat='Purchase Id- {0:C}'}" FontSize="10" TextColor="Black"  Grid.Row="1" Padding="20,0,0,0" Margin="0,0,0,0"/>
-                                                    <Label Text="{Binding PendingAuditDate, StringFormat='{0:MM/dd/yyyy}' }" FontSize="12" TextColor="#4AA09B"  Grid.Row="2" Padding="20,0,0,0"  />
+                                                    <Label Text="{Binding CarId, StringFormat='Purchase Id- {0:C}'}" FontSize="10" TextColor="Black"  Grid.Row="1" Padding="20,0,0,0" Margin="0,0,0,0"/>
+                                                    <Label Text="{Binding AuditDate, StringFormat='{0:MM/dd/yyyy}' }" FontSize="12" TextColor="#4AA09B"  Grid.Row="2" Padding="20,0,0,0"  />
 
                                                 </Grid>
-                                                <Image Grid.Column="2"  Source="{Binding AuditStatus, Converter={StaticResource AuditStatusToIconConverter}}"   HorizontalOptions="Start"   VerticalOptions="Center" WidthRequest="24" HeightRequest="24"  />
+                                                <Image Grid.Column="2"  Source="{Binding Status, Converter={StaticResource AuditStatusToIconConverter}}"   HorizontalOptions="Start"   VerticalOptions="Center" WidthRequest="24" HeightRequest="24"  />
 
 
 

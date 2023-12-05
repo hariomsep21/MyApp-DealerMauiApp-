@@ -2,6 +2,7 @@
 using MyApp.View.Login;
 using MyApp.View.Home;
 using MyApp.View.PurchaseVehicle;
+using MyApp.View.Payment;
 
 namespace MyApp
 {
@@ -40,6 +41,8 @@ namespace MyApp
             Routing.RegisterRoute(nameof(PurchaseVehicleView), typeof(PurchaseVehicleView));
             Routing.RegisterRoute(nameof(MobilePhone), typeof(MobilePhone));
             Routing.RegisterRoute(nameof(EnterOtpPageSign), typeof(EnterOtpPageSign));
+            Routing.RegisterRoute(nameof(UpcomingPaymentPage), typeof(UpcomingPaymentPage));
+
             Application.Current.UserAppTheme = AppTheme.Light;
 
         }

@@ -1,19 +1,15 @@
 using MyApp.View.Account;
-using MyApp.View.Home;
 using MyApp.ViewModel;
 
-namespace MyApp;
+namespace MyApp.View.Payment;
 
-public partial class PayAmount : ContentPage
+public partial class UpcomingPaymentPage : ContentPage
 {
-
-	public PayAmount( PaymentViewModel payment)
+	public UpcomingPaymentPage(PaymentViewModel pay)
 	{
 		InitializeComponent();
-        BindingContext = payment;
-
-    }
-
+		BindingContext = pay;
+	}
     private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(NotificationPage));

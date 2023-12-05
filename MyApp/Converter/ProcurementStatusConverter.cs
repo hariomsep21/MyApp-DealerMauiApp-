@@ -1,23 +1,26 @@
-﻿using System;
+﻿using MyApp.Model;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
-using Microsoft.Maui.Graphics;
-using MyApp.Model;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MyApp.Converter
 {
-    internal class StatusColorConverter : IValueConverter
+    internal class ProcurementStatusConverter:IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is paymentStatus status)
+            if (value is ProcurementStatus status)
             {
                 switch (status)
                 {
-                    case paymentStatus.Pending:
+                    case ProcurementStatus.Pending:
                         return Color.Parse("#E27816");
-                    case paymentStatus.Failed:
+                    case ProcurementStatus.Failed:
                         return Color.Parse("#DE3730");
-                    case paymentStatus.Success:
+                    case ProcurementStatus.Successful:
                         return Color.Parse("#65B96D");
                     default:
                         return Color.Parse("White"); // Return a default color here

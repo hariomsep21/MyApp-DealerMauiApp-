@@ -44,9 +44,9 @@ namespace MyApp.View.Login
                     // OTP is correct, navigate to the desired page
                     // OTP is correct, navigate to the desired page
 
-                await    Navigation.PushAsync(new HomePage());
+             //   await    Navigation.PushAsync(new HomePage());
            
-
+                    await Shell.Current.GoToAsync("//HomePage");
                 }
                 else
                 {

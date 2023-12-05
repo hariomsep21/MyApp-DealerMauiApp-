@@ -6,12 +6,29 @@ namespace MyApp.View.Home;
 [XamlCompilation(XamlCompilationOptions.Skip)]
 public partial class HomePage : ContentPage
 {
-	public HomePage()
+    private readonly PaymentViewModel _viewModel;
+    
+    public HomePage(PaymentViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = new HomeViewModel();
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
 
-	}
+
+
+    }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        await _viewModel.LoadUpcomingPayment();
+        await _viewModel.LoadUpcomingAudit();
+
+    }
     private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(NotificationPage));

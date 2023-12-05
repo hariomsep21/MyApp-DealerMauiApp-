@@ -4,7 +4,7 @@
              x:Class="MyApp.View.Home.HomePage"
                          xmlns:model="clr-namespace:MyApp.Model"
 xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
-             Title="My Orders"  x:DataType="viewmodel:HomeViewModel" BackgroundColor="White" Shell.TabBarIsVisible="True" >
+             Title="My Orders"  x:DataType="viewmodel:PaymentViewModel" BackgroundColor="White" Shell.TabBarIsVisible="True" >
     <ContentPage.ToolbarItems>
         <!-- Define a custom toolbar item with the "+" icon -->
         <ToolbarItem
@@ -72,7 +72,40 @@ WidthRequest="56" CornerRadius="12" HeightRequest="56" Background="#ecf8f2" Comm
                         <Label Text="Upcoming Payments" TextColor="#191C1C" FontSize="16" FontAttributes="Bold"/>
                         <Button ImageSource="arrow_right.png" Grid.Column="1" WidthRequest="24" HorizontalOptions="End" HeightRequest="24" Background="white"/>
                     </Grid>
-                    <Grid ColumnDefinitions="auto,auto,auto"  Padding="0,16,0,0">
+                    <ScrollView>
+                        <CollectionView
+ItemsSource="{Binding UpcomingPayment}"
+SelectionMode="None" Margin="0,16,0,0" x:Name="mCollectionView" >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:PaymentDetailDto">
+                                    <Frame Padding="0" BorderColor="Transparent" Margin="0,0,0,16" HorizontalOptions="Center"    >
+                                        <Grid ColumnDefinitions="auto,auto,auto"  Padding="20,0,0,0">
+                                            <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
+                                            <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
+                                                <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding CarName }" />
+                                                            <Span Text=" and " />
+                                                            <Span Text="{Binding Variant}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label Text="{Binding Amount_Due, StringFormat='Amount Due: ₹{0:F0}'}" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
+                                                <Label Text="{Binding CarId, StringFormat='Purchase Id- {0}'}" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10"/>
+                                            </Grid>
+                                            <Button Grid.Column="2"  Text="Pay" Command="{Binding  Path= BindingContext.PayyCommand,Source={Reference mCollectionView }}"  CommandParameter="{Binding .}" FontSize="10" BackgroundColor="#4AA09B" TextColor="White" CornerRadius="12" HorizontalOptions="Center" Margin="22,0,20,0" Padding="-30"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
+
+
+
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                    <!--<Grid ColumnDefinitions="auto,auto,auto"  Padding="0,16,0,0">
                         <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
                         <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
                             <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
@@ -134,7 +167,7 @@ WidthRequest="56" CornerRadius="12" HeightRequest="56" Background="#ecf8f2" Comm
 
 
 
-                    </Grid>
+                    </Grid>-->
                 </VerticalStackLayout>
             </Frame>
             <Frame Padding="16" WidthRequest="343" HeightRequest="304" Margin="0,16,0,16" HasShadow="True"  CornerRadius="8">
@@ -143,7 +176,38 @@ WidthRequest="56" CornerRadius="12" HeightRequest="56" Background="#ecf8f2" Comm
                         <Label Text="Upcoming Audits" TextColor="#191C1C" FontSize="16" FontAttributes="Bold"/>
                         <Button ImageSource="arrow_right.png" Grid.Column="1" WidthRequest="24" HorizontalOptions="End" HeightRequest="24" Background="white"/>
                     </Grid>
-                    <Grid ColumnDefinitions="auto,auto"  Padding="0,20,0,0">
+                    <ScrollView>
+                    <CollectionView
+ItemsSource="{Binding UpcomingAudit}"
+SelectionMode="None" Margin="0,16,0,0">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:UpcomingAuditModel">
+                                <Frame Style="{StaticResource PaymentFrame}" BackgroundColor="Transparent" HorizontalOptions="Center"    >
+                                    <Grid ColumnDefinitions="auto,auto,auto"  Padding="20,0,0,0">
+                                        <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
+                                        <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
+                                            <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding CarName }" />
+                                                        <Span Text=" and " />
+                                                        <Span Text="{Binding Variant}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding CarId, StringFormat='Purchase Id- {0}'}" FontSize="10" TextColor="Black"  Grid.Row="1" Padding="20,0,0,0" />
+                                            <Label Text="{Binding DaysLeftToVerify }" FontSize="12" TextColor="#4AA09B"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10" />
+
+                                        </Grid>
+                                      
+
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    </ScrollView>
+                    <!--<Grid ColumnDefinitions="auto,auto"  Padding="0,20,0,0">
                         <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
                         <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
                             <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
@@ -206,7 +270,7 @@ WidthRequest="56" CornerRadius="12" HeightRequest="56" Background="#ecf8f2" Comm
 
 
 
-                    </Grid>
+                    </Grid>-->
 
 
                 </VerticalStackLayout>

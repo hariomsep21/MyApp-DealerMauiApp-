@@ -1,8 +1,11 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using MyApp.Service;
+using MyApp.Services;
 using MyApp.View.Home;
 using MyApp.View.Login;
+using MyApp.View.Payment;
+using MyApp.View.PurchaseVehicle;
 using MyApp.ViewModel;
 using Syncfusion.Maui.Core.Hosting;
 using The49.Maui.BottomSheet;
@@ -41,7 +44,18 @@ namespace MyApp
             builder.Services.AddSingleton<AuditStatusView>();
             builder.Services.AddSingleton<UnregisteredView>();
             builder.Services.AddSingleton<VerificationViewModel>();
-
+            builder.Services.AddSingleton<PaymentViewModel>();
+            builder.Services.AddSingleton<PayAmount>();
+            builder.Services.AddSingleton<IProcurementService, ProcurementService>();
+            builder.Services.AddSingleton<UpcomingPaymentPage>();
+            builder.Services.AddSingleton<PayAmountViewModel>();
+            builder.Services.AddSingleton<ProcurementViewModel>();
+            builder.Services.AddSingleton<VehicleRecordsViewModel>();
+            builder.Services.AddSingleton<PurchaseVehicleView>();
+            builder.Services.AddSingleton<IPaymnetService, PaymentService>();
+            builder.Services.AddSingleton<IStockAuditService, StockAuditService>();
+            builder.Services.AddSingleton<IPurchaseVehicleService, PurchaseVehicleService>();
+            builder.Services.AddHttpClient();
 
 #if DEBUG
             builder.Logging.AddDebug();
