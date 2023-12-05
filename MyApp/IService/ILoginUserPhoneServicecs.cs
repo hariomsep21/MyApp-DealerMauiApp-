@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-    public interface IPV_AggregatorService
+    public interface ILoginUserPhoneServicecs
     {
-        Task<IEnumerable<PV_AggregatorDTO>> PostAggregatorDetails();
+        Task<IEnumerable<LoginUserPhoneDTO>> LoginDetails();
+       
     }
 }

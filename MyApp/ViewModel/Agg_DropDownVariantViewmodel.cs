@@ -4,6 +4,7 @@ using MyApp.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using MyApp.IService;
 
 namespace MyApp.ViewModel
 {

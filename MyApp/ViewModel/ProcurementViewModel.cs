@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MyApp.IService;
 using MyApp.Model;
 using MyApp.Services;
 using System;
@@ -128,7 +129,7 @@ namespace MyApp.ViewModel
             SelectedFilter = null; // Reset the selected filter
         }
 
-        public ProcurementViewModel(IProcurementService procurementService)
+        public  ProcurementViewModel(IProcurementService procurementService)
         {
             _procurementService = procurementService;
             LoadFilters();

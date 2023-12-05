@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using MyApp.Models;
+using MyApp.IService;
 using MyApp.Service;
 
 namespace MyApp.ViewModel

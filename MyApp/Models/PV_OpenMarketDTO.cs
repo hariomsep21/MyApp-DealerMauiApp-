@@ -10,23 +10,23 @@ namespace MyApp.Models
     public class PV_OpenMarketDTO
     {
         public int UserInfoId { get; set; }
-        public string? PurchaseAmount { get; set; }
-        public string? TokenAmount { get; set; }
-        public string? WithholdAmount { get; set; }
+        public string PurchaseAmount { get; set; } = string.Empty;
+        public string TokenAmount { get; set; } = string.Empty;
+        public string WithholdAmount { get; set; } = string.Empty;
 
         [MaxLength(12)]
-        public string? SellerContactNumber { get; set; }
+        public string SellerContactNumber { get; set; } = string.Empty;
 
         [EmailAddress]
         [RegularExpression(@"^[\w-]+@gmail\.(com|in)$", ErrorMessage = "Email must end with @gmail.com or @gmail.in")]
-        public string? SellerEmailAddress { get; set; }
-        public string? VehicleNumber { get; set; }
-        public string? PaymentProof { get; set; }
-        public string? SellerAdhaar { get; set; }
-        public string? SellerPAN { get; set; }
-        public string? PictureOfOriginalRC { get; set; }
-        public string? OdometerPicture { get; set; }
-        public string? VehiclePictureFromFront { get; set; }
-        public string? VehiclePictureFromBack { get; set; }
+        public string SellerEmailAddress { get; set; } = string.Empty;
+        public string VehicleNumber { get; set; } = string.Empty;
+        public string PaymentProof { get; set; } = string.Empty;
+        public string SellerAdhaar { get; set; } = string.Empty;
+        public string SellerPAN { get; set; } = string.Empty;
+        public string PictureOfOriginalRC { get; set; } = string.Empty;
+        public string OdometerPicture { get; set; } = string.Empty;
+        public string VehiclePictureFromFront { get; set; } = string.Empty;
+        public string VehiclePictureFromBack { get; set; } = string.Empty;
     }
 }

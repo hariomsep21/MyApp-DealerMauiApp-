@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-    public interface ICustomerSupoortService
+    public interface IAgg_DropDownVariantService
     {
-        Task<CustomerSupportDTO> CustomerServices();
-    }
+        Task<IEnumerable<Agg_DropDownVariantDTO>> GetVariantData();
 
+    }
 }

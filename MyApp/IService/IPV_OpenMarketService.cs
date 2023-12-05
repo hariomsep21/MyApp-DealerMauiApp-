@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-    public interface IDropDownStateService
+    public interface IPV_OpenMarketService
     {
-        Task<IEnumerable<DropDownStateDTO>> GetState();
+        Task<bool> PostMobileNumberAsync(PV_OpenMarketDTO NewCarDetails);
     }
 }

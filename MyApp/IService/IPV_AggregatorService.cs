@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-    public interface IAgg_DropDownYORegisService
+    public interface IPV_AggregatorService
     {
-        Task<IEnumerable<Agg_DropDownYORegisDTO>> GetYearOfRegData();
-
+        Task<IEnumerable<PV_AggregatorDTO>> PostAggregatorDetails();
     }
 }

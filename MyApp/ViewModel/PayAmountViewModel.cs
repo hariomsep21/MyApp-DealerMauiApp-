@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using MyApp.IService;
 using System.Text;
 using MyApp.Services;
 
@@ -14,22 +15,22 @@ namespace MyApp.ViewModel
 
     public partial class PayAmountViewModel:ObservableObject
     {
-        [ObservableProperty]
-        PaymentDetailDto paymentDetailDto;
-        private readonly IPaymnetService _paymentService;
+        //[ObservableProperty]
+        //PaymentDetailDto paymentDetailDto;
+        //private readonly IPaymnetService _paymentService;
 
-        //private PaymentDetailDto _paymentDetails;
-        //public PaymentDetailDto PaymentDetails
+        ////private PaymentDetailDto _paymentDetails;
+        ////public PaymentDetailDto PaymentDetails
+        ////{
+        ////    get => _paymentDetails;
+        ////    set => SetProperty(ref _paymentDetails, value);
+        ////}
+
+        //public PayAmountViewModel(IPaymnetService paymentService)
         //{
-        //    get => _paymentDetails;
-        //    set => SetProperty(ref _paymentDetails, value);
+        //    _paymentService = paymentService;
+
         //}
-
-        public PayAmountViewModel(IPaymnetService paymentService)
-        {
-            _paymentService = paymentService;
-
-        }
 
         //private async void LoadPaymentDetails()
         //{

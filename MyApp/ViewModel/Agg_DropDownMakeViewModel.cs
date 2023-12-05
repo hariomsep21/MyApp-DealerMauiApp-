@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MyApp.Models;
 using MyApp.Service;
+using MyApp.IService;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

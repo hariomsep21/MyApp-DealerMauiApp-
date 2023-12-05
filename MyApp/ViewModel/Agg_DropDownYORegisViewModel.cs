@@ -3,6 +3,7 @@ using MyApp.Models;
 using MyApp.Service;
 using System;
 using System.Collections.Generic;
+using MyApp.IService;
 using System.Collections.ObjectModel;
 
 namespace MyApp.ViewModel

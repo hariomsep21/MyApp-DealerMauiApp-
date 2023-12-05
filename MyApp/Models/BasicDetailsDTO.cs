@@ -14,7 +14,7 @@ namespace MyApp.Models
 
         [EmailAddress]
         [RegularExpression(@"^[\w-]+@gmail\.(com|in)$", ErrorMessage = "Email must end with @gmail.com or @gmail.in")]
-        public string? UserEmail { get; set; }
+        public string UserEmail { get; set; } = string.Empty;
 
         public int StatusId { get; set; }
 

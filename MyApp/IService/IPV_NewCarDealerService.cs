@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-    public interface IBasicDetailsService
+    public interface IPV_NewCarDealerService
     {
-        Task<bool> PostUserDetails(BasicDetailsDTO userDetails);
+        Task<bool> PostMobileNumberAsync(PV_NewCarDealerDTO NewCarDetails);
+
     }
 }

@@ -57,7 +57,7 @@ namespace MyApp.View.Login
     public partial class MobilePhone : ContentPage
     {
         private readonly PostLoginViewModel _viewModel;
-        private string enteredPhoneNumber;
+       // private string enteredPhoneNumber;
 
         public MobilePhone()
         {

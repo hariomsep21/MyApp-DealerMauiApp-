@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-    public interface IAgg_DropDownMakeService
+    public interface IBasicDetailsService
     {
-        Task<IEnumerable<Agg_DropDownMakeDTO>> GetMakeData();
+        Task<bool> PostUserDetails(BasicDetailsDTO userDetails);
     }
 }

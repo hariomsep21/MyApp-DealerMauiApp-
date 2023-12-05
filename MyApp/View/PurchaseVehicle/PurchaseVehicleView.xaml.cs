@@ -77,10 +77,7 @@ public partial class PurchaseVehicleView : ContentPage
         await _DropDownModel.LoadModelDetails();
         await _DropDownVariantViewmodel.LoadVariantDetails();
     }
-    private async Task NewCarDealerButton(object sender, EventArgs e)
-    {
-
-    }
+   
 
 
 

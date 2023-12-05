@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-    public interface IAgg_DropDownModelService
+    public interface IAgg_DropDownMakeService
     {
-        Task<IEnumerable<Agg_DropDownModelDTO>> GetModelData();
-
+        Task<IEnumerable<Agg_DropDownMakeDTO>> GetMakeData();
     }
 }

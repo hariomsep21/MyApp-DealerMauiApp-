@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-    public interface ILoginUserPhoneServicecs
+    public interface IDropDownStateService
     {
-        Task<IEnumerable<LoginUserPhoneDTO>> LoginDetails();
-       
+        Task<IEnumerable<DropDownStateDTO>> GetState();
     }
 }

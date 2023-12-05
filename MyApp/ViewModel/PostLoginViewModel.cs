@@ -3,6 +3,7 @@
 using System;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
+using MyApp.IService;
 using MyApp.Service;
 
 namespace MyApp.ViewModel

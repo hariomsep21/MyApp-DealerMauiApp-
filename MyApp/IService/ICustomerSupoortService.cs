@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Service
+namespace MyApp.IService
 {
-   public interface IAccountInfoService
+    public interface ICustomerSupoortService
     {
-        Task<AccountInfoDTO> GetAccountInfoDetails();
+        Task<CustomerSupportDTO> CustomerServices();
     }
+
 }

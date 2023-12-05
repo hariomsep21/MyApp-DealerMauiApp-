@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MyApp.IService;
 using MyApp.Models;
 using MyApp.Service;
 using System;
@@ -77,7 +78,7 @@ namespace MyApp.ViewModel
 
 
         [RelayCommand]
-        public async Task Back()
+        public static async Task Back()
         {
             await Shell.Current.GoToAsync("//HomePage");
         }

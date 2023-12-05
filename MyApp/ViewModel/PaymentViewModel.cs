@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MyApp.IService;
 
 namespace MyApp.ViewModel
 {
@@ -101,7 +102,7 @@ namespace MyApp.ViewModel
     
 
         [RelayCommand]
-        public async Task Back()
+        public static async Task Back()
         {
             await Shell.Current.GoToAsync("//HomePage");
         }

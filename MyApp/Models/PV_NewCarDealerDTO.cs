@@ -9,13 +9,13 @@ namespace MyApp.Models
     public class PV_NewCarDealerDTO
     {
         public int UserInfoId { get; set; }
-        public string? PurchaseAmount { get; set; }
-        public string? VehicleNumber { get; set; }
-        public string? OdometerPicture { get; set; }
-        public string? VehiclePicFromFront { get; set; }
-        public string? VehiclePicFromBack { get; set; }
-        public string? Invoice { get; set; }
-        public string? PictOfOrginalRC { get; set; }
+        public string PurchaseAmount { get; set; } = string.Empty;
+        public string VehicleNumber { get; set; }=string.Empty;
+        public string OdometerPicture { get; set; } = string.Empty;
+        public string VehiclePicFromFront { get; set; } = string.Empty;
+        public string VehiclePicFromBack { get; set; } = string.Empty;
+        public string Invoice { get; set; } = string.Empty;
+        public string PictOfOrginalRC { get; set; } = string.Empty;
 
         // Constructor to set UserInfoId
        
