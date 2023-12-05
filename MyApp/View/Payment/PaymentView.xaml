@@ -7,7 +7,8 @@
              
        xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
              x:Class="MyApp.PaymentView"
-             Title="Payment"   x:DataType="viewmodel:CarViewModel" Shell.TabBarIsVisible="False">
+             Title="Payment"   x:DataType="viewmodel:PaymentViewModel" Shell.TabBarIsVisible="False">
+
     <ContentPage.ToolbarItems>
         <!-- Define a custom toolbar item with the "+" icon -->
         <ToolbarItem
@@ -32,11 +33,11 @@
                 <tabview:SfTabItem.Content>
                     <ScrollView>
                         <StackLayout Margin="0" >
-                            <CollectionView
-                 ItemsSource="{Binding Cars}"
-                 SelectionMode="None" Margin="0,16,0,0">
+                            <CollectionView x:Name="mCollectionView"
+                 ItemsSource="{Binding DuePayments}"
+                 SelectionMode="None" Margin="0,16,0,0" >
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="model:Car">
+                                    <DataTemplate  >
                                         <Frame Style="{StaticResource PaymentFrame}" HorizontalOptions="Center"    >
                                             <Grid ColumnDefinitions="auto,auto,auto"  Padding="10,0,0,0">
                                                 <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
@@ -44,17 +45,18 @@
                                                     <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding Name}" />
+                                                                <Span Text="{Binding CarName }" />
                                                                 <Span Text=" and " />
                                                                 <Span Text="{Binding Variant}" />
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
 
-                                                    <Label Text="{Binding AmountDue, StringFormat='Amount Due: {0:C}'}" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
-                                                    <Label Text="{Binding PurchaseId, StringFormat='Purchase Id- {0:C}'}" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10"/>
+                                                    <Label Text="{Binding Amount_Due, StringFormat='Amount Due: ₹{0:F0}'}" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
+                                                    <Label Text="{Binding CarId, StringFormat='Purchase Id- {0}'}" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10"/>
                                                 </Grid>
-                                                <Button Grid.Column="2"  Text="Pay" FontSize="10" BackgroundColor="#4AA09B" TextColor="White" CornerRadius="12" HorizontalOptions="Center" Margin="22,0,20,0" Padding="-30"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
+                                                <Button Grid.Column="2"  Text="Pay" Command="{Binding  Path= BindingContext.PayCommand,Source={Reference mCollectionView }}"  CommandParameter="{Binding .}" FontSize="10" BackgroundColor="#4AA09B" TextColor="White" CornerRadius="12" HorizontalOptions="Center" Margin="22,0,20,0
+                                                        " Padding="-30"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
 
 
 
@@ -101,10 +103,10 @@
                         <ScrollView>
 
                             <CollectionView
-              ItemsSource="{Binding FewCars}"
+              ItemsSource="{Binding Paystatus}"
               SelectionMode="None" Grid.Row="0" Margin="0,16,0,0">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="model:Car">
+                                    <DataTemplate x:DataType="model:PaymentDto">
                                         <Frame Style="{StaticResource PaymentFrame}"  >
                                             <Grid RowDefinitions="auto,auto">
                                                 <Grid ColumnDefinitions="auto,auto,auto"  Grid.Row="0"  Padding="10,0,0,0">
@@ -114,23 +116,22 @@
                                                         <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{Binding Name}" />
+                                                                    <Span Text="{Binding CarName }" />
                                                                     <Span Text=" and " />
                                                                     <Span Text="{Binding Variant}" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
 
-                                                        <Label Text="{Binding AmountDue, StringFormat='Amount Due: {0:C}'}" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
-                                                        <Label Text="{Binding PurchaseId, StringFormat='Purchase Id- {0:C}'}" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10" />
+                                                        <Label Text="{Binding Amount_Due, StringFormat='Amount Due: ₹{0:F0}'}" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
+                                                        <Label Text="{Binding CarId, StringFormat='Purchase Id- {0}'}" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10" />
 
                                                     </Grid>
-                                                    <Label Text="{Binding PaymentHistory.Status}" Grid.Column="2"   FontSize="11"  TextColor="{Binding PaymentHistory.Status, Converter={StaticResource StatusColorConverter}}"  HorizontalOptions="Center" Margin="38,15,0,0"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
+                                                    <Label Text="{Binding PaymentStatus}" Grid.Column="2"   FontSize="11"  TextColor="{Binding PaymentStatus, Converter={StaticResource StatusColorConverter}}"  HorizontalOptions="Center" Margin="38,15,0,0"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
 
 
 
                                                 </Grid>
-                                                <Label Text="{Binding PaymentHistory.ErrorMessage}" VerticalOptions="Start"   FontSize="10"  TextColor="#DE3730" HorizontalOptions="Start" Margin="12,0,0,10" Grid.Row="1" IsVisible="{Binding PaymentHistory.ErrorMessage, Converter={StaticResource StringIsNotEmptyConverter}}"/>
                                             </Grid>
                                         </Frame>
                                     </DataTemplate>

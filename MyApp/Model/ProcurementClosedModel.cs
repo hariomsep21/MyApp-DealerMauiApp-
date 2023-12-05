@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyApp.Model
 {
-    public class CarHistory
+    public class ProcurementClosedModel:CarDetail
     {
+        public decimal? Amount_paid { get; set; }
+        public DateTime? ColsedOn { get; set; }
+
+
     }
 }

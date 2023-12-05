@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyApp.PayAmount"
+             x:Class="MyApp.View.Payment.UpcomingPaymentPage"
+            
              Title="Payment" Shell.TabBarIsVisible="False"  xmlns:local="clr-namespace:MyApp.ViewModel" BackgroundColor="White"
-              xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
-             x:DataType="viewmodel:PaymentViewModel">
+ xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
+x:DataType="viewmodel:PaymentViewModel">
     <ContentPage.ToolbarItems>
         <!-- Define a custom toolbar item with the "+" icon -->
         <ToolbarItem
-      IconImageSource="notifications_none.png"
-      Priority="0"
-      Order="Primary"
-         Clicked="ToolbarItem_Clicked"
-      />
+   IconImageSource="notifications_none.png"
+   Priority="0"
+   Order="Primary"
+      Clicked="ToolbarItem_Clicked"
+   />
     </ContentPage.ToolbarItems>
-
-
-
-    
     <Grid RowDefinitions="*,auto,auto" >
         <Frame BackgroundColor="#CCE8E5" WidthRequest="343" HeightRequest="440" VerticalOptions="Start" Padding="16,20" CornerRadius="8" Margin="0,26,0,0">
             <VerticalStackLayout>
                 <Label FontSize="16" TextColor="#051F1E" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{Binding DuePayments[0].CarName}" />
+                            <Span Text="{Binding UpcomingPayment[0].CarName}" />
                             <Span Text=" &amp; " />
-                            <Span Text="{Binding DuePayments[0].Variant}" />
+                            <Span Text="{Binding UpcomingPayment[0].Variant}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -35,52 +32,53 @@
                         <Grid ColumnDefinitions="50*,50* " RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
 
                             <Label Grid.Column="0" TextColor="#3F4948" Text="No. of Days Left" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                            <Label Grid.Column="1"  Text="{Binding DuePayments[0].DaysLeft}" TextColor="#DE3730" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                            
+                            <Label Grid.Column="1"  Text="{Binding UpcomingPayment[0].DaysLeft}"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+
 
                             <Label Grid.Column="0" TextColor="#3F4948" Grid.Row="1" Text="Purchase Id" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].CarId}" Grid.Row="1"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].CarId}" Grid.Row="1"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
 
                             <Label Grid.Column="0" TextColor="#3F4948" Grid.Row="2" Text="Start Date" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].StartDate, StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="2"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].StartDate, StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="2"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
 
                             <Label Grid.Column="0" TextColor="#3F4948" Grid.Row="3"  Text="Due Date" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,5" />
-                            <Label Grid.Column="1" Text="{Binding DuePayments[0].DueDate, StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3" TextColor="#DE3730" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+                            <Label Grid.Column="1" Text="{Binding UpcomingPayment[0].DueDate, StringFormat='{0:MM/dd/yyyy}'}" Grid.Row="3"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+
                             <!-- Amount Paid -->
                             <Label Grid.Column="0" TextColor="#3F4948" Text="Amount Paid" Grid.Row="4" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].AmountPaid, StringFormat='₹{0:F0}'}" Grid.Row="4" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].AmountPaid, StringFormat='₹{0:F0}'}" Grid.Row="4" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
 
                             <!-- Amount Due -->
                             <Label Grid.Column="0" TextColor="#3F4948" Grid.Row="5" Text="Amount Due" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].Amount_Due, StringFormat='₹{0:F0}'}" Grid.Row="5" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].Amount_Due, StringFormat='₹{0:F0}'}" Grid.Row="5" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
 
                             <Label Grid.Column="0" TextColor="#3F4948" Grid.Row="6" Text="Processing Charges" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].ProcessingCharges,StringFormat='₹{0:F0}'}" Grid.Row="6"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,20" />
-                            
-                            
+                            <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].ProcessingCharges,StringFormat='₹{0:F0}'}" Grid.Row="6"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,20" />
+
+
 
                         </Grid>
                     </VerticalStackLayout>
-                    
-                    
+
+
                 </Grid>
                 <Label Text="Repayment Details" TextColor="#051F1E" FontSize="16" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
                 <VerticalStackLayout Grid.Row="0" >
                     <Grid ColumnDefinitions="50*,50* " RowDefinitions="auto,auto,auto,auto">
 
                         <Label Grid.Column="0" TextColor="#3F4948" Text="Name" FontSize="14" HorizontalOptions="Start" Margin="0,20,0,7" />
-                        <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].Name}"  FontSize="14" HorizontalOptions="Start" Margin="0,20,0,7" />
+                        <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].Name}"  FontSize="14" HorizontalOptions="Start" Margin="0,20,0,7" />
 
                         <Label Grid.Column="0" TextColor="#3F4948" Grid.Row="1" Text="Account Number" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                        <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].AccountNumber}" Grid.Row="1"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+                        <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].AccountNumber}" Grid.Row="1"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
 
                         <Label Grid.Column="0" TextColor="#3F4948" Grid.Row="2" Text="IFSC Code" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
-                        <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].IFSCCode}" Grid.Row="2"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
+                        <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].IFSCCode}" Grid.Row="2"  FontSize="14" HorizontalOptions="Start" Margin="0,0,0,7" />
 
                         <Label Grid.Column="0" TextColor="#3F4948" Grid.Row="3"  Text="Bank Name" FontSize="14" HorizontalOptions="Start" Margin="0,0,0,5" />
-                        <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding DuePayments[0].BankName}" Grid.Row="3"  FontSize="14" HorizontalOptions="Start" Margin="0,0,10,7" />
+                        <Label Grid.Column="1" TextColor="#3F4948" Text="{Binding UpcomingPayment[0].BankName}" Grid.Row="3"  FontSize="14" HorizontalOptions="Start" Margin="0,0,10,7" />
 
-                        
+
 
 
 
@@ -95,8 +93,8 @@
                 <Button Text="Pay" FontSize="14" TextColor="White" Padding="0" Grid.Column="1" CornerRadius="100" WidthRequest="73" HeightRequest="30" Margin="7" BackgroundColor="#4AA09B"/>
             </Grid>
         </Frame>
-        <Button Style="{StaticResource LargeButtonColor}" Grid.Row="2" Text="{Binding DuePayments[0].Amount_Due, StringFormat='Pay Due Amount ₹{0}'}" Clicked="Button_Clicked"   Margin="0,0,0,5" />
+        <Button Style="{StaticResource LargeButtonColor}" Grid.Row="2" Text="{Binding UpcomingPayment[0].Amount_Due, StringFormat='Pay Due Amount ₹{0}'}" Clicked="Button_Clicked"   Margin="0,0,0,5" />
 
-              
+
     </Grid>
 </ContentPage>

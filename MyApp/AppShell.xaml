@@ -19,14 +19,6 @@
 
 
     <TabBar x:Name="MyTabBar" Shell.TabBarBackgroundColor="#ECEEED"    Shell.TabBarForegroundColor="Black" >
-        <Tab Title="Orders" Icon="shopping_bag.png"     >
-            <ShellContent ContentTemplate="{DataTemplate local3:HomePage}" Route="HomePage" />
-        </Tab>
-        <Tab Title="Purchase Vehicle" Icon="plus.png"  IsVisible="True">
-            <ShellContent ContentTemplate="{DataTemplate local:PurchaseVehicleView}" Route="PurchasedVehicleView" />
-        </Tab>
-        <Tab Title="My Account" Icon="new_profile.png" IsVisible="True" >
-            <ShellContent ContentTemplate="{DataTemplate local2:ProfileInfo}" Route="ProfileInformationPage"/>
-        </Tab>
-    </TabBar>
+        <Tab Title="Orders" Icon="shopping_bag.png"     >            <ShellContent ContentTemplate="{DataTemplate local3:HomePage}" Route="HomePage" />        </Tab>        <Tab Title="Purchase Vehicle" Icon="plus.png"  IsVisible="True">            <ShellContent ContentTemplate="{DataTemplate local:PurchaseVehicleView}" Route="PurchasedVehicleView" />        </Tab>        <Tab Title="My Account" Icon="new_profile.png" IsVisible="True" >            <ShellContent ContentTemplate="{DataTemplate local2:ProfileInfo}" Route="ProfileInformationPage"/>        </Tab>    </TabBar>
+    <ShellContent ContentTemplate="{DataTemplate local4:LoginPage}" Route="LoginPage" />
 </Shell>

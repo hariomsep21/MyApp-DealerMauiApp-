@@ -16,6 +16,7 @@
             <local:StatusColorConverter x:Key="StatusColorConverter" />
             <local:StringIsNotEmptyConverter x:Key="StringIsNotEmptyConverter" />
             <local:InvertedBooleanConverter x:Key="InvertedBooleanConverter"/>
+            <local:ProcurementStatusConverter x:Key="ProcurementStatusConverter"/>
 
         </ResourceDictionary>
 

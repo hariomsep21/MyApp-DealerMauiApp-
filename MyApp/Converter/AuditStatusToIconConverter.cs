@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,15 @@ namespace MyApp.Converter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value is string auditStatus)
+            if (value is AudStatus status)
             {
-                switch (auditStatus.ToLower())
+                switch (status)
                 {
-                    case "sold":
+                    case AudStatus.Sold:
                         return "sold.png";
-                    case "inprocess":
+                    case AudStatus.Inprocess:
                         return "inprocess.png";
-                    case "failed":
+                    case AudStatus.Failed:
                         return "failed.png";
                     default:
                         return string.Empty;
