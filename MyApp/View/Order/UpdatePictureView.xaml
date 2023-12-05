@@ -28,7 +28,7 @@ xmlns:viewmodel="clr-namespace:MyApp.ViewModel" x:DataType="viewmodel:UpdatePict
             <VerticalStackLayout>
                 <Grid ColumnDefinitions="auto,*">
                     <Image Margin="16,16,0,0" x:Name="stepper" Source="stepper.png" HorizontalOptions="Start" WidthRequest="20" HeightRequest="150"/>
-                    <Image Margin="16,16,0,0" x:Name="stepperdark" Source="stepper_dark.png" HorizontalOptions="Start" WidthRequest="20" IsVisible="False" HeightRequest="150"/>
+                    <Image Margin="16,16,0,0" x:Name="stepperdark" Source="steppertick.png" HorizontalOptions="Start" WidthRequest="20" IsVisible="False" HeightRequest="150"/>
                     <VerticalStackLayout Grid.Column="1">
                         <Label Text="Selfie with Vehicle" TextColor="#051F1E" FontSize="16" Margin="16,12,0,0"/>
                         <Grid>
@@ -50,7 +50,7 @@ xmlns:viewmodel="clr-namespace:MyApp.ViewModel" x:DataType="viewmodel:UpdatePict
 
                 <Grid ColumnDefinitions="auto,*">
                     <Image Margin="16,16,0,0" x:Name="stepper1" Source="stepper.png" HorizontalOptions="Start" WidthRequest="20" HeightRequest="150"/>
-                    <Image Margin="16,16,0,0" x:Name="stepper1dark" Source="stepper_dark.png" HorizontalOptions="Start" WidthRequest="20" IsVisible="False" HeightRequest="150"/>
+                    <Image Margin="16,16,0,0" x:Name="stepper1dark" Source="steppertick.png" HorizontalOptions="Start" WidthRequest="20" IsVisible="False" HeightRequest="150"/>
                     <VerticalStackLayout Grid.Column="1">
                         <Label Text="Picture of Whole Vehicle" TextColor="#051F1E" FontSize="16" Margin="16,16,0,0"/>
                         <Grid>
@@ -70,7 +70,7 @@ xmlns:viewmodel="clr-namespace:MyApp.ViewModel" x:DataType="viewmodel:UpdatePict
                 <Button x:Name="changeImageButton2" Text="Change photo" FontSize="14" Clicked="ChangeImage2" HorizontalOptions="Start" Margin="53,0,0,0" WidthRequest="96" HeightRequest="20" Padding="0" IsVisible="False" TextColor="#4AA09B" Background="Transparent"/>
                 <Grid ColumnDefinitions="auto,*">
                     <Image Margin="16,16,0,0"  x:Name="stepper2" Source="stepper.png" HorizontalOptions="Start" WidthRequest="20" HeightRequest="150"/>
-                    <Image Margin="16,16,0,0"  x:Name="stepper2dark" Source="stepper_dark.png" HorizontalOptions="Start" WidthRequest="20" IsVisible="False" HeightRequest="150"/>
+                    <Image Margin="16,16,0,0"  x:Name="stepper2dark" Source="steppertick.png" HorizontalOptions="Start" WidthRequest="20" IsVisible="False" HeightRequest="150"/>
                     <VerticalStackLayout Grid.Column="1">
                         <Label Text="Picture of Odometer" TextColor="#051F1E" FontSize="16" Margin="16,16,0,0"/>
                         <Grid>
