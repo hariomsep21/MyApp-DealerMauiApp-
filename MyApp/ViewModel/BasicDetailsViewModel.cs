@@ -1,34 +1,29 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿// BasicDetailsViewModel.cs
 using MyApp.IService;
 using MyApp.Models;
-using MyApp.Service;
+using System.Diagnostics;
 
-namespace MyApp.ViewModel
+public class BasicDetailsViewModel
 {
-    public class BasicDetailsViewModel
+    private readonly IBasicDetailsService _basicDetailsService;
+
+    public BasicDetailsViewModel(IBasicDetailsService basicDetailsService)
     {
-        private readonly IBasicDetailsService _basicDetailsService;
+        _basicDetailsService = basicDetailsService ?? throw new ArgumentNullException(nameof(basicDetailsService));
+    }
 
-        public BasicDetailsViewModel(IBasicDetailsService basicDetailsService)
+    public async Task<bool> PostUserDetailsAsync(BasicDetailsDTO userDetails)
+    {
+        try
         {
-            _basicDetailsService = basicDetailsService ?? throw new ArgumentNullException(nameof(basicDetailsService));
+            return await _basicDetailsService.PostUserDetails(userDetails);
         }
-
-        public async Task<bool> PostUserDetailsAsync(BasicDetailsDTO userDetails)
+        catch (Exception ex)
         {
-            try
-            {
-                return await _basicDetailsService.PostUserDetails(userDetails);
-            }
-            catch (Exception ex)
-            {
-                // Log the error using a logging framework or Debug.WriteLine
-                Debug.WriteLine($"Error posting user details: {ex.Message}");
-                // Rethrow the exception for consistency
-                throw;
-            }
+            // Log the error using a logging framework or Debug.WriteLine
+            Debug.WriteLine($"Error posting user details: {ex.Message}");
+            // Rethrow the exception for consistency
+            throw;
         }
     }
 }
