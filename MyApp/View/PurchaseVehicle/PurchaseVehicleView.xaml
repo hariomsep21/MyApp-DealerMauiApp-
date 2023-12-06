@@ -4,7 +4,7 @@
                     xmlns:tabview="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
              x:Class="MyApp.View.PurchaseVehicle.PurchaseVehicleView"
                 xmlns:local="clr-namespace:MyApp.ViewModel"
-             Title="Purchase Vehicle"  x:DataType="local:Agg_DropDownMakeViewModel" BackgroundColor="White">
+             Title="Purchase Vehicle"  x:DataType="local:FullAggragatorViewModel" BackgroundColor="White">
     <ContentPage.Resources>
         <Style TargetType="tabview:SfTabItem" x:Key="TabItemStyle">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -59,26 +59,70 @@
 
 
                         <Grid>
-                            <Grid Margin="10,16,10,0"  x:Name="Section1">                                <HorizontalStackLayout Spacing="9">                                    <Button Text="Aggregator" x:Name="SignButton" FontAttributes="Bold" Clicked="Sign_Clicked"  WidthRequest="110" HeightRequest="32" Padding="0,0,0,2" FontSize="Small"  BackgroundColor="#cce8e5" TextColor="Black" BorderWidth="0" CornerRadius="12" VerticalOptions="Start"/>                                    <Button Text="Open Market" WidthRequest="110"  Clicked="Market_Button_Clicked" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" CornerRadius="12" VerticalOptions="Start"  BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="1"/>                                    <Button Text="New Car Dealer" WidthRequest="130"  Clicked="New_Car_Clicked"   HeightRequest="32" Padding="0,0,0,2" FontSize="Small" CornerRadius="12" VerticalOptions="Start"  BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="1"/>                                </HorizontalStackLayout>                                <VerticalStackLayout Margin="0,60,0,0" Spacing="15">                                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">                                        <Entry Placeholder="Purchase Amount"  x:Name="PurchaseAmountName"   PlaceholderColor="Black"  WidthRequest="343" HeightRequest="56" Margin="25,0,0,0" MaxLength="8"/>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="0,0,20,0" BorderColor="Black">
+                            <Grid Margin="10,16,10,0"  x:Name="Section1">                                <HorizontalStackLayout Spacing="9">                                    <Button Text="Aggregator" x:Name="SignButton" FontAttributes="Bold" Clicked="Sign_Clicked"  WidthRequest="110" HeightRequest="32" Padding="0,0,0,2" FontSize="Small"  BackgroundColor="#cce8e5" TextColor="Black" BorderWidth="0" CornerRadius="12" VerticalOptions="Start"/>                                    <Button Text="Open Market" WidthRequest="110"  Clicked="Market_Button_Clicked" HeightRequest="32" Padding="0,0,0,2" FontSize="Small" CornerRadius="12" VerticalOptions="Start"  BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="1"/>                                    <Button Text="New Car Dealer" WidthRequest="130"  Clicked="New_Car_Clicked"   HeightRequest="32" Padding="0,0,0,2" FontSize="Small" CornerRadius="12" VerticalOptions="Start"  BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="1"/>                                </HorizontalStackLayout>                                <VerticalStackLayout Margin="0,60,0,0" Spacing="15">                                    <Frame WidthRequest="343" HeightRequest="56" BorderColor="Black">                                        <Entry Placeholder="Purchase Amount"  x:Name="PurchaseAmountName"   PlaceholderColor="Black"  WidthRequest="343" HeightRequest="56" Margin="25,0,0,0" MaxLength="8"/>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="0,0,20,0" BorderColor="Black">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
 
-                                            <Picker x:Name="MakePicker" Grid.Column="0" Title="Make" WidthRequest="313" TitleColor="#3F4948"  HeightRequest="56" Margin="25,0,0,0" TextColor="Black"
-                ItemsSource="{Binding StateList}"
-                                                    
-                >
-                                                <Picker.ItemDisplayBinding>
-                                                    <Binding Path="MakeName" />
-                                                </Picker.ItemDisplayBinding>
+                                            <Picker x:Name="MakePicker" Grid.Column="0" Title="Make" TitleColor="#3F4948" HeightRequest="56" Margin="25,0,0,0" TextColor="Black"
+                                                         SelectedItem="{Binding SelectedMake, Mode=TwoWay}">
+                                                <!-- No need for a static array in XAML -->
                                             </Picker>
 
-                                            <Image Grid.Column="1" Source="downicon.png" VerticalOptions="Center" HorizontalOptions="End" />
+                                            <Image Grid.Column="1" Source="downicon" VerticalOptions="Center" HorizontalOptions="End" />
                                         </Grid>
                                     </Frame>
-                                    <Frame WidthRequest="343" HeightRequest="56" Padding="0,0,20,0" BorderColor="Black">                                        <Grid>                                            <Grid.ColumnDefinitions>                                                <ColumnDefinition Width="*" />                                                <ColumnDefinition Width="Auto" />                                            </Grid.ColumnDefinitions>                                            <Picker Grid.Column="0" Title="Model" WidthRequest="313" TitleColor="#3F4948" HeightRequest="56" Margin="25,0,0,0" TextColor="Black">                                                <Picker.ItemsSource>                                                    <x:Array Type="{x:Type x:String}">                                                        <x:String>Corolla</x:String>                                                        <x:String>Civic</x:String>                                                        <x:String>Mustang</x:String>                                                        <x:String>Cruze</x:String>                                                        <x:String>Altima</x:String>                                                        <x:String>Elantra</x:String>                                                        <x:String>Passat</x:String>                                                        <x:String>3 Series</x:String>                                                        <x:String>C-Class</x:String>                                                        <x:String>A4</x:String>                                                    </x:Array>                                                </Picker.ItemsSource>                                            </Picker>                                            <Image Grid.Column="1" Source="downicon" VerticalOptions="Center" HorizontalOptions="End" />                                        </Grid>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="0,0,20,0" BorderColor="Black">                                        <Grid>                                            <Grid.ColumnDefinitions>                                                <ColumnDefinition Width="*" />                                                <ColumnDefinition Width="Auto" />                                            </Grid.ColumnDefinitions>                                            <Picker Grid.Column="0" Title="Year Of registration" TitleColor="#3F4948" WidthRequest="313" HeightRequest="56" Margin="25,0,0,0" TextColor="Black">                                                <Picker.ItemsSource>                                                    <x:Array Type="{x:Type x:Int32}">                                                        <x:Int32>2023</x:Int32>                                                        <x:Int32>2022</x:Int32>                                                        <x:Int32>2021</x:Int32>                                                        <x:Int32>2020</x:Int32>                                                        <x:Int32>2019</x:Int32>                                                        <x:Int32>2018</x:Int32>                                                        <x:Int32>2017</x:Int32>                                                        <x:Int32>2016</x:Int32>                                                        <x:Int32>2015</x:Int32>                                                        <x:Int32>2014</x:Int32>                                                    </x:Array>                                                </Picker.ItemsSource>                                            </Picker>                                            <Image Grid.Column="1" Source="downicon" VerticalOptions="Center" HorizontalOptions="End" />                                        </Grid>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="0,0,20,0" BorderColor="Black">                                        <Grid>                                            <Grid.ColumnDefinitions>                                                <ColumnDefinition Width="*" />                                                <ColumnDefinition Width="Auto" />                                            </Grid.ColumnDefinitions>                                            <Picker Grid.Column="0" Title="Variant" WidthRequest="313" TitleColor="#3F4948" HeightRequest="56" Margin="25,0,0,0" TextColor="Black">                                                <Picker.ItemsSource>                                                    <x:Array Type="{x:Type x:String}">                                                        <x:String>Toyota</x:String>                                                        <x:String>Honda</x:String>                                                        <x:String>Ford</x:String>                                                        <x:String>Chevrolet</x:String>                                                        <x:String>Nissan</x:String>                                                        <x:String>Hyundai</x:String>                                                        <x:String>Volkswagen</x:String>                                                        <x:String>BMW</x:String>                                                        <x:String>Mercedes-Benz</x:String>                                                        <x:String>Audi</x:String>                                                    </x:Array>                                                </Picker.ItemsSource>                                            </Picker>                                            <Image Grid.Column="1" Source="downicon.png"  VerticalOptions="Center" HorizontalOptions="End" />                                        </Grid>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="15,7,0,7" Margin="0,0,0,0"  BorderColor="Black">                                        <Grid ColumnDefinitions="*,auto">                                            <Entry Placeholder="Price Breakup" x:Name=" priceimg" TextColor="Black"   IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>                                            <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10" Clicked="OpenbootomPrice"/>                                        </Grid>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="15,7,0,7" Margin="0,0,0,0"  BorderColor="Black">                                        <Grid ColumnDefinitions="*,auto">                                            <Entry Placeholder="Stock-In" FontSize="16"  x:Name=" stockinimg" TextColor="Black"  IsEnabled="False" PlaceholderColor="#3F4948"/>                                            <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10" Clicked="Openbootomstock"/>                                        </Grid>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="15,7,0,7" Margin="0,0,0,0"  BorderColor="Black">                                        <Grid ColumnDefinitions="*,auto">                                            <Entry Placeholder="RC Availability"  x:Name=" rcimg"  TextColor="Black" FontSize="16" IsEnabled="False" PlaceholderColor="#3F4948"/>                                            <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10" Clicked="OpenbootomRc"/>                                        </Grid>                                    </Frame>                                    <Button Text="Submit" BackgroundColor="#4AA09B" Clicked="Button_Clicked2" TextColor="White" CornerRadius="22" HorizontalOptions="Center" WidthRequest="343" HeightRequest="40" Margin="0,10,0,10"/>                                </VerticalStackLayout>                            </Grid>
+
+
+                                    <Frame WidthRequest="343" HeightRequest="56" Padding="0,0,20,0" BorderColor="Black">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Picker x:Name="ModelPicker" Grid.Column="0" Title="Model" TitleColor="#3F4948" HeightRequest="56" Margin="25,0,0,0" TextColor="Black"
+        SelectedItem="{Binding SelectedModel, Mode=TwoWay}">
+                                                <!-- Populate your Picker items here -->
+                                            </Picker>
+                                            <Image Grid.Column="1" Source="downicon" VerticalOptions="Center" HorizontalOptions="End" />
+                                        </Grid>
+                                    </Frame>
+                                    <Frame WidthRequest="343" HeightRequest="56" Padding="0,0,20,0" BorderColor="Black">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Picker x:Name="yearPicker" Grid.Column="0" Title="Year Of Registration" TitleColor="#3F4948" HeightRequest="56" Margin="25,0,0,0" TextColor="Black"
+                                                     SelectedItem="{Binding SelectedYear, Mode=TwoWay}">
+                                                <!-- No need for a static array in XAML -->
+                                            </Picker>
+
+                                            <Image Grid.Column="1" Source="downicon" VerticalOptions="Center" HorizontalOptions="End" />
+                                        </Grid>
+                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="0,0,20,0" BorderColor="Black">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Picker x:Name="VariantPicker" Grid.Column="0" Title="Variant" TitleColor="#3F4948" HeightRequest="56" Margin="25,0,0,0" TextColor="Black"
+                                                     SelectedItem="{Binding SelectedVariant, Mode=TwoWay}">
+                                                <!-- No need for a static array in XAML -->
+                                            </Picker>
+
+                                            <Image Grid.Column="1" Source="downicon" VerticalOptions="Center" HorizontalOptions="End" />
+                                        </Grid>
+                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="15,7,0,7" Margin="0,0,0,0"  BorderColor="Black">                                        <Grid ColumnDefinitions="*,auto">                                            <Entry Placeholder="Price Breakup" x:Name=" priceimg" TextColor="Black"   IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>                                            <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10" Clicked="OpenbootomPrice"/>                                        </Grid>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="15,7,0,7" Margin="0,0,0,0"  BorderColor="Black">                                        <Grid ColumnDefinitions="*,auto">                                            <Entry Placeholder="Stock-In" FontSize="16"  x:Name=" stockinimg" TextColor="Black"  IsEnabled="False" PlaceholderColor="#3F4948"/>                                            <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10" Clicked="Openbootomstock"/>                                        </Grid>                                    </Frame>                                    <Frame WidthRequest="343" HeightRequest="56" Padding="15,7,0,7" Margin="0,0,0,0"  BorderColor="Black">                                        <Grid ColumnDefinitions="*,auto">                                            <Entry Placeholder="RC Availability"  x:Name=" rcimg"  TextColor="Black" FontSize="16" IsEnabled="False" PlaceholderColor="#3F4948"/>                                            <Button Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10" Clicked="OpenbootomRc"/>                                        </Grid>                                    </Frame>                                    <Button Text="Submit" BackgroundColor="#4AA09B" Clicked="Button_Clicked2" TextColor="White" CornerRadius="22" HorizontalOptions="Center" WidthRequest="343" HeightRequest="40" Margin="0,10,0,10"/>                                </VerticalStackLayout>                            </Grid>
+
+                            <!--AggragatorEnd-->
+
+
                             <Grid Margin="10,16,10,0"  x:Name="Section2" WidthRequest="343">
 
                                 <HorizontalStackLayout Spacing="9">
@@ -172,6 +216,10 @@
                                     </Grid>
                                 </VerticalStackLayout>
                             </Grid>
+
+
+                            <!--OpenMarketEnd-->
+
                             <Grid Margin="10,16,10,0"  x:Name="Section3" WidthRequest="343">
 
                                 <HorizontalStackLayout Spacing="9">
@@ -236,6 +284,8 @@
                             </Grid>
                         </Grid>
 
+
+                        <!--NewCarEnd-->
 
 
 

@@ -13,36 +13,16 @@ namespace MyApp.View.PurchaseVehicle;
 public partial class PurchaseVehicleView : ContentPage
 {
 
-    private readonly PV_NewCarDealerViewModel _viewModel;
-    private readonly PV_OpenMarketViewModel _openviewModel;
-    private readonly Agg_DropDownYORegisViewModel _DropDownYORegisViewModel;
-    private readonly Agg_DropDownMakeViewModel _DropDownMakeViewModel;
-    private readonly Agg_DropDownModelViewModel _DropDownModel;
-    private readonly Agg_DropDownVariantViewmodel _DropDownVariantViewmodel;
+
+    private readonly FullAggragatorViewModel _viewModel;
+
 
     public PurchaseVehicleView()
     {
         InitializeComponent();
-
-        // Initialize _viewModel
-        _viewModel = new PV_NewCarDealerViewModel(new PV_NewCarDealerService(new HttpClient())); // Provide necessary dependencies here
+        _viewModel = new FullAggragatorViewModel(new FullAggragatorService(new HttpClient()));
         BindingContext = _viewModel;
 
-        // Initialize _openviewModel with the correct service
-        _openviewModel = new PV_OpenMarketViewModel(new PV_OpenMarketService(new HttpClient())); // Provide necessary dependencies here
-        BindingContext = _openviewModel;
-
-        _DropDownYORegisViewModel = new Agg_DropDownYORegisViewModel(new Agg_DropDownYORegisService(new HttpClient()));
-        BindingContext = _DropDownYORegisViewModel;
-
-        _DropDownMakeViewModel = new Agg_DropDownMakeViewModel(new Agg_DropDownMakeService(new HttpClient()));
-        BindingContext = _DropDownMakeViewModel;
-
-        _DropDownModel = new Agg_DropDownModelViewModel(new Agg_DropDownModelService(new HttpClient()));
-        BindingContext = _DropDownModel;
-
-        _DropDownVariantViewmodel = new Agg_DropDownVariantViewmodel(new Agg_DropDownVariantService(new HttpClient()));
-        BindingContext = _DropDownVariantViewmodel;
 
 
 
@@ -62,22 +42,70 @@ public partial class PurchaseVehicleView : ContentPage
         New_CarButton.Clicked += New_Car_Clicked;
         Vehicle1.Clicked += Vehicle1_Clicked;
         Vehicle2.Clicked += Vehicle2_Clicked;
+
+
+        // Dynamically load data into the Picker
+        LoadModelDetails();
+        LoadMakeDetails();
+        LoadVariantDetails();
+        LoadYearDetails();
+    }
+    private async void LoadMakeDetails()
+    {
+        await _viewModel.LoadMakeDetailsAsync();
+
+        MakePicker.Items.Clear();
+
+        // Add items to the Picker dynamically
+        foreach (var model in _viewModel.StateListMake)
+        {
+            MakePicker.Items.Add(model.MakeName);
+        }
+    }
+
+    private async void LoadModelDetails()
+    {
+        await _viewModel.LoadModelDetailsAsync();
+
+        ModelPicker.Items.Clear();
+
+        foreach (var model in _viewModel.StateListModel)
+        {
+            ModelPicker.Items.Add(model.ModelName);
+        }
+    }
+
+    private async void LoadVariantDetails()
+    {
+        await _viewModel.LoadVariantDetailsAsync();
+
+        VariantPicker.Items.Clear();
+
+        // Add items to the Picker dynamically
+        foreach (var model in _viewModel.StateListVariant)
+        {
+            VariantPicker.Items.Add(model.VariantName);
+        }
+    }
+
+    private async void LoadYearDetails()
+    {
+        await _viewModel.LoadYearOfRegDetailsAsync();
+
+        yearPicker.Items.Clear();
+
+        foreach (var model in _viewModel.StateListYearOFList)
+        {
+            yearPicker.Items.Add(model.YearCode.ToString());
+        }
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await LoadData();
+
     }
 
-    private async Task LoadData()
-    {
-        await _DropDownYORegisViewModel.LoadYearOfRegDetails();
-        await _DropDownMakeViewModel.LoadMakeDetails();
-        await _DropDownModel.LoadModelDetails();
-        await _DropDownVariantViewmodel.LoadVariantDetails();
-    }
-   
 
 
 
@@ -89,9 +117,7 @@ public partial class PurchaseVehicleView : ContentPage
         set
         {
             _capturedImageSource = value;
-            // Optionally, you can update UI elements here to reflect the new image source.
-            // For example, if you have an Image control in your XAML named "capturedImage":
-            // capturedImage.Source = value;
+
         }
     }
 
@@ -188,7 +214,7 @@ public partial class PurchaseVehicleView : ContentPage
                 };
 
                 // Check if the new DTO is not already in the list
-                if (!_openviewModel.DueOpenMarket.Any(item =>
+                if (!_viewModel.StateListOpenMarket.Any(item =>
                     item.PurchaseAmount == PurchaseAmount &&
                     item.VehicleNumber == VehicleNumber &&
                     item.OdometerPicture == OdometerPicture &&
@@ -197,7 +223,7 @@ public partial class PurchaseVehicleView : ContentPage
                     item.PaymentProof == PaymentProof &&
                     item.PictureOfOriginalRC == PictureOfOriginalRC))
                 {
-                    bool apiSuccess = await _openviewModel.OpenmarketMethod(newCarDetails);
+                    bool apiSuccess = await _viewModel.LoadOpenMarketDetails(newCarDetails);
 
                     if (apiSuccess)
                     {
@@ -244,11 +270,6 @@ public partial class PurchaseVehicleView : ContentPage
             await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
         }
 
-
-
-
-
-
         var popup = new PurchaseVehiclePopup();
         Shell.Current.CurrentPage.ShowPopup(popup);
 
@@ -260,12 +281,7 @@ public partial class PurchaseVehicleView : ContentPage
         Shell.Current.CurrentPage.ShowPopup(popup);
 
     }
-    private void Button_Clicked2(object sender, EventArgs e)
-    {
-        var popup = new PurchaseVehiclePopup();
-        Shell.Current.CurrentPage.ShowPopup(popup);
 
-    }
     private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(NotificationPage));
@@ -739,7 +755,7 @@ public partial class PurchaseVehicleView : ContentPage
                 };
 
                 // Check if the new DTO is not already in the list
-                if (!_viewModel.DueCustomer.Any(item =>
+                if (!_viewModel.StateListNewCardDealer.Any(item =>
                     item.PurchaseAmount == PurchaseAmt &&
                     item.VehicleNumber == VehicleAmt &&
                     item.OdometerPicture == OdoPic &&
@@ -748,7 +764,7 @@ public partial class PurchaseVehicleView : ContentPage
                     item.Invoice == Invoicepic &&
                     item.PictOfOrginalRC == picOfOrgi))
                 {
-                    bool apiSuccess = await _viewModel.PostMobileNumberAsync(newCarDetails);
+                    bool apiSuccess = await _viewModel.LoadNewCarDealerDetails(newCarDetails);
 
                     if (apiSuccess)
                     {
@@ -788,6 +804,88 @@ public partial class PurchaseVehicleView : ContentPage
             await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
         }
     }
+    private async void Button_Clicked2(object sender, EventArgs e)
+    {
+
+        //string ApurchaseAmt = PurchaseAmountName.Text;
+        //string Amake = SelectedMake?.Id.ToString();
+        //string Amodel = SelectedModel?.Id.ToString();
+        //string AYear = SelectedYear?.Id.ToString();
+        //string AVariant = SelectedVariant?.Id.ToString();
+
+        //string APriceBreak = priceimg.Text;
+        //string Astock = stockinimg.Text;
+        //string Arc = rcimg.Text;
+
+        //if (!string.IsNullOrEmpty(ApurchaseAmt) &&
+        //    !string.IsNullOrEmpty(Arc))
+        //{
+        //    // Use int.TryParse to handle potential parsing errors
+        //    if (int.TryParse(Amake, out int makeId) &&
+        //        int.TryParse(Amodel, out int modelId))
+        //    {
+        //        var aggradetails = new PV_AggregatorDTO
+        //        {
+        //            PurchaseAmount = ApurchaseAmt,
+        //            PriceBreak = APriceBreak,
+        //            StockIn = Astock,
+        //            RCAvailable = Arc,
+        //            MakeId = int.Parse(Amake),
+        //            ModelId = modelId,
+        //            YearOfRegistration = AYear,
+        //            VariantId = AVariant
+        //        };
+
+        //        // Check if the values are not already in the list
+        //        if (!_viewModel.StateListAgreegator.Any(item =>
+        //                item.PurchaseAmount == ApurchaseAmt &&
+        //                item.PriceBreak == APriceBreak &&
+        //                item.StockIn == Astock &&
+        //                item.RCAvailable == Arc &&
+        //                item.MakeId == makeId &&
+        //                item.ModelId == modelId &&
+        //                item.YearOfRegistration == AYear &&
+        //                item.VariantId == AVariant))
+        //        {
+        //            bool apiSuccess = await _viewModel.LoadNewCarDealerDetails(aggradetails);
+
+        //            if (apiSuccess)
+        //            {
+        //                var popup = new PurchaseVehiclePopup();
+        //                Shell.Current.CurrentPage.ShowPopup(popup);
+        //                // After sending API request and successful response, reset input fields
+        //                PurchaseAmountName.Text = string.Empty;
+        //                // Reset other input fields as needed
+
+        //                // Optionally navigate to another page
+        //                // await Navigation.PushAsync(new NextPage());
+        //            }
+        //            else
+        //            {
+        //                // Handle the case where the API response is not successful
+        //                await DisplayAlert("API Error", "Failed to post details.", "OK");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // Handle the case where the entered values are already in the list
+        //            await DisplayAlert("Invalid Input", "Duplicate values found.", "OK");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Handle the case where parsing of makeId or modelId fails
+        //        await DisplayAlert("Invalid Input", "Invalid makeId or modelId.", "OK");
+        //    }
+        //}
+    }
+
+
+
+
+
 
 
 }
+
+

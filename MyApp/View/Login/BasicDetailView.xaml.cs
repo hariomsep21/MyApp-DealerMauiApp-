@@ -1,7 +1,4 @@
 
-
-
-
 using Microsoft.Maui.Controls;
 using MyApp.Service;
 using MyApp.IService;
@@ -9,39 +6,53 @@ using MyApp.ViewModel;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using MyApp.Models;
 
 namespace MyApp.View.Login
 {
+    // BasicDetailView.xaml.cs
     public partial class BasicDetailView : ContentPage
     {
-        private readonly DropDownStateViewModel _viewModel;
+        private readonly BasicDetailsViewModel _viewModel;
 
-        public BasicDetailView()
+        public BasicDetailView(BasicDetailsViewModel viewModel)
         {
             InitializeComponent();
 
-           // Create an instance of DropDownStateService and pass it to the DropDownStateViewModel constructor
-            IDropDownStateService dropDownStateService = new DropDownStateService(new HttpClient());
-            _viewModel = new DropDownStateViewModel(dropDownStateService);
+            _viewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
             BindingContext = _viewModel;
         }
 
-        protected override async void OnAppearing()
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            base.OnAppearing();
-            await LoadData();
-        }
+            try
+            {
+                string Username = Entername.Text;
+                string mail = EmailId.Text;
 
-        private async Task LoadData()
-        {
-         //   Load additional data using the DropDownStateViewModel
-            await _viewModel.LoadStateDetails();
-        }
+                var UserDetailsPost = new BasicDetailsDTO
+                {
+                    UserName = Username,
+                    UserEmail = mail,
+                    
+                };
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-          //  Handle button click if needed
+                bool apiSuccess = await _viewModel.PostUserDetailsAsync(UserDetailsPost);
+                if (apiSuccess)
+                {
+                    await DisplayAlert("SignUp", "SignUp details Completed", "OK");
+                    await Shell.Current.GoToAsync(("//LoginPage"));
+                }
+                else
+                {
+                    await DisplayAlert("API Error", "Failed to post mobile number.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("HTTP Request Error", $"HTTP request error: {ex.Message}", "OK");
+            }
         }
     }
+
 }

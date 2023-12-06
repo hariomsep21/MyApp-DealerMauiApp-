@@ -9,10 +9,11 @@ using MyApp.IService;
 
 namespace MyApp.Service
 {
+    // BasicDetailsService.cs
     public class BasicDetailsService : IBasicDetailsService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _postUserDetailsApiUrl = "http://10.0.2.2:5137/api/UserInfoAPI"; // Replace with the actual API endpoint
+        private readonly string _postUserDetailsApiUrl = "http://10.0.2.2:5137/api/UserInfoAPI/Post"; // Replace with the actual API endpoint
 
         public BasicDetailsService(HttpClient httpClient)
         {

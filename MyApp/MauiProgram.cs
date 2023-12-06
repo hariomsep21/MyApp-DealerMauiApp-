@@ -40,7 +40,7 @@ namespace MyApp
             builder.Services.AddSingleton<MainPage2>();
             builder.Services.AddSingleton<BasicDetailView>();
             builder.Services.AddSingleton<CarViewModel>();
-          //  builder.Services.AddSingleton<BasicDetailViewModel>();
+            builder.Services.AddSingleton<BasicDetailsViewModel>();
             builder.Services.AddSingleton<AuditPendingView>();
             builder.Services.AddSingleton<AuditStatusView>();
             builder.Services.AddSingleton<UnregisteredView>();
@@ -56,6 +56,10 @@ namespace MyApp
             builder.Services.AddSingleton<IPaymnetService, PaymentService>();
             builder.Services.AddSingleton<IStockAuditService, StockAuditService>();
             builder.Services.AddSingleton<IPurchaseVehicleService, PurchaseVehicleService>();
+            builder.Services.AddSingleton<HttpClient>();
+            builder.Services.AddScoped<IBasicDetailsService, BasicDetailsService>();
+            builder.Services.AddTransient<BasicDetailsViewModel>();
+            builder.Services.AddTransient<LoginPage>();
             builder.Services.AddHttpClient();
 
 #if DEBUG
