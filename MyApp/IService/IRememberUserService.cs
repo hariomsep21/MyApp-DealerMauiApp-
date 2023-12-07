@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MyApp.IService
 {
-    public interface IBasicDetailsService
+    public interface IRememberUserService
     {
-        Task<bool> PostUserDetails(BasicDetailsDTO userDetails);
-        Task<List<DropDownStateDTO>> GetState();
+        Task<List<CustomerSupportDTO>> RememberUserServices();
+
     }
 }

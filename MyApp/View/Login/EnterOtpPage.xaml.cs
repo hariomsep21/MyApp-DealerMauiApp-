@@ -32,6 +32,7 @@ namespace MyApp.View.Login
         {
             try
             {
+                
                 // Concatenate the entered OTP digits
                 string enteredOTP = $"{Digit1Entry.Text}{Digit2Entry.Text}{Digit3Entry.Text}{Digit4Entry.Text}";
 
@@ -99,8 +100,9 @@ namespace MyApp.View.Login
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
+            await DisplayAlert("Resend", "OTP Sent Successfully. Please try Now.", "OK");
             // Handle the tap gesture to navigate back to the login page
-            await Shell.Current.GoToAsync(nameof(LoginPage));
+            // await Shell.Current.GoToAsync(nameof(LoginPage));
         }
 
         [Obsolete]
