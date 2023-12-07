@@ -1,10 +1,12 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MyApp.IService;
 using MyApp.Model;
 using MyApp.Models;
 using MyApp.View.Home;
 using MyApp.View.Login;
+using MyApp.View.PurchaseVehicle;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -286,6 +288,8 @@ namespace MyApp.ViewModel
 
                 if (apiSuccess)
                 {
+                    var popup = new PurchaseVehiclePopup();
+                    Shell.Current.CurrentPage.ShowPopup(popup);
                     // Navigate to the home page on successful API response
                     await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
                 }
@@ -306,35 +310,89 @@ namespace MyApp.ViewModel
             }
         }
 
-        public async Task<bool> LoadNewCarDetail(PV_NewCarDealerDTO newcar)
+        private PV_NewCarDealerDTO newCar = new PV_NewCarDealerDTO(); // Initialize with default values if needed
+
+        public PV_NewCarDealerDTO NewCar
+        {
+            get => newCar;
+            set
+            {
+                newCar = value;
+                OnPropertyChanged(nameof(NewCar));
+            }
+        }
+        [RelayCommand]
+        public async Task<bool> LoadNewCarDetail()
         {
             try
             {
-                return await _aggService.PostNewCarDealerDetails(newcar);
+                bool apisucess = await _aggService.PostNewCarDealerDetails(NewCar);
+                if (apisucess)
+                {
+                    var popup = new PurchaseVehiclePopup();
+                    Shell.Current.CurrentPage.ShowPopup(popup);
+                    // Navigate to the home page on successful API response
+                    await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
+                }
+                else
+                {
+                    // Handle the case where the API response is not successful
+                    // await DisplayAlert("API Error", "Failed to post user details.", "OK");
+                }
+
+                return apisucess;
             }
             catch (Exception ex)
             {
                 // Log the error using a logging framework or Debug.WriteLine
-                Debug.WriteLine($"Error posting mobile number: {ex.Message}");
+                Debug.WriteLine($"Error posting user details: {ex.Message}");
                 // Rethrow the exception for consistency
                 throw;
             }
         }
+        private PV_OpenMarketDTO openMarket = new PV_OpenMarketDTO(); // Initialize with default values if needed
 
-        public async Task<bool> LoadOpenMarketDetails(PV_OpenMarketDTO openMarket)
+        public PV_OpenMarketDTO OpenMarket
+        {
+            get => openMarket;
+            set
+            {
+                openMarket = value;
+                OnPropertyChanged(nameof(OpenMarket));
+            }
+        }
+
+
+
+        [RelayCommand]
+
+        public async Task<bool> LoadOpenMarketDetails()
         {
             try
             {
-                return await _aggService.PostOpenMarketDetails(openMarket);
+                bool apisucess = await _aggService.PostOpenMarketDetails(OpenMarket);
+                if (apisucess)
+                {
+                    var popup = new PurchaseVehiclePopup();
+                    Shell.Current.CurrentPage.ShowPopup(popup);
+                    // Navigate to the home page on successful API response
+                    await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
+                }
+                else
+                {
+                    // Handle the case where the API response is not successful
+                    // await DisplayAlert("API Error", "Failed to post user details.", "OK");
+                }
+
+                return apisucess;
             }
             catch (Exception ex)
             {
                 // Log the error using a logging framework or Debug.WriteLine
-                Debug.WriteLine($"Error posting mobile number: {ex.Message}");
+                Debug.WriteLine($"Error posting user details: {ex.Message}");
                 // Rethrow the exception for consistency
                 throw;
             }
         }
-
     }
 }

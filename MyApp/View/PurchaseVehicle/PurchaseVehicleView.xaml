@@ -154,65 +154,65 @@
                                         <ScrollView>
                                             <VerticalStackLayout>
                                                 <Frame WidthRequest="343" HeightRequest="56"  Padding="10,7,0,7" Margin="0,0,0,0" BorderColor="Black" >
-                                                    <Entry Placeholder="Purchase Amount" x:Name="PurchaseAmountEntry" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                    <Entry Placeholder="Purchase Amount" Text="{Binding OpenMarket.PurchaseAmount}" x:Name="PurchaseAmountEntry" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
 
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0" BorderColor="Black">
-                                                    <Entry Placeholder="Token Amount" x:Name="TokenAmountEntry" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                    <Entry Placeholder="Token Amount" x:Name="TokenAmountEntry" Text="{Binding OpenMarket.TokenAmount}" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
 
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0" BorderColor="Black">
-                                                    <Entry Placeholder="Withhold Amount" x:Name="WithholdAmountEntry" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                    <Entry Placeholder="Withhold Amount" x:Name="WithholdAmountEntry" Text="{Binding OpenMarket.WithholdAmount}" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
 
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0" BorderColor="Black">
-                                                    <Entry Placeholder="Seller Contact Number" x:Name="SellerContactNumberEntry" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                    <Entry Placeholder="Seller Contact Number" Text="{Binding OpenMarket.SellerContactNumber}" x:Name="SellerContactNumberEntry" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
 
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0" BorderColor="Black">
-                                                    <Entry Placeholder="Seller Email Address" TextColor="Black" x:Name="SellerEmailAddressEntry" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                    <Entry Placeholder="Seller Email Address" TextColor="Black" Text="{Binding OpenMarket.SellerEmailAddress}" x:Name="SellerEmailAddressEntry" FontSize="16" PlaceholderColor="#3F4948"/>
 
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0" BorderColor="Black">
-                                                    <Entry Placeholder="Vehicle Number" x:Name="VehicleNumberEntry" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                    <Entry Placeholder="Vehicle Number" x:Name="VehicleNumberEntry" Text="{Binding OpenMarket.VehicleNumber}" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
 
 
                                                 </Frame>
 
                                                 <Frame WidthRequest="343" HeightRequest="56"  Padding="10,7,0,7" Margin="0,15,0,0" BorderColor="Black" >
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Payment Proof" x:Name="paymentproof" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Payment Proof" x:Name="paymentproof" Text="{Binding OpenMarket.PaymentProof}" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomPaymentProof" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
 
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Seller Adhaar" x:Name="sellerAdhar" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Seller Adhaar" x:Name="sellerAdhar" Text="{Binding OpenMarket.SellerAdhaar}" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomSellerAdhar" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Seller PAN " x:Name="sellerPan" IsEnabled="False" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Seller PAN " x:Name="sellerPan" Text="{Binding OpenMarket.SellerPAN}" IsEnabled="False" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomSellerPan" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Picture of Original RC" x:Name="picoforgRc" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Picture of Original RC" Text="{Binding OpenMarket.PictureOfOriginalRC}" x:Name="picoforgRc" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomPicOfOrigiRC" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Odometer Picture" x:Name="odoPic" IsEnabled="False" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Odometer Picture" x:Name="odoPic" Text="{Binding OpenMarket.OdometerPicture}" IsEnabled="False" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomOdometerPic" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Vehicle Picture from Front" x:Name="vehiclepicFront" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Vehicle Picture from Front" Text="{Binding OpenMarket.VehiclePictureFromFront}" x:Name="vehiclepicFront" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomVehiclePicFront" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
 
@@ -221,14 +221,14 @@
 
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,50"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Vehicle Picture from Back" x:Name="vehiclepicBack" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Vehicle Picture from Back" x:Name="vehiclepicBack" Text="{Binding OpenMarket.VehiclePictureFromBack}" TextColor="Black" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
 
                                                         <Button Clicked="OpenbootomVehiclePicBack" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
                                             </VerticalStackLayout>
                                         </ScrollView>
-                                        <Button Style="{StaticResource LargeButtonColor}" TextColor="White" Clicked="Button_Clicked" Grid.Row="1" Text="Submit"  Margin="0,0,0,30"/>
+                                        <Button Style="{StaticResource LargeButtonColor}" Command="{Binding LoadOpenMarketDetailsCommand}" TextColor="White" Clicked="Button_Clicked" Grid.Row="1" Text="Submit"  Margin="0,0,0,30"/>
                                     </Grid>
                                 </VerticalStackLayout>
                             </Grid>
@@ -250,51 +250,51 @@
                                     <Grid RowDefinitions="*,auto">
                                         <ScrollView>
                                             <VerticalStackLayout>
-                                                <Frame WidthRequest="343" HeightRequest="56"  Padding="10,7,0,7" Margin="0,0,0,0"  BorderColor="Black">
-                                                    <Entry Placeholder="Purchase Amount" x:Name="PurchaseAmount" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                <Frame WidthRequest="343" HeightRequest="56"   Padding="10,7,0,7" Margin="0,0,0,0"  BorderColor="Black">
+                                                    <Entry Placeholder="Purchase Amount" x:Name="PurchaseAmount" Text="{Binding NewCar.PurchaseAmount}" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
 
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
-                                                    <Entry Placeholder="Vehicle Number" x:Name="VehicleNumber" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                    <Entry Placeholder="Vehicle Number" x:Name="VehicleNumber" Text="{Binding NewCar.VehicleNumber}" TextColor="Black" FontSize="16" PlaceholderColor="#3F4948"/>
 
                                                 </Frame>
 
 
                                                 <Frame WidthRequest="343" HeightRequest="56"  Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Odometer Picture" TextColor="Black" x:Name="NCDOdoPic" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Odometer Picture" TextColor="Black" Text="{Binding NewCar.OdometerPicture}" x:Name="NCDOdoPic" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomNCDOdoPic" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
 
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Vehicle Picture from Front" TextColor="Black" x:Name="NCDFrontPic" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Vehicle Picture from Front" Text="{Binding NewCar.VehiclePicFromFront}" TextColor="Black" x:Name="NCDFrontPic" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomNCDVehicleFrontPic" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Vehicle Picture from Back "  TextColor="Black" x:Name="NCDBackPic" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Vehicle Picture from Back " Text="{Binding NewCar.VehiclePicFromBack}"  TextColor="Black" x:Name="NCDBackPic" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomNCDVehicleBackPic" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,0"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Invoice" TextColor="Black" x:Name="NCDInvoice" FontSize="16" IsEnabled="False" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Invoice" TextColor="Black" x:Name="NCDInvoice" Text="{Binding NewCar.Invoice}" FontSize="16" IsEnabled="False" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomNCDInvoicePic" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
                                                 <Frame WidthRequest="343" HeightRequest="56" Padding="10,7,0,7" Margin="0,15,0,20"  BorderColor="Black">
                                                     <Grid ColumnDefinitions="*,auto">
-                                                        <Entry Placeholder="Picture of Original RC " TextColor="Black" x:Name="NCDRcPic" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
+                                                        <Entry Placeholder="Picture of Original RC " TextColor="Black" Text="{Binding NewCar.PictOfOrginalRC}" x:Name="NCDRcPic" IsEnabled="False" FontSize="16" PlaceholderColor="#3F4948"/>
                                                         <Button Clicked="OpenbootomNCDPicRcPic" TextColor="Black" Background="transparent" ImageSource="greenplus.png" Grid.Column="1" HeightRequest="24" WidthRequest="24" Margin="10"/>
                                                     </Grid>
                                                 </Frame>
 
                                             </VerticalStackLayout>
                                         </ScrollView>
-                                        <Button Clicked="Button_Clicked_1" Style="{StaticResource LargeButtonColor}" TextColor="White" Grid.Row="1" Text="Submit"  Margin="0,0,0,30"/>
+                                        <Button Clicked="Button_Clicked_1" Style="{StaticResource LargeButtonColor}" Command="{Binding LoadNewCarDetailCommand}" TextColor="White" Grid.Row="1" Text="Submit"  Margin="0,0,0,30"/>
                                     </Grid>
                                 </VerticalStackLayout>
                             </Grid>

@@ -37,7 +37,7 @@ namespace MyApp
             // Implement your logic to determine the initial route
             // Example: check a static value, configuration, or any other condition
             // Return 1 for Home, 2 for Login, or any default value as needed
-            return 2; // For demonstration purposes, assuming the initial route is Home (1)
+            return 1; // For demonstration purposes, assuming the initial route is Home (1)
         }
     }
 }
