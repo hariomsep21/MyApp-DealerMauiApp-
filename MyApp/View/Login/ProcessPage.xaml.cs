@@ -14,10 +14,12 @@ public partial class ProcessPage : ContentPage
     }
 
     [Obsolete]
-    private void LoadRejectedPageWithDelay()
+    private  async void LoadRejectedPageWithDelay()
     {
         // Create a timer with a delay of 5 seconds (5000 milliseconds)
         Timer timer = new Timer(TimerCallback, null, 1000, Timeout.Infinite);
+    
+      
     }
 
     [Obsolete]
@@ -28,7 +30,8 @@ public partial class ProcessPage : ContentPage
         // You can navigate to the RejectedPage here
         await Device.InvokeOnMainThreadAsync(() =>
         {
-            Shell.Current.GoToAsync(nameof(HomePage));
+             Shell.Current.Navigation.PopToRootAsync(); // Clears the navigation stack
+             Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         });
     }
 }

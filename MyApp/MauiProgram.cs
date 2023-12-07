@@ -60,6 +60,9 @@ namespace MyApp
             builder.Services.AddScoped<IBasicDetailsService, BasicDetailsService>();
             builder.Services.AddTransient<BasicDetailsViewModel>();
             builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<BasicDetailView>();
+            builder.Services.AddTransient<BasicDetailsViewModel>();
+            builder.Services.AddTransient<IBasicDetailsService,BasicDetailsService>();
             builder.Services.AddHttpClient();
 
 #if DEBUG

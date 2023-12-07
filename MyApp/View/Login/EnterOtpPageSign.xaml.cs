@@ -99,8 +99,7 @@ namespace MyApp.View.Login
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            // Handle the tap gesture to navigate back to the login page
-            await Shell.Current.GoToAsync(nameof(LoginPage));
+            await DisplayAlert("Resend", "OTP Sent Successfully. Please try Now.", "OK");
         }
 
         [Obsolete]

@@ -27,12 +27,20 @@ namespace MyApp.View.Login
         private async void SendOTP_Clicked(object sender, EventArgs e)
         {
             // Get the entered phone number
-            enteredPhoneNumber = signMobileNumber.Text;
+            string enteredPhoneNumber = signMobileNumber.Text;
 
-            // Check if the entered number is in the list from _viewModel
-            if (!_viewModel.DueCustomer.Any(item => item.PhoneNumber == enteredPhoneNumber))
+            // Validate the length of the mobile number
+            if (string.IsNullOrEmpty(enteredPhoneNumber) || enteredPhoneNumber.Length != 10)
             {
-                try
+                // Show error message for an invalid mobile number
+                await DisplayAlert("Invalid Mobile Number", "Please enter a valid mobile number (10 digits).", "OK");
+                return; // Exit the method without proceeding with login
+            }
+
+            try
+            {
+                // Check if the entered number is in the list from _viewModel
+                if (!_viewModel.DueCustomer.Any(item => item.PhoneNumber == enteredPhoneNumber))
                 {
                     // If the entered number is not in the list, pass it as a parameter to the API
                     bool apiSuccess = await _viewModel.PostMobileNumberAsync(enteredPhoneNumber);
@@ -45,22 +53,22 @@ namespace MyApp.View.Login
                     else
                     {
                         // Handle the case where the API response is not successful
-                      await  DisplayAlert("API Error", "Failed to post mobile number.", "OK");
+                        await DisplayAlert("API Error", "Failed to post the mobile number.", "OK");
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    // Handle other exceptions that might occur during API call
-                  await  DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+                    // Handle the case where the entered number is already in the list
+                    await DisplayAlert("Invalid Number", "Number already used, so login failed.", "OK");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                // Handle the case where the entered number is already in the list
-               await DisplayAlert("Invalid Number", "Number Already Used So Login Failed.", "OK");
+                // Handle other exceptions that might occur during the API call
+                await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
             }
-
         }
+
 
     }
 }

@@ -1,53 +1,4 @@
-//using MyApp.Service;
-//using MyApp.ViewModel;
 
-//namespace MyApp.View.Login
-//{
-//    public partial class MobilePhone : ContentPage
-//    {
-//        private readonly LoginUserPhoneViewModel _viewModel;
-//        private string enteredPhoneNumber;
-
-//        public MobilePhone()
-//        {
-//            InitializeComponent();
-//            _viewModel = new LoginUserPhoneViewModel(new LoginUserPhoneServicecs(new HttpClient())); // Provide necessary dependencies here
-//            BindingContext = _viewModel;
-//        }
-
-//        protected override async void OnAppearing()
-//        {
-//            base.OnAppearing();
-//            await LoadData();
-//        }
-
-//        private async Task LoadData()
-//        {
-//            await _viewModel.LoadLoginDetails();
-//        }
-
-//        private void SendOTP_Clicked(object sender, EventArgs e)
-//        {
-//            // Get the entered phone number
-//            enteredPhoneNumber = entryMobileNumber.Text;
-
-//            // Check if the entered number is in the list from _viewModel
-//            if (_viewModel.DueCustomer.Any(item => item.PhoneNumber == enteredPhoneNumber))
-//            {
-//                // If the entered number is in the list, navigate to the EnterOtpPage
-//                Shell.Current.GoToAsync(nameof(EnterOtpPage));
-//            }
-//            else
-//            {
-//                // Handle the case where the entered number is not in the list
-//                DisplayAlert("Invalid Number", "Login Failed.", "OK");
-//            }
-//        }
-//    }
-//}
-
-
-// xaml.cs
 
 using MyApp.Service;
 using MyApp.ViewModel;
@@ -57,7 +8,7 @@ namespace MyApp.View.Login
     public partial class MobilePhone : ContentPage
     {
         private readonly PostLoginViewModel _viewModel;
-       // private string enteredPhoneNumber;
+        // private string enteredPhoneNumber;
 
         public MobilePhone()
         {
@@ -71,6 +22,14 @@ namespace MyApp.View.Login
             try
             {
                 var enteredMobileNumber = entryMobileNumber.Text;
+
+                // Validate the length of the mobile number
+                if (string.IsNullOrEmpty(enteredMobileNumber) || enteredMobileNumber.Length > 10)
+                {
+                    // Show error message for invalid mobile number
+                    await DisplayAlert("Invalid Mobile Number", "Please enter a valid mobile number (10 digits ).", "OK");
+                    return; // Exit the method without proceeding with login
+                }
 
                 // Call the ViewModel method to perform the login
                 bool loginResult = await _viewModel.PostLoginAsync(enteredMobileNumber);
@@ -92,6 +51,7 @@ namespace MyApp.View.Login
                 await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
             }
         }
+
 
     }
 }

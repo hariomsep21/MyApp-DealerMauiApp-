@@ -19,6 +19,29 @@ namespace MyApp.Service
         {
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
+        public async Task<List<DropDownStateDTO>> GetState()
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync("http://10.0.2.2:5137/api/UserInfoAPI/State");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<DropDownStateDTO>>(responseBody);
+                }
+                else
+                {
+                    // Handle non-success status codes
+                    throw new Exception($"Error: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                throw new Exception($"Exception: {ex.Message}");
+            }
+        }
 
         public async Task<bool> PostUserDetails(BasicDetailsDTO userDetails)
         {

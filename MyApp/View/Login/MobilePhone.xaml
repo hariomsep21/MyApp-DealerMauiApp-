@@ -16,6 +16,9 @@
         <Frame  Grid.Row="2" BorderColor="#6F7978" WidthRequest="343" HeightRequest="56" Padding="0" CornerRadius="4" Margin="0,45,0,0" >
             <Entry x:Name="entryMobileNumber" Margin="15,10,0,7" Placeholder="Enter Your Mobile Number" PlaceholderColor="#3F4948" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" FontSize="16" />
         </Frame>
+        
+        <!--<Label x:Name="errorLabel" Text="Mobile number must be 10 digits or less" TextColor="Red" IsVisible="False" Grid.Row="3" VerticalOptions="End" HorizontalOptions="Start" Margin="15,0,0,0" />-->
+
         <Button Text="Send OTP" Grid.Row="3" Style="{StaticResource LargeButtonColor}" VerticalOptions="End" HeightRequest="40" WidthRequest="343" Margin="0,0,0,10" Clicked="LoginButton_Clicked"  />
     </Grid>
 </ContentPage>
