@@ -134,7 +134,7 @@ namespace MyApp.Service
 
         public async Task<bool> PostAggragatorDetails(PV_AggregatorDTO aggregatorDTO)
         {
-            return await PostDetails(CombineApiUrl(_postMobileNumberApiUrl), aggregatorDTO, _postMobileNumberApiUrl);
+            return await PostDetails(CombineApiUrl(_postAggregatorApiUrl), aggregatorDTO, _postMobileNumberApiUrl);
         }
 
         public async Task<bool> PostNewCarDealerDetails(PV_NewCarDealerDTO newCarDetails)

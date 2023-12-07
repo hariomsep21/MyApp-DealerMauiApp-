@@ -63,6 +63,9 @@ namespace MyApp
             builder.Services.AddTransient<BasicDetailView>();
             builder.Services.AddTransient<BasicDetailsViewModel>();
             builder.Services.AddTransient<IBasicDetailsService,BasicDetailsService>();
+            builder.Services.AddTransient<IFullAggragatorService, FullAggragatorService>();
+            builder.Services.AddTransient<FullAggragatorViewModel>();
+            
             builder.Services.AddHttpClient();
 
 #if DEBUG

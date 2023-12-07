@@ -11,27 +11,27 @@ namespace MyApp.Models
     {
         public int MakeId { get; set; }
         public string MakeName { get; set; }
-        public int Id => MakeId;
+   
 
     }
     public class Agg_DropDownModelDTO
     {
         public int ModelId { get; set; }
         public string ModelName { get; set; }
-        public int Id => ModelId;
+
     }
     public class Agg_DropDownYORegisDTO
     {
         public int YearId { get; set; }
         public int YearCode { get; set; }
-        public int Id => YearId;
+      
     }
 
     public class Agg_DropDownVariantDTO
     {
         public int VariantId { get; set; }
         public string VariantName { get; set; }
-        public int Id => VariantId;
+   
     }
     public class PV_AggregatorDTO
     {
