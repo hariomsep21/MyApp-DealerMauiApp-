@@ -1,4 +1,5 @@
-﻿using MyApp.Models;
+﻿using MyApp.Model;
+using MyApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace MyApp.IService
 {
     public interface IFullAggragatorService
     {
+        
         Task<IEnumerable<Agg_DropDownMakeDTO>> GetMakeData();
         Task<IEnumerable<Agg_DropDownModelDTO>> GetModelData();
         Task<IEnumerable<Agg_DropDownVariantDTO>> GetVariantData();

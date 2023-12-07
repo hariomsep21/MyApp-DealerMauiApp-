@@ -1,6 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MyApp.IService;
+using MyApp.Model;
 using MyApp.Models;
+using MyApp.View.Home;
+using MyApp.View.Login;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,84 +13,236 @@ using System.Threading.Tasks;
 
 namespace MyApp.ViewModel
 {
-    internal class FullAggragatorViewModel : ObservableObject
+    public partial class FullAggragatorViewModel : ObservableObject
     {
         private readonly IFullAggragatorService _aggService;
 
+        public FullAggragatorViewModel(
+          IFullAggragatorService aggService)
+        {
+            _aggService = aggService ?? throw new ArgumentNullException(nameof(aggService));
 
-        private ObservableCollection<Agg_DropDownMakeDTO> _makeList;
-        private ObservableCollection<Agg_DropDownModelDTO> _modelList;
-        private ObservableCollection<Agg_DropDownVariantDTO> _variantList;
-        private ObservableCollection<Agg_DropDownYORegisDTO> _yearOfRegServiceList;
+
+            StateListOpenMarket = new ObservableCollection<PV_OpenMarketDTO>();
+            StateListNewCardDealer = new ObservableCollection<PV_NewCarDealerDTO>(); // Initialize the collection in the constructor
+
+            LoadMake();
+            LoadModel();
+            LoadVariant();
+            Loadyear();
+        }
+
+
         private ObservableCollection<PV_NewCarDealerDTO> _NewCarDealerDTOs;
         private ObservableCollection<PV_OpenMarketDTO> _OpenMarketDTOs;
-        private ObservableCollection<PV_AggregatorDTO> _AggregatorDTOs;
+
+        //open market
 
 
-        private Agg_DropDownMakeDTO _selectedMake;
-        private Agg_DropDownModelDTO _selectedModel;
-        private Agg_DropDownYORegisDTO _selectedYear;
-        private Agg_DropDownVariantDTO _selectedVariant;
 
-        public Agg_DropDownMakeDTO SelectedMake
-        {
-            get => _selectedMake;
-            set => SetProperty(ref _selectedMake, value);
-        }
-
-        public Agg_DropDownModelDTO SelectedModel
-        {
-            get => _selectedModel;
-            set => SetProperty(ref _selectedModel, value);
-        }
-
-        public Agg_DropDownYORegisDTO SelectedYear
-        {
-            get => _selectedYear;
-            set => SetProperty(ref _selectedYear, value);
-        }
-
-        public Agg_DropDownVariantDTO SelectedVariant
-        {
-            get => _selectedVariant;
-            set => SetProperty(ref _selectedVariant, value);
-        }
-
-
+        //Make
         public ObservableCollection<PV_OpenMarketDTO> StateListOpenMarket
         {
             get => _OpenMarketDTOs;
             private set => SetProperty(ref _OpenMarketDTOs, value);
         }
-        public ObservableCollection<PV_AggregatorDTO> StateListAgreegator
+
+
+        private ObservableCollection<Agg_DropDownMakeDTO> _make;
+        private Agg_DropDownMakeDTO _selectedMake;
+
+
+
+
+        public ObservableCollection<Agg_DropDownMakeDTO> Make
         {
-            get => _AggregatorDTOs;
-            private set => SetProperty(ref _AggregatorDTOs, value);
-        }
-        public ObservableCollection<Agg_DropDownMakeDTO> StateListMake
-        {
-            get => _makeList;
-            private set => SetProperty(ref _makeList, value);
+            get => _make;
+            set
+            {
+                _make = value;
+                OnPropertyChanged(nameof(Make));
+            }
         }
 
-        public ObservableCollection<Agg_DropDownModelDTO> StateListModel
+        public Agg_DropDownMakeDTO SelectedMake
         {
-            get => _modelList;
-            private set => SetProperty(ref _modelList, value);
+            get => _selectedMake;
+            set
+            {
+                _selectedMake = value;
+                OnPropertyChanged(nameof(SelectedMake));
+            }
         }
 
-        public ObservableCollection<Agg_DropDownVariantDTO> StateListVariant
+
+
+
+
+        //Model
+        private ObservableCollection<Agg_DropDownModelDTO> _model;
+        private Agg_DropDownModelDTO _selectedModel;
+
+
+
+
+        public ObservableCollection<Agg_DropDownModelDTO> Model
         {
-            get => _variantList;
-            private set => SetProperty(ref _variantList, value);
+            get => _model;
+            set
+            {
+                _model = value;
+                OnPropertyChanged(nameof(Model));
+            }
         }
 
-        public ObservableCollection<Agg_DropDownYORegisDTO> StateListYearOFList
+        public Agg_DropDownModelDTO SelectedModel
         {
-            get => _yearOfRegServiceList;
-            private set => SetProperty(ref _yearOfRegServiceList, value);
+            get => _selectedModel;
+            set
+            {
+                _selectedModel = value;
+                OnPropertyChanged(nameof(SelectedModel));
+            }
         }
 
+
+
+
+
+
+
+        //Variant
+        private ObservableCollection<Agg_DropDownVariantDTO> _variant;
+        private Agg_DropDownVariantDTO _selectedVariant;
+
+
+
+
+        public ObservableCollection<Agg_DropDownVariantDTO> Variant
+        {
+            get => _variant;
+            set
+            {
+                _variant = value;
+                OnPropertyChanged(nameof(Variant));
+            }
+        }
+
+        public Agg_DropDownVariantDTO SelectedVariant
+        {
+            get => _selectedVariant;
+            set
+            {
+                _selectedVariant = value;
+                OnPropertyChanged(nameof(SelectedVariant));
+            }
+        }
+
+
+
+
+
+
+        private ObservableCollection<Agg_DropDownYORegisDTO> _year;
+        private Agg_DropDownYORegisDTO _selectedYear;
+
+
+
+
+        public ObservableCollection<Agg_DropDownYORegisDTO> Year
+        {
+            get => _year;
+            set
+            {
+                _year = value;
+                OnPropertyChanged(nameof(Year));
+            }
+        }
+
+        public Agg_DropDownYORegisDTO SelectedYear
+        {
+            get => _selectedYear;
+            set
+            {
+                _selectedYear = value;
+                OnPropertyChanged(nameof(SelectedYear));
+            }
+        }
+
+        private async Task LoadMake()
+        {
+            try
+            {
+                var states = await _aggService.GetMakeData();
+                Make = new ObservableCollection<Agg_DropDownMakeDTO>(states);
+
+                // Optionally, set a default selected state if needed
+                // SelectedState = States.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+
+        private async Task LoadModel()
+        {
+            try
+            {
+                var states = await _aggService.GetModelData();
+                Model = new ObservableCollection<Agg_DropDownModelDTO>(states);
+
+                // Optionally, set a default selected state if needed
+                // SelectedState = States.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+
+        private async Task LoadVariant()
+        {
+            try
+            {
+                var states = await _aggService.GetVariantData();
+                Variant = new ObservableCollection<Agg_DropDownVariantDTO>(states);
+
+                // Optionally, set a default selected state if needed
+                // SelectedState = States.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+
+
+        private async Task Loadyear()
+        {
+            try
+            {
+                var states = await _aggService.GetYearOfRegData();
+                Year = new ObservableCollection<Agg_DropDownYORegisDTO>(states);
+
+                // Optionally, set a default selected state if needed
+                // SelectedState = States.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+
+        //New car dealer
         private ObservableCollection<PV_NewCarDealerDTO> _dueCustomer;
 
         public ObservableCollection<PV_NewCarDealerDTO> StateListNewCardDealer
@@ -95,92 +251,66 @@ namespace MyApp.ViewModel
             set => SetProperty(ref _dueCustomer, value);
         }
 
-        public FullAggragatorViewModel(
-            IFullAggragatorService aggService)
+
+
+        private PV_AggregatorDTO aggregators = new PV_AggregatorDTO(); // Initialize with default values if needed
+
+        public PV_AggregatorDTO Aggregators
         {
-            _aggService = aggService ?? throw new ArgumentNullException(nameof(aggService));
-
-            StateListAgreegator = new ObservableCollection<PV_AggregatorDTO>();
-            StateListOpenMarket = new ObservableCollection<PV_OpenMarketDTO>();
-            StateListNewCardDealer = new ObservableCollection<PV_NewCarDealerDTO>(); // Initialize the collection in the constructor
-            StateListMake = new ObservableCollection<Agg_DropDownMakeDTO>();
-            StateListModel = new ObservableCollection<Agg_DropDownModelDTO>();
-            StateListVariant = new ObservableCollection<Agg_DropDownVariantDTO>();
-            StateListYearOFList = new ObservableCollection<Agg_DropDownYORegisDTO>();
+            get => aggregators;
+            set
+            {
+                aggregators = value;
+                OnPropertyChanged(nameof(aggregators));
+            }
         }
-
-        private void ASetModelList(ObservableCollection<Agg_DropDownModelDTO> list)
-{
-    StateListModel = list;
-
-    // Set the selected model if the list is not empty
-    if (list.Count > 0)
-    {
-        SelectedModel = list[0]; // Set the default selection if needed
-    }
-}
-
-        private async Task LoadDataAsync<T>(
-            Func<Task<IEnumerable<T>>> getDataFunc,
-            Action<ObservableCollection<T>> setCollectionAction,
-            string typeName)
+        [RelayCommand]
+        public async Task<bool> LoadAggregator()
         {
             try
             {
-                var data = await getDataFunc();
-
-                switch (data)
+                if (SelectedMake == null && SelectedModel == null && SelectedVariant == null && SelectedYear == null)
                 {
-                    case IEnumerable<T> enumerableData:
-                        setCollectionAction(new ObservableCollection<T>(enumerableData));
-                        Console.WriteLine($"{typeName} details loaded successfully.");
-                        break;
-
-                    default:
-                        Console.WriteLine($"Unexpected type: {data?.GetType().FullName}");
-                        break;
+                    // Handle the case where no state is selected
+                    // For example, show an alert or message to the user
+                    return false;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading {typeName} data: {ex.Message}");
-                // Consider logging or showing a user-friendly error message
-                throw;
-            }
-        }
+                Aggregators.ModelId = SelectedModel.ModelId;
+                // Create or update the UserDetails object with the selected state ID
+                Aggregators.MakeId = SelectedMake.MakeId;
+                //    Aggregators.ModelId = SelectedModel.ModelId;
+                Aggregators.VariantId = SelectedVariant.VariantId;
+                Aggregators.YearOfRegistration = SelectedYear.YearId;
 
-        public async Task LoadMakeDetailsAsync() =>
-            await LoadDataAsync(_aggService.GetMakeData, SetMakeList, nameof(Agg_DropDownMakeDTO));
+                bool apiSuccess = await _aggService.PostAggragatorDetails(Aggregators);
 
-        public async Task LoadModelDetailsAsync() =>
-            await LoadDataAsync(_aggService.GetModelData, SetModelList, nameof(Agg_DropDownModelDTO));
+                if (apiSuccess)
+                {
+                    // Navigate to the home page on successful API response
+                    await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
+                }
+                else
+                {
+                    // Handle the case where the API response is not successful
+                    // await DisplayAlert("API Error", "Failed to post user details.", "OK");
+                }
 
-        public async Task LoadVariantDetailsAsync() =>
-            await LoadDataAsync(_aggService.GetVariantData, SetVariantList, nameof(Agg_DropDownVariantDTO));
-
-        public async Task LoadYearOfRegDetailsAsync() =>
-            await LoadDataAsync(_aggService.GetYearOfRegData, SetYearOfRegList, nameof(Agg_DropDownYORegisDTO));
-
-        public async Task<bool> LoadNewCarDealerDetails(PV_NewCarDealerDTO newCarDetails)
-        {
-            try
-            {
-                return await _aggService.PostNewCarDealerDetails(newCarDetails);
+                return apiSuccess;
             }
             catch (Exception ex)
             {
                 // Log the error using a logging framework or Debug.WriteLine
-                Debug.WriteLine($"Error posting mobile number: {ex.Message}");
+                Debug.WriteLine($"Error posting user details: {ex.Message}");
                 // Rethrow the exception for consistency
                 throw;
             }
         }
 
-        public async Task<bool> LoadAggregatorDetails(PV_AggregatorDTO aggregator)
+        public async Task<bool> LoadNewCarDetail(PV_NewCarDealerDTO newcar)
         {
             try
             {
-                return await _aggService.PostAggragatorDetails(aggregator);
+                return await _aggService.PostNewCarDealerDetails(newcar);
             }
             catch (Exception ex)
             {
@@ -206,12 +336,5 @@ namespace MyApp.ViewModel
             }
         }
 
-        private void SetMakeList(ObservableCollection<Agg_DropDownMakeDTO> list) => StateListMake = list;
-
-        private void SetModelList(ObservableCollection<Agg_DropDownModelDTO> list) => StateListModel = list;
-
-        private void SetVariantList(ObservableCollection<Agg_DropDownVariantDTO> list) => StateListVariant = list;
-
-        private void SetYearOfRegList(ObservableCollection<Agg_DropDownYORegisDTO> list) => StateListYearOFList = list;
     }
 }

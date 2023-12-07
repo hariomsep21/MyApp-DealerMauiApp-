@@ -17,16 +17,18 @@ public partial class PurchaseVehicleView : ContentPage
     private readonly FullAggragatorViewModel _viewModel;
 
 
-    public PurchaseVehicleView()
+    public PurchaseVehicleView(FullAggragatorViewModel model)
     {
         InitializeComponent();
-        _viewModel = new FullAggragatorViewModel(new FullAggragatorService(new HttpClient()));
-        BindingContext = _viewModel;
+      
+        BindingContext = model;
+
+        
 
 
 
 
-        BindingContext = new VehicleRecordsViewModel();
+       // BindingContext = new VehicleRecordsViewModel();
         SectionB.IsVisible = false;
         Section2.IsVisible = false;
         Section3.IsVisible = false;
@@ -45,66 +47,62 @@ public partial class PurchaseVehicleView : ContentPage
 
 
         // Dynamically load data into the Picker
-        LoadModelDetails();
-        LoadMakeDetails();
-        LoadVariantDetails();
-        LoadYearDetails();
+        //LoadModelDetails();
+        //LoadMakeDetails();
+        //LoadVariantDetails();
+        //LoadYearDetails();
     }
-    private async void LoadMakeDetails()
-    {
-        await _viewModel.LoadMakeDetailsAsync();
+    //private async void LoadMakeDetails()
+    //{
+    //    await _viewModel.LoadMakeDetailsAsync();
 
-        MakePicker.Items.Clear();
+    //    MakePicker.Items.Clear();
 
-        // Add items to the Picker dynamically
-        foreach (var model in _viewModel.StateListMake)
-        {
-            MakePicker.Items.Add(model.MakeName);
-        }
-    }
+    //    // Add items to the Picker dynamically
+    //    foreach (var model in _viewModel.StateListMake)
+    //    {
+    //        MakePicker.Items.Add(model.MakeName);
+    //    }
+    //}
 
-    private async void LoadModelDetails()
-    {
-        await _viewModel.LoadModelDetailsAsync();
+    //private async void LoadModelDetails()
+    //{
+    //    await _viewModel.LoadModelDetailsAsync();
 
-        ModelPicker.Items.Clear();
+    //    ModelPicker.Items.Clear();
 
-        foreach (var model in _viewModel.StateListModel)
-        {
-            ModelPicker.Items.Add(model.ModelName);
-        }
-    }
+    //    foreach (var model in _viewModel.StateListModel)
+    //    {
+    //        ModelPicker.Items.Add(model.ModelName);
+    //    }
+    //}
 
-    private async void LoadVariantDetails()
-    {
-        await _viewModel.LoadVariantDetailsAsync();
+    //private async void LoadVariantDetails()
+    //{
+    //    await _viewModel.LoadVariantDetailsAsync();
 
-        VariantPicker.Items.Clear();
+    //    VariantPicker.Items.Clear();
 
-        // Add items to the Picker dynamically
-        foreach (var model in _viewModel.StateListVariant)
-        {
-            VariantPicker.Items.Add(model.VariantName);
-        }
-    }
+    //    // Add items to the Picker dynamically
+    //    foreach (var model in _viewModel.StateListVariant)
+    //    {
+    //        VariantPicker.Items.Add(model.VariantName);
+    //    }
+    //}
 
-    private async void LoadYearDetails()
-    {
-        await _viewModel.LoadYearOfRegDetailsAsync();
+    //private async void LoadYearDetails()
+    //{
+    //    await _viewModel.LoadYearOfRegDetailsAsync();
 
-        yearPicker.Items.Clear();
+    //    yearPicker.Items.Clear();
 
-        foreach (var model in _viewModel.StateListYearOFList)
-        {
-            yearPicker.Items.Add(model.YearCode.ToString());
-        }
-    }
+    //    foreach (var model in _viewModel.StateListYearOFList)
+    //    {
+    //        yearPicker.Items.Add(model.YearCode.ToString());
+    //    }
+    //}
 
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
 
-    }
 
 
 
@@ -764,7 +762,7 @@ public partial class PurchaseVehicleView : ContentPage
                     item.Invoice == Invoicepic &&
                     item.PictOfOrginalRC == picOfOrgi))
                 {
-                    bool apiSuccess = await _viewModel.LoadNewCarDealerDetails(newCarDetails);
+                    bool apiSuccess = await _viewModel.LoadNewCarDetail(newCarDetails);
 
                     if (apiSuccess)
                     {
@@ -804,81 +802,7 @@ public partial class PurchaseVehicleView : ContentPage
             await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
         }
     }
-    private async void Button_Clicked2(object sender, EventArgs e)
-    {
 
-        //string ApurchaseAmt = PurchaseAmountName.Text;
-        //string Amake = SelectedMake?.Id.ToString();
-        //string Amodel = SelectedModel?.Id.ToString();
-        //string AYear = SelectedYear?.Id.ToString();
-        //string AVariant = SelectedVariant?.Id.ToString();
-
-        //string APriceBreak = priceimg.Text;
-        //string Astock = stockinimg.Text;
-        //string Arc = rcimg.Text;
-
-        //if (!string.IsNullOrEmpty(ApurchaseAmt) &&
-        //    !string.IsNullOrEmpty(Arc))
-        //{
-        //    // Use int.TryParse to handle potential parsing errors
-        //    if (int.TryParse(Amake, out int makeId) &&
-        //        int.TryParse(Amodel, out int modelId))
-        //    {
-        //        var aggradetails = new PV_AggregatorDTO
-        //        {
-        //            PurchaseAmount = ApurchaseAmt,
-        //            PriceBreak = APriceBreak,
-        //            StockIn = Astock,
-        //            RCAvailable = Arc,
-        //            MakeId = int.Parse(Amake),
-        //            ModelId = modelId,
-        //            YearOfRegistration = AYear,
-        //            VariantId = AVariant
-        //        };
-
-        //        // Check if the values are not already in the list
-        //        if (!_viewModel.StateListAgreegator.Any(item =>
-        //                item.PurchaseAmount == ApurchaseAmt &&
-        //                item.PriceBreak == APriceBreak &&
-        //                item.StockIn == Astock &&
-        //                item.RCAvailable == Arc &&
-        //                item.MakeId == makeId &&
-        //                item.ModelId == modelId &&
-        //                item.YearOfRegistration == AYear &&
-        //                item.VariantId == AVariant))
-        //        {
-        //            bool apiSuccess = await _viewModel.LoadNewCarDealerDetails(aggradetails);
-
-        //            if (apiSuccess)
-        //            {
-        //                var popup = new PurchaseVehiclePopup();
-        //                Shell.Current.CurrentPage.ShowPopup(popup);
-        //                // After sending API request and successful response, reset input fields
-        //                PurchaseAmountName.Text = string.Empty;
-        //                // Reset other input fields as needed
-
-        //                // Optionally navigate to another page
-        //                // await Navigation.PushAsync(new NextPage());
-        //            }
-        //            else
-        //            {
-        //                // Handle the case where the API response is not successful
-        //                await DisplayAlert("API Error", "Failed to post details.", "OK");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            // Handle the case where the entered values are already in the list
-        //            await DisplayAlert("Invalid Input", "Duplicate values found.", "OK");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        // Handle the case where parsing of makeId or modelId fails
-        //        await DisplayAlert("Invalid Input", "Invalid makeId or modelId.", "OK");
-        //    }
-        //}
-    }
 
 
 
