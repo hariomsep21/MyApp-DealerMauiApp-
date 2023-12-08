@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Java.Lang.Ref;
 using MyApp.IService;
 using MyApp.Model;
 using MyApp.Models;
@@ -290,8 +291,12 @@ namespace MyApp.ViewModel
                 {
                     var popup = new PurchaseVehiclePopup();
                     Shell.Current.CurrentPage.ShowPopup(popup);
-                    // Navigate to the home page on successful API response
-                    await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
+
+                    SelectedMake = null;
+                    SelectedModel = null;
+                    SelectedVariant = null;
+                    SelectedYear = null;
+                   
                 }
                 else
                 {
@@ -330,7 +335,9 @@ namespace MyApp.ViewModel
                 if (apisucess)
                 {
                     var popup = new PurchaseVehiclePopup();
+                    
                     Shell.Current.CurrentPage.ShowPopup(popup);
+                   
                     // Navigate to the home page on successful API response
                     await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
                 }
@@ -375,6 +382,8 @@ namespace MyApp.ViewModel
                 {
                     var popup = new PurchaseVehiclePopup();
                     Shell.Current.CurrentPage.ShowPopup(popup);
+
+                    
                     // Navigate to the home page on successful API response
                     await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
                 }

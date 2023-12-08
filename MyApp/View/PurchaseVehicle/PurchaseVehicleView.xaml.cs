@@ -12,23 +12,14 @@ namespace MyApp.View.PurchaseVehicle;
 
 public partial class PurchaseVehicleView : ContentPage
 {
-
-
     private readonly FullAggragatorViewModel _viewModel;
-
-
     public PurchaseVehicleView(FullAggragatorViewModel model)
     {
         InitializeComponent();
-      
         BindingContext = model;
 
-        
 
-
-
-
-       // BindingContext = new VehicleRecordsViewModel();
+        // BindingContext = new VehicleRecordsViewModel();
         SectionB.IsVisible = false;
         Section2.IsVisible = false;
         Section3.IsVisible = false;
@@ -46,66 +37,7 @@ public partial class PurchaseVehicleView : ContentPage
         Vehicle2.Clicked += Vehicle2_Clicked;
 
 
-        // Dynamically load data into the Picker
-        //LoadModelDetails();
-        //LoadMakeDetails();
-        //LoadVariantDetails();
-        //LoadYearDetails();
     }
-    //private async void LoadMakeDetails()
-    //{
-    //    await _viewModel.LoadMakeDetailsAsync();
-
-    //    MakePicker.Items.Clear();
-
-    //    // Add items to the Picker dynamically
-    //    foreach (var model in _viewModel.StateListMake)
-    //    {
-    //        MakePicker.Items.Add(model.MakeName);
-    //    }
-    //}
-
-    //private async void LoadModelDetails()
-    //{
-    //    await _viewModel.LoadModelDetailsAsync();
-
-    //    ModelPicker.Items.Clear();
-
-    //    foreach (var model in _viewModel.StateListModel)
-    //    {
-    //        ModelPicker.Items.Add(model.ModelName);
-    //    }
-    //}
-
-    //private async void LoadVariantDetails()
-    //{
-    //    await _viewModel.LoadVariantDetailsAsync();
-
-    //    VariantPicker.Items.Clear();
-
-    //    // Add items to the Picker dynamically
-    //    foreach (var model in _viewModel.StateListVariant)
-    //    {
-    //        VariantPicker.Items.Add(model.VariantName);
-    //    }
-    //}
-
-    //private async void LoadYearDetails()
-    //{
-    //    await _viewModel.LoadYearOfRegDetailsAsync();
-
-    //    yearPicker.Items.Clear();
-
-    //    foreach (var model in _viewModel.StateListYearOFList)
-    //    {
-    //        yearPicker.Items.Add(model.YearCode.ToString());
-    //    }
-    //}
-
-
-
-
-
 
     private ImageSource _capturedImageSource;
 
@@ -170,7 +102,7 @@ public partial class PurchaseVehicleView : ContentPage
         Section11.IsVisible = false;
         Section22.IsVisible = true;
     }
-  
+
     private void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(NotificationPage));
@@ -193,7 +125,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -222,7 +154,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -251,7 +183,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -280,7 +212,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -309,7 +241,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -338,7 +270,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -367,7 +299,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -396,7 +328,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -425,7 +357,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -454,7 +386,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -483,7 +415,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -512,7 +444,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -541,7 +473,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -570,7 +502,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
@@ -599,7 +531,7 @@ public partial class PurchaseVehicleView : ContentPage
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
