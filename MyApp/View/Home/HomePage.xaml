@@ -105,69 +105,7 @@ SelectionMode="None" Margin="0,16,0,0" x:Name="mCollectionView" >
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </ScrollView>
-                    <!--<Grid ColumnDefinitions="auto,auto,auto"  Padding="0,16,0,0">
-                        <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
-                        <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
-                            <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Car Name" />
-                                        <Span Text=" and " />
-                                        <Span Text=" Variant" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
 
-                            <Label Text="Amount Due: ₹85,000,00" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
-                            <Label Text="Purchase Id: 234576" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10"/>
-                        </Grid>
-                        <Button Grid.Column="2"  Text="Pay" FontSize="10" BackgroundColor="#4AA09B" TextColor="White" CornerRadius="12" HorizontalOptions="Center" Margin="16,0,20,0" Padding="-30"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
-
-
-
-                    </Grid>
-                    <Grid ColumnDefinitions="auto,auto,auto"  Padding="0,16,0,0">
-                        <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
-                        <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
-                            <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Car Name" />
-                                        <Span Text=" and " />
-                                        <Span Text=" Variant" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-
-                            <Label Text="Amount Due: ₹85,000,00" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
-                            <Label Text="Purchase Id: 234576" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10"/>
-                        </Grid>
-                        <Button Grid.Column="2"  Text="Pay" FontSize="10" BackgroundColor="#4AA09B" TextColor="White" CornerRadius="12" HorizontalOptions="Center" Margin="16,0,20,0" Padding="-30"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
-
-
-
-                    </Grid>
-                    <Grid ColumnDefinitions="auto,auto,auto"  Padding="0,16,0,0">
-                        <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
-                        <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
-                            <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Car Name" />
-                                        <Span Text=" and " />
-                                        <Span Text=" Variant" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-
-                            <Label Text="Amount Due: ₹85,000,00" FontSize="14" TextColor="#4AA09B"  Grid.Row="1" Padding="20,0,0,0" />
-                            <Label Text="Purchase Id: 234576" FontSize="10" TextColor="Black"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10"/>
-                        </Grid>
-                        <Button Grid.Column="2"  Text="Pay" FontSize="10" BackgroundColor="#4AA09B" TextColor="White" CornerRadius="12" HorizontalOptions="Center" Margin="16,0,20,0" Padding="-30"  VerticalOptions="Center" WidthRequest="59" HeightRequest="24" />
-
-
-
-                    </Grid>-->
                 </VerticalStackLayout>
             </Frame>
             <Frame Padding="16" WidthRequest="343" HeightRequest="304" Margin="0,16,0,16" HasShadow="True"  CornerRadius="8">
@@ -177,100 +115,36 @@ SelectionMode="None" Margin="0,16,0,0" x:Name="mCollectionView" >
                         <Button ImageSource="arrow_right.png" Grid.Column="1" WidthRequest="24" HorizontalOptions="End" HeightRequest="24" Background="white"/>
                     </Grid>
                     <ScrollView>
-                    <CollectionView
+                        <CollectionView
 ItemsSource="{Binding UpcomingAudit}"
 SelectionMode="None" Margin="0,16,0,0">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="model:UpcomingAuditModel">
-                                <Frame Style="{StaticResource PaymentFrame}" BackgroundColor="Transparent" HorizontalOptions="Center"    >
-                                    <Grid ColumnDefinitions="auto,auto,auto"  Padding="20,0,0,0">
-                                        <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
-                                        <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
-                                            <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding CarName }" />
-                                                        <Span Text=" and " />
-                                                        <Span Text="{Binding Variant}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Text="{Binding CarId, StringFormat='Purchase Id- {0}'}" FontSize="10" TextColor="Black"  Grid.Row="1" Padding="20,0,0,0" />
-                                            <Label Text="{Binding DaysLeftToVerify }" FontSize="12" TextColor="#4AA09B"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10" />
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:UpcomingAuditModel">
+                                    <Frame Style="{StaticResource PaymentFrame}" BackgroundColor="Transparent" HorizontalOptions="Center"    >
+                                        <Grid ColumnDefinitions="auto,auto,auto"  Padding="20,0,0,0">
+                                            <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
+                                            <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
+                                                <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding CarName }" />
+                                                            <Span Text=" and " />
+                                                            <Span Text="{Binding Variant}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Text="{Binding CarId, StringFormat='Purchase Id- {0}'}" FontSize="10" TextColor="Black"  Grid.Row="1" Padding="20,0,0,0" />
+                                                <Label Text="{Binding DaysLeftToVerify }" FontSize="12" TextColor="#4AA09B"  Grid.Row="2" Padding="20,0,0,0" Margin="0,0,0,10" />
+
+                                            </Grid>
+
 
                                         </Grid>
-                                      
-
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </ScrollView>
-                    <!--<Grid ColumnDefinitions="auto,auto"  Padding="0,20,0,0">
-                        <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
-                        <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
-                            <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Car Name" />
-                                        <Span Text=" and " />
-                                        <Span Text=" Variant" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-
-                            <Label Text="1 day left to verify" FontSize="12" TextColor="#4AA09B"  Grid.Row="2" Padding="20,0,0,0" />
-                            <Label Text="Purchase Id: 234576" FontSize="10" TextColor="Black"  Grid.Row="1" Padding="20,0,0,0"/>
-                        </Grid>
-
-
-
-
-                    </Grid>
-
-                    <Grid ColumnDefinitions="auto,auto"  Padding="0,20,0,0">
-                        <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
-                        <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
-                            <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Car Name" />
-                                        <Span Text=" and " />
-                                        <Span Text=" Variant" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-
-                            <Label Text="1 day left to verify" FontSize="12" TextColor="#4AA09B"  Grid.Row="2" Padding="20,0,0,0" />
-                            <Label Text="Purchase Id: 234576" FontSize="10" TextColor="Black"  Grid.Row="1" Padding="20,0,0,0"/>
-                        </Grid>
-
-
-
-
-                    </Grid>
-                    <Grid ColumnDefinitions="auto,auto"  Padding="0,20,0,0">
-                        <Image Source="car.png"  HorizontalOptions="Center" HeightRequest="56" WidthRequest="56" VerticalOptions="Center"      />
-                        <Grid RowDefinitions="auto,auto,auto" Grid.Column="1">
-                            <Label Style="{StaticResource LabelPrimaryMedium}" Grid.Row="0" Padding="20,10,0,0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Car Name" />
-                                        <Span Text=" and " />
-                                        <Span Text=" Variant" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-
-                            <Label Text="1 day left to verify" FontSize="12" TextColor="#4AA09B"  Grid.Row="2" Padding="20,0,0,0" />
-                            <Label Text="Purchase Id: 234576" FontSize="10" TextColor="Black"  Grid.Row="1" Padding="20,0,0,0"/>
-                        </Grid>
-
-
-
-
-                    </Grid>-->
 
 
                 </VerticalStackLayout>

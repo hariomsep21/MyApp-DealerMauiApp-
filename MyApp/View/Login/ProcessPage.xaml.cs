@@ -28,10 +28,10 @@ public partial class ProcessPage : ContentPage
         // This method will be executed after the specified delay (5 seconds)
 
         // You can navigate to the RejectedPage here
-        await Device.InvokeOnMainThreadAsync(() =>
+        await Device.InvokeOnMainThreadAsync(async () =>
         {
              Shell.Current.Navigation.PopToRootAsync(); // Clears the navigation stack
-             Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+           await  Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         });
     }
 }
