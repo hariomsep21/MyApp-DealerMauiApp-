@@ -21,6 +21,12 @@ namespace MyApp.Service
         {
             try
             {
+                string jwtToken = await SecureStorage.GetAsync("JWTToken");
+                // Set up HttpClient (base URL, headers, etc.) for your API calls
+                if (!string.IsNullOrEmpty(jwtToken))
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
+                }
                 HttpResponseMessage response = await _httpClient.GetAsync("http://10.0.2.2:5137/api/CustomerSupportAPI");
 
                 if (response.IsSuccessStatusCode)

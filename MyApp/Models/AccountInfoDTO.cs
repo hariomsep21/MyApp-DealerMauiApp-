@@ -9,7 +9,6 @@ namespace MyApp.Models
     public class AccountInfoDTO
     {
         public int Id { get; set; }
-        public string OTP { get; set; }
         public string UserName { get; set; }
     }
 }

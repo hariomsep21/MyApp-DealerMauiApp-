@@ -75,7 +75,7 @@ namespace MyApp
             builder.Services.AddSingleton<PostLoginViewModel>();
             builder.Services.AddSingleton<MobilePhone>();
             builder.Services.AddSingleton<EnterOtpPage>();
-            builder.Services.AddSingleton<ISignUpService, SignUpService>();
+         //   builder.Services.AddSingleton<ISignUpService, SignUpService>();
             builder.Services.AddSingleton<ILoginUserPhoneServicecs, LoginUserPhoneServicecs>();
             builder.Services.AddHttpClient();
 

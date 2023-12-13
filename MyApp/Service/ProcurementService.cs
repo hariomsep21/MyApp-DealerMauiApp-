@@ -20,6 +20,12 @@ namespace MyApp.Services
         {
             try
             {
+                string jwtToken = await SecureStorage.GetAsync("JWTToken");
+                // Set up HttpClient (base URL, headers, etc.) for your API calls
+                if (!string.IsNullOrEmpty(jwtToken))
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
+                }
                 HttpResponseMessage response = await _httpClient.GetAsync("http://10.0.2.2:5137/api/Procurement/filter");
 
                 if (response.IsSuccessStatusCode)
@@ -43,6 +49,12 @@ namespace MyApp.Services
         {
             try
             {
+                string jwtToken = await SecureStorage.GetAsync("JWTToken");
+                // Set up HttpClient (base URL, headers, etc.) for your API calls
+                if (!string.IsNullOrEmpty(jwtToken))
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
+                }
                 var response = await _httpClient.GetAsync("http://10.0.2.2:5137/api/Procurement/Procurement");
                 if (response.IsSuccessStatusCode)
                 {
@@ -67,6 +79,12 @@ namespace MyApp.Services
         {
             try
             {
+                string jwtToken = await SecureStorage.GetAsync("JWTToken");
+                // Set up HttpClient (base URL, headers, etc.) for your API calls
+                if (!string.IsNullOrEmpty(jwtToken))
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
+                }
                 var response = await _httpClient.GetAsync($"http://10.0.2.2:5137/api/Procurement/Procurement?Id={Id}");
                 if (response.IsSuccessStatusCode)
                 {
@@ -86,10 +104,16 @@ namespace MyApp.Services
                 throw new Exception($"Exception: {ex.Message}");
             }
         }
-    public async    Task<List<ProcurementClosedModel>> GetClosedProcurements()
+        public async    Task<List<ProcurementClosedModel>> GetClosedProcurements()
         {
             try
             {
+                string jwtToken = await SecureStorage.GetAsync("JWTToken");
+                // Set up HttpClient (base URL, headers, etc.) for your API calls
+                if (!string.IsNullOrEmpty(jwtToken))
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
+                }
                 var response = await _httpClient.GetAsync("http://10.0.2.2:5137/api/Procurement/ProcurementClosed");
                 if (response.IsSuccessStatusCode)
                 {
@@ -114,6 +138,12 @@ namespace MyApp.Services
         {
             try
             {
+                string jwtToken = await SecureStorage.GetAsync("JWTToken");
+                // Set up HttpClient (base URL, headers, etc.) for your API calls
+                if (!string.IsNullOrEmpty(jwtToken))
+                {
+                    _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
+                }
                 var response = await _httpClient.GetAsync("http://10.0.2.2:5137/api/Procurement/ProcurementStatus");
                 if (response.IsSuccessStatusCode)
                 {
