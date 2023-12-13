@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using MyApp.IService;
 using MyApp.Service;
 using MyApp.Services;
+using MyApp.View.Account;
 using MyApp.View.Home;
 using MyApp.View.Login;
 using MyApp.View.Payment;
@@ -65,7 +66,17 @@ namespace MyApp
             builder.Services.AddTransient<IBasicDetailsService,BasicDetailsService>();
             builder.Services.AddTransient<IFullAggragatorService, FullAggragatorService>();
             builder.Services.AddTransient<FullAggragatorViewModel>();
-            
+            builder.Services.AddSingleton<IPostLogInService, PostLogInService>();
+            builder.Services.AddSingleton<ProfileInfo>();
+            builder.Services.AddSingleton<EnterOtpPageSign>();
+            builder.Services.AddSingleton<SignUpViewModel>();
+            builder.Services.AddSingleton<SignUpViewModel>();
+            builder.Services.AddSingleton<SignUpPhone>();
+            builder.Services.AddSingleton<PostLoginViewModel>();
+            builder.Services.AddSingleton<MobilePhone>();
+            builder.Services.AddSingleton<EnterOtpPage>();
+            builder.Services.AddSingleton<ISignUpService, SignUpService>();
+            builder.Services.AddSingleton<ILoginUserPhoneServicecs, LoginUserPhoneServicecs>();
             builder.Services.AddHttpClient();
 
 #if DEBUG

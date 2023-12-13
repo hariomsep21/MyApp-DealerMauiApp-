@@ -84,7 +84,7 @@ namespace MyApp.ViewModel
                 }
 
                 // Create or update the UserDetails object with the selected state ID
-                UserDetails.StateId = SelectedState.StateId;
+                UserDetails.SId = SelectedState.StateId;
 
                 bool apiSuccess = await _basicDetailsService.PostUserDetails(UserDetails);
 

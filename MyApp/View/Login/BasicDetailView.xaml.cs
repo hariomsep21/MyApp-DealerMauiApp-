@@ -14,15 +14,17 @@ namespace MyApp.View.Login
     public partial class BasicDetailView : ContentPage
     {
 
-        public BasicDetailView(BasicDetailsViewModel viewModel)
+        public BasicDetailView(SignUpViewModel viewModel)
         {
             InitializeComponent();
 
+
+
             BindingContext = viewModel;
-            
+            viewModel.LoadStates();
         }
 
-      
+
     }
 
 }
