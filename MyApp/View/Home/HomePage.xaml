@@ -18,7 +18,7 @@ xmlns:viewmodel="clr-namespace:MyApp.ViewModel"
 
         <VerticalStackLayout>
             <Label  Margin="10,16,0,0"
-            Text="Hi, Prakhar"
+           Text="{Binding UserName, StringFormat='Hi {0}'}"
             FontSize="16"
             FontAttributes="Bold"
             VerticalOptions="Center" 

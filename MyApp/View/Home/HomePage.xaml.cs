@@ -27,6 +27,7 @@ public partial class HomePage : ContentPage
     {
         await _viewModel.LoadUpcomingPayment();
         await _viewModel.LoadUpcomingAudit();
+        await _viewModel.RetrieveAndSetUsername();
 
     }
     private void ToolbarItem_Clicked(object sender, EventArgs e)
