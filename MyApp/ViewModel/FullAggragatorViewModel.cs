@@ -292,11 +292,25 @@ namespace MyApp.ViewModel
                     var popup = new PurchaseVehiclePopup();
                     Shell.Current.CurrentPage.ShowPopup(popup);
 
+                   
+                    Aggregators = new PV_AggregatorDTO();  // Resetting the object to default values
                     SelectedMake = null;
                     SelectedModel = null;
                     SelectedVariant = null;
                     SelectedYear = null;
-                   
+
+                    // OR, if you prefer to reset individual properties:
+                    // Aggregators.MakeId = 0;
+                    // Aggregators.ModelId = 0;
+                    // Aggregators.VariantId = 0;
+                    // Aggregators.YearOfRegistration = 0;
+
+                    OnPropertyChanged(nameof(Aggregators));
+                    OnPropertyChanged(nameof(SelectedMake));
+                    OnPropertyChanged(nameof(SelectedModel));
+                    OnPropertyChanged(nameof(SelectedVariant));
+                    OnPropertyChanged(nameof(SelectedYear));
+
                 }
                 else
                 {
@@ -331,13 +345,26 @@ namespace MyApp.ViewModel
         {
             try
             {
-                bool apisucess = await _aggService.PostNewCarDealerDetails(NewCar);
-                if (apisucess)
+                bool apiSuccess = await _aggService.PostNewCarDealerDetails(NewCar);
+                if (apiSuccess)
                 {
                     var popup = new PurchaseVehiclePopup();
-                    
                     Shell.Current.CurrentPage.ShowPopup(popup);
-                   
+
+                    // Set properties to empty strings or default values before creating a new instance
+                    NewCar.OdometerPicture = "";
+                    NewCar.VehiclePicFromFront = "";
+                    NewCar.VehicleNumber = "";
+                    NewCar.Invoice = "";
+                    NewCar.PictOfOrginalRC = "";
+                    NewCar.VehiclePicFromBack = "";
+                    NewCar.PurchaseAmount = "";
+
+                    // Create a new instance after setting properties
+                    NewCar = new PV_NewCarDealerDTO();
+
+                    OnPropertyChanged(nameof(NewCar));
+
                     // Navigate to the home page on successful API response
                     await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
                 }
@@ -347,7 +374,7 @@ namespace MyApp.ViewModel
                     // await DisplayAlert("API Error", "Failed to post user details.", "OK");
                 }
 
-                return apisucess;
+                return apiSuccess;
             }
             catch (Exception ex)
             {
@@ -357,6 +384,8 @@ namespace MyApp.ViewModel
                 throw;
             }
         }
+
+
         private PV_OpenMarketDTO openMarket = new PV_OpenMarketDTO(); // Initialize with default values if needed
 
         public PV_OpenMarketDTO OpenMarket
@@ -377,13 +406,24 @@ namespace MyApp.ViewModel
         {
             try
             {
-                bool apisucess = await _aggService.PostOpenMarketDetails(OpenMarket);
-                if (apisucess)
+                bool apiSuccess = await _aggService.PostOpenMarketDetails(OpenMarket);
+                if (apiSuccess)
                 {
                     var popup = new PurchaseVehiclePopup();
                     Shell.Current.CurrentPage.ShowPopup(popup);
 
-                    
+                    // Set properties to empty strings or default values before creating a new instance
+                    OpenMarket.PurchaseAmount = "";
+                    OpenMarket.TokenAmount = "";
+                    OpenMarket.WithholdAmount = "";
+                    OpenMarket.SellerContactNumber = "";
+                    OpenMarket.SellerEmailAddress = "";
+
+                    // Create a new instance after setting properties
+                    OpenMarket = new PV_OpenMarketDTO();
+
+                    OnPropertyChanged(nameof(OpenMarket));
+
                     // Navigate to the home page on successful API response
                     await Shell.Current.GoToAsync("//HomePage"); // Adjust the navigation URI as needed
                 }
@@ -393,7 +433,7 @@ namespace MyApp.ViewModel
                     // await DisplayAlert("API Error", "Failed to post user details.", "OK");
                 }
 
-                return apisucess;
+                return apiSuccess;
             }
             catch (Exception ex)
             {
@@ -403,5 +443,6 @@ namespace MyApp.ViewModel
                 throw;
             }
         }
+
     }
 }
