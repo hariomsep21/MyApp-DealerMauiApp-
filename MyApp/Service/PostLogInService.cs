@@ -208,9 +208,13 @@ namespace MyApp.Service
 
                 if (response.IsSuccessStatusCode)
                 {
+                    var token = await response.Content.ReadAsStringAsync();
+
+                    SecureStorage.Default.SetAsync("JWTToken", token);
+                    // You can handle the token as needed (e.g., store it
 
                     // Assuming your response body is a JWT token
-                    var token = await response.Content.ReadAsStringAsync();
+                  
 
                     // You can handle the token as needed (e.g., store it securely)
                     // For simplicity, I'm just printing it here

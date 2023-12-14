@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MyApp.IService;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace MyApp.ViewModel
 {
@@ -26,6 +28,57 @@ namespace MyApp.ViewModel
             _paymentService = paymentService;
             _stockAuditService = stockAuditService;
 
+        }
+        private string _userName;
+
+        public string UserName
+        {
+            get => _userName;
+            set
+            {
+                if (_userName != value)
+                {
+                    _userName = value;
+                    OnPropertyChanged(nameof(UserName));
+                }
+            }
+        }
+        public async Task RetrieveAndSetUsername()
+        {
+            try
+            {
+                // Retrieve the token from secure storage
+                var token = await SecureStorage.GetAsync("JWTToken");
+
+                if (!string.IsNullOrEmpty(token))
+                {
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var jwtToken = tokenHandler.ReadJwtToken(token);
+
+                    // Retrieve the claim containing the username
+                    var usernameClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name);
+
+                    if (usernameClaim != null)
+                    {
+                        UserName = usernameClaim.Value;
+                    }
+                    else
+                    {
+
+                        UserName = "Username not found";
+                    }
+                }
+                else
+                {
+
+                    UserName = "Token not found";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle token parsing exception
+                UserName = "Error retrieving username";
+            }
         }
         [RelayCommand]
         private async Task Pay(PaymentDetailDto selectedPayment)

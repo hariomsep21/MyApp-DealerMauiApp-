@@ -256,7 +256,8 @@ namespace MyApp.ViewModel
                     SecureStorage.Default.Remove("JWTToken");
 
 
-                    await Shell.Current.GoToAsync(nameof(PaymentView));
+
+                    await Shell.Current.GoToAsync("/LoginPage");
 
                 }
                 else
