@@ -10,11 +10,12 @@
     <Grid RowDefinitions="*,auto">
         <VerticalStackLayout  Grid.Row="0" Spacing="15" >
             <Frame Padding="0" HeightRequest="56" WidthRequest="343" CornerRadius="4" Margin="0,15,0,0" HasShadow="True" BorderColor="Black">
-                <Entry Placeholder="Enter Name" Text="{Binding UserDetails.UserName }"  FontSize="16" x:Name="Entername" TextColor="#3F4948" PlaceholderColor="Black" VerticalOptions="Center" Margin="13,0,0,0" />
+                <Entry Placeholder="Enter Name" Text="{Binding UserDetails.UserName }"  FontSize="16" x:Name="Entername" TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" Margin="13,0,0,0" />
             </Frame>
             <Frame Padding="0" HeightRequest="56" WidthRequest="343" CornerRadius="4" Margin="0,0,0,0" HasShadow="True"  BorderColor="Black">
-                <Entry Placeholder="Enter Email Id" FontSize="16" Text="{Binding UserDetails.UserEmail }" x:Name="EmailId"   TextColor="#3F4948" PlaceholderColor="Black" VerticalOptions="Center" Margin="13,0,0,0" />
+                <Entry Placeholder="Enter Email Id" FontSize="16" Text="{Binding UserDetails.UserEmail }" x:Name="EmailId"   TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" Margin="13,0,0,0" />
             </Frame>
+           
             <Frame Padding="0" HeightRequest="56" WidthRequest="343" CornerRadius="4" Margin="0,0,0,0" HasShadow="True"  BorderColor="Black">
                 <Grid ColumnDefinitions="*,auto">
                     <Picker x:Name="StatePicker" Title="State" TitleColor="#3F4948" FontSize="16" TextColor="Black" VerticalOptions="Center" Margin="13,0,0,0"

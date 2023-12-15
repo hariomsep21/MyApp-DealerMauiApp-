@@ -262,9 +262,6 @@
 	  <MauiXaml Update="View\PurchaseVehicle\PurchaseVehicleView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\PurchaseVehicle\VehicleRecordsView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionMyAppHideInfoBar="True" /></VisualStudio></ProjectExtensions>

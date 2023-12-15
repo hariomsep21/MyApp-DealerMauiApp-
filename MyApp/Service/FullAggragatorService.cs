@@ -21,6 +21,8 @@ namespace MyApp.Service
         private readonly string _postMobileNumberApiUrl = "PV_NewCarDealerAPI/Post";
         private readonly string _postNumberApiUrl = "PV_OpenMarketAPI/Post";
         private readonly string _postAggregatorApiUrl = "PV_AggregatorAPI/Post";
+        private readonly string _carvehicleRecordApiUrl = "PurchaseVehicle/VehicleRecord";
+       
 
         public FullAggragatorService(HttpClient httpClient)
         {
@@ -162,6 +164,11 @@ namespace MyApp.Service
         private string CombineApiUrl(string endpoint)
         {
             return $"{_apiBaseUrl}{endpoint}";
+        }
+
+        public async Task<IEnumerable<VehicleRecordsDto>> GetCarVehicleRecord()
+        {
+            return await GetApiResponse<VehicleRecordsDto>(CombineApiUrl(_carvehicleRecordApiUrl));
         }
     }
 }

@@ -1,3 +1,5 @@
+using MyApp.View.Login;
+
 namespace MyApp;
 
 public partial class PV_Vehicle : ContentPage
@@ -10,7 +12,7 @@ public partial class PV_Vehicle : ContentPage
     private void Button_Clicked(object sender, EventArgs e)
     {
      
-        Shell.Current.GoToAsync(nameof(VehicleRecordsView));
+        Shell.Current.GoToAsync(nameof(LoginPage));
 
     }
 }

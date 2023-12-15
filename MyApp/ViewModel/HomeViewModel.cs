@@ -58,6 +58,22 @@ namespace MyApp.ViewModel
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+        public async Task CheckUpcomingPayment()
+        {
+            await LoadUpcomingPayment();
+
+            if (UpcomingPayment != null && UpcomingPayment.Count == 0)
+            {
+                // The UpcomingPayment list has zero records.
+                Console.WriteLine("UpcomingPayment has zero records.");
+            }
+            else
+            {
+                // The UpcomingPayment list has records.
+                Console.WriteLine($"UpcomingPayment has {UpcomingPayment.Count} records.");
+            }
+        }
+
         public async Task LoadUpcomingPayment()
         {
             try

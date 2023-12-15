@@ -29,6 +29,22 @@ namespace MyApp.ViewModel
             _stockAuditService = stockAuditService;
 
         }
+
+        private bool _isFrameVisible;
+
+        public bool IsFrameVisible
+        {
+            get { return _isFrameVisible; }
+            set
+            {
+                if (_isFrameVisible != value)
+                {
+                    _isFrameVisible = value;
+                    OnPropertyChanged(nameof(IsFrameVisible));
+                }
+            }
+        }
+
         private string _userName;
 
         public string UserName
@@ -192,6 +208,7 @@ namespace MyApp.ViewModel
                 var UpcomingDetail = await _stockAuditService.GetUpcomingAudit();
                 UpcomingAudit = new ObservableCollection<UpcomingAuditModel>(UpcomingDetail);
                 // Handle the payment status as needed (e.g., update UI, process data)
+                IsFrameVisible = UpcomingAudit.Count > 0;
             }
             catch (Exception ex)
             {
@@ -205,6 +222,7 @@ namespace MyApp.ViewModel
                 var payDetail = await _paymentService.GetUpcomingPayment();
                 UpcomingPayment = new ObservableCollection<PaymentDetailDto>(payDetail);
                 // Handle the payment status as needed (e.g., update UI, process data)
+                IsFrameVisible = UpcomingPayment.Count > 0;
             }
             catch (Exception ex)
             {

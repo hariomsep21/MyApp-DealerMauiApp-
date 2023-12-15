@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Java.Lang.Ref;
 using MyApp.IService;
 using MyApp.Model;
 using MyApp.Models;
+using MyApp.Service;
 using MyApp.View.Home;
 using MyApp.View.Login;
 using MyApp.View.PurchaseVehicle;
@@ -20,8 +20,11 @@ namespace MyApp.ViewModel
     {
         private readonly IFullAggragatorService _aggService;
 
-        public FullAggragatorViewModel(
-          IFullAggragatorService aggService)
+        public FullAggragatorViewModel()
+        {
+            // Initialize any default values or setup here
+        }
+        public FullAggragatorViewModel(IFullAggragatorService aggService)
         {
             _aggService = aggService ?? throw new ArgumentNullException(nameof(aggService));
 
@@ -33,6 +36,7 @@ namespace MyApp.ViewModel
             LoadModel();
             LoadVariant();
             Loadyear();
+            LoadVehicleRecord();
         }
 
 
@@ -50,6 +54,8 @@ namespace MyApp.ViewModel
             private set => SetProperty(ref _OpenMarketDTOs, value);
         }
 
+
+      
 
         private ObservableCollection<Agg_DropDownMakeDTO> _make;
         private Agg_DropDownMakeDTO _selectedMake;
@@ -77,6 +83,31 @@ namespace MyApp.ViewModel
             }
         }
 
+        private ObservableCollection<VehicleRecordsDto> _vehiclesRecord;
+        public ObservableCollection<VehicleRecordsDto> VehiclesRecord
+        {
+            get => _vehiclesRecord;
+            set
+            {
+                _vehiclesRecord = value;
+                OnPropertyChanged(nameof(VehiclesRecord));
+            }
+        }
+        public async Task LoadVehicleRecord()
+        {
+            try
+            {
+                var Record = await _aggService.GetCarVehicleRecord();
+                VehiclesRecord = new ObservableCollection<VehicleRecordsDto>(Record);
+
+                // Log or debug to check the content of VehiclesRecord
+                Debug.WriteLine($"Number of records: {VehiclesRecord.Count}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
 
 
 
@@ -272,6 +303,7 @@ namespace MyApp.ViewModel
         {
             try
             {
+              
                 if (SelectedMake == null && SelectedModel == null && SelectedVariant == null && SelectedYear == null)
                 {
                     // Handle the case where no state is selected

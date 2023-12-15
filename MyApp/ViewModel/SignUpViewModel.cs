@@ -214,11 +214,18 @@ namespace MyApp.ViewModel
         {
             try
             {
+                if (phone == null || phone.Length != 10 || !IsPhoneNumberValid(phone))
+                {
+                    // Handle the case where the phone number is null, not 10 digits, or contains non-digit characters
+                    // Display an alert with an appropriate error message
+                    await Shell.Current.DisplayAlert("Failed", "Please enter a valid 10-digit mobile number", "OK");
+                    return false;
+                }
+
                 // Call the service to check if the phone number is valid and get the token
                 bool result = await _postLoginService.Signup(phone);
                 if (result)
                 {
-
                     // Perform navigation upon successful signup
                     await Shell.Current.GoToAsync($"{nameof(EnterOtpPageSign)}?phoneNumber={phone}");
 
@@ -228,13 +235,23 @@ namespace MyApp.ViewModel
                 {
                     await Shell.Current.DisplayAlert("Failed", "Invalid Number", "OK");
                 }
+
                 return result;
             }
             catch (Exception ex)
             {
+                // Handle exceptions appropriately, e.g., log the exception
                 return false;
             }
         }
+
+        private bool IsPhoneNumberValid(string phoneNumber)
+        {
+            // Use a regular expression to check if the phone number contains only digits
+            // Adjust the regex pattern to disallow characters other than digits
+            return System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^[0-9]+$");
+        }
+
 
         [RelayCommand]
         public async Task<bool> ResendOtpSignup()
@@ -304,12 +321,30 @@ namespace MyApp.ViewModel
         [RelayCommand]
         public async Task<string> SignupComplete()
         {
+
             try
             {
-                if (SelectedState == null || phone == null)
+                if (SelectedState == null || string.IsNullOrEmpty(phone))
                 {
-                    // Handle the case where no state is selected
+                    // Handle the case where no state is selected, or phone is null or empty
                     // For example, show an alert or message to the user
+                    await Shell.Current.DisplayAlert("Failed", "Please select a state .", "OK");
+                    return "Failed";
+                }
+
+                if (string.IsNullOrEmpty(UserDetails.UserName))
+                {
+                    // Handle the case where UserName is null or empty
+                    // For example, show an alert or message to the user
+                    await Shell.Current.DisplayAlert("Failed", "UserName is required!", "OK");
+                    return "Failed";
+                }
+
+                if (!UserDetails.UserEmail.Contains("@gmail.com"))
+                {
+                    // Handle the case where the email is not a Gmail address
+                    // For example, show an alert or message to the user
+                    await Shell.Current.DisplayAlert("Failed", "Enter a valid Gmail address", "OK");
                     return "Failed";
                 }
 
@@ -318,34 +353,39 @@ namespace MyApp.ViewModel
 
                 // Call the service to check if the phone number is valid and get the token
                 string jwtToken = await _postLoginService.SignUpComplete(phone, UserDetails);
+
                 if (!string.IsNullOrEmpty(jwtToken))
                 {
-                    // Store the JWT token in Secure Storage
-
-
+                    // Store the JWT token in Secure Storage (implement this part based on your requirements)
 
                     // Reset the phone and OTP fields
                     phone = string.Empty;
                     OTP = 0;
 
-                    //await Shell.Current.DisplayAlert("Success", "Login successful!", "OK");
+                    // Use Shell.Current.Navigation to perform navigation upon successful signup
                     await Shell.Current.GoToAsync("//HomePage");
-                    // Perform navigation upon successful signup
 
-                    return "Login succesfully";
+                    // Return a success message
+                    return "Login successfully";
                 }
                 else
                 {
+                    // Handle the case where login failed
+                    // For example, show an alert or message to the user
                     await Shell.Current.DisplayAlert("Failed", "Login Failed!", "OK");
-
+                    return "Failed";
                 }
-                return jwtToken;
             }
             catch (Exception ex)
             {
+                // Handle other exceptions that might occur
+                // For example, log the exception for debugging purposes
+                Console.WriteLine($"Exception: {ex.Message}");
                 return "Failed";
-
             }
+
+
+
         }
     }
 }

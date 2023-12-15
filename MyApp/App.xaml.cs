@@ -31,13 +31,22 @@ namespace MyApp
 
             }
         }
-
         private int GetInitialRoute()
         {
-            // Implement your logic to determine the initial route
-            // Example: check a static value, configuration, or any other condition
-            // Return 1 for Home, 2 for Login, or any default value as needed
-            return 2; // For demonstration purposes, assuming the initial route is Home (1)
+            // Check if the token exists in the secure storage
+            bool tokenExists = CheckTokenExists();
+
+            // Return the route based on the token existence
+            return tokenExists ? 1 : 2; // For example, 1 for Home (token exists), 2 for Login (token doesn't exist)
+        }
+
+        private bool CheckTokenExists()
+        {
+            // Check if the token exists in the secure storage
+            // Implement your logic to check for the token's presence
+            // For example:
+            string token = SecureStorage.GetAsync("JWTToken").Result;
+            return !string.IsNullOrEmpty(token);
         }
     }
 }
