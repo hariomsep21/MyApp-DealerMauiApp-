@@ -53,7 +53,7 @@
             <tabview:SfTabItem Header="Payment Due"    FontSize="16"  Style="{StaticResource TabItemStyle}" >
                 <tabview:SfTabItem.Content>
                     <ScrollView>
-                        <StackLayout Margin="0" >
+                  
                             <CollectionView x:Name="mCollectionView"
                  ItemsSource="{Binding DuePayments}"
                  SelectionMode="None" Margin="0,16,0,0" >
@@ -85,8 +85,21 @@
                                         </Frame>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
+                                <CollectionView.EmptyView>
+                                    <ContentView>
+                                        <StackLayout HorizontalOptions="CenterAndExpand"
+  VerticalOptions="CenterAndExpand">
+                                            <Label Text="No Record found."
+Margin="10,25,10,10"
+FontAttributes="Bold"
+FontSize="18"
+HorizontalOptions="Fill"
+HorizontalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </ContentView>
+                                </CollectionView.EmptyView>
                             </CollectionView>
-                        </StackLayout>
+
 
 
 
@@ -169,6 +182,19 @@
                                         </Frame>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
+                                <CollectionView.EmptyView>
+                                    <ContentView>
+                                        <StackLayout HorizontalOptions="CenterAndExpand"
+  VerticalOptions="CenterAndExpand">
+                                            <Label Text="No Record found."
+Margin="10,25,10,10"
+FontAttributes="Bold"
+FontSize="18"
+HorizontalOptions="Fill"
+HorizontalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </ContentView>
+                                </CollectionView.EmptyView>
                             </CollectionView>
 
 
@@ -198,7 +224,7 @@
 
 
                         </ScrollView>
-                        <Button Style="{StaticResource LargeButtonColor}" Grid.Row="1" Text="Upload Payment Proof" Command="{Binding PaymentProfCommand}" Margin="0,0,0,5"/>
+                        <Button Style="{StaticResource LargeButtonColor}" Grid.Row="1" Text="Upload Payment Proof" Command="{Binding PaymentProofCommand}" Margin="0,0,0,5"/>
                     </Grid>
 
 

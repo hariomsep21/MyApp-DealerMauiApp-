@@ -130,6 +130,19 @@ SelectionMode="None" Grid.Row="0" Margin="0,16,0,0">
                                             </Frame>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
+                                    <CollectionView.EmptyView>
+                                        <ContentView>
+                                            <StackLayout HorizontalOptions="CenterAndExpand"
+  VerticalOptions="CenterAndExpand">
+                                                <Label Text="No Record found."
+Margin="10,25,10,10"
+FontAttributes="Bold"
+FontSize="18"
+HorizontalOptions="Fill"
+HorizontalTextAlignment="Center" />
+                                            </StackLayout>
+                                        </ContentView>
+                                    </CollectionView.EmptyView>
                                 </CollectionView>
                             </ScrollView>
 
@@ -285,7 +298,20 @@ SelectionMode="None" Grid.Row="0" Margin="0,16,0,0">
                                         </Frame>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
-                            </CollectionView>
+                            <CollectionView.EmptyView>
+                                <ContentView>
+                                    <StackLayout HorizontalOptions="CenterAndExpand"
+  VerticalOptions="CenterAndExpand">
+                                        <Label Text="No Record found."
+Margin="10,25,10,10"
+FontAttributes="Bold"
+FontSize="18"
+HorizontalOptions="Fill"
+HorizontalTextAlignment="Center" />
+                                    </StackLayout>
+                                </ContentView>
+                            </CollectionView.EmptyView>
+                        </CollectionView>
 
 
 
@@ -411,6 +437,19 @@ SelectionMode="None" Grid.Row="0" Margin="0,16,0,0">
                                     </Frame>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
+                            <CollectionView.EmptyView>
+                                <ContentView>
+                                    <StackLayout HorizontalOptions="CenterAndExpand"
+  VerticalOptions="CenterAndExpand">
+                                        <Label Text="No Record found."
+Margin="10,25,10,10"
+FontAttributes="Bold"
+FontSize="18"
+HorizontalOptions="Fill"
+HorizontalTextAlignment="Center" />
+                                    </StackLayout>
+                                </ContentView>
+                            </CollectionView.EmptyView>
                         </CollectionView>
 
 

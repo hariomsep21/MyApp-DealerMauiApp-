@@ -87,9 +87,15 @@ namespace MyApp.ViewModel
         {
             try
             {
-
-                // Navigate to the page where you'll upload the image
-                await Shell.Current.GoToAsync(nameof(DocPaymentProofPage));
+                if (selectedPayment != null)
+                {
+                    // Navigate to the page where you'll upload the image
+                    await Shell.Current.GoToAsync(nameof(DocPaymentProofPage));
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "Please select Payment", "Ok");
+                }
             }
             catch (Exception ex)
             {

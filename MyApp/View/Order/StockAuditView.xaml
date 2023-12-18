@@ -56,7 +56,7 @@ xmlns:model="clr-namespace:MyApp.Model"
                 <tabview:SfTabItem.Content>
 
                     <ScrollView>
-                        <StackLayout Margin="0" >
+                     
                             <CollectionView x:Name="collectionViewName"
             ItemsSource="{Binding PendingAudit}"
             SelectionMode="None" Margin="0,16,0,0">
@@ -119,9 +119,22 @@ SelectedItem="{Binding SelectedStatus}">
                                         </Frame>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
+                                <CollectionView.EmptyView>
+                                    <ContentView>
+                                        <StackLayout HorizontalOptions="CenterAndExpand"
+  VerticalOptions="CenterAndExpand">
+                                            <Label Text="No Record found."
+Margin="10,25,10,10"
+FontAttributes="Bold"
+FontSize="18"
+HorizontalOptions="Fill"
+HorizontalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </ContentView>
+                                </CollectionView.EmptyView>
                             </CollectionView>
 
-                        </StackLayout>
+
 
 
 
@@ -141,7 +154,7 @@ SelectedItem="{Binding SelectedStatus}">
 
 
                     <ScrollView>
-                        <StackLayout Margin="0" >
+
                             <CollectionView
                  ItemsSource="{Binding StatusAudit}"
                  SelectionMode="None" Margin="0,16,0,0">
@@ -172,8 +185,21 @@ SelectedItem="{Binding SelectedStatus}">
                                         </Frame>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
+                                <CollectionView.EmptyView>
+                                    <ContentView>
+                                        <StackLayout HorizontalOptions="CenterAndExpand"
+  VerticalOptions="CenterAndExpand">
+                                            <Label Text="No Record found."
+Margin="10,25,10,10"
+FontAttributes="Bold"
+FontSize="18"
+HorizontalOptions="Fill"
+HorizontalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </ContentView>
+                                </CollectionView.EmptyView>
                             </CollectionView>
-                        </StackLayout>
+
 
 
 
