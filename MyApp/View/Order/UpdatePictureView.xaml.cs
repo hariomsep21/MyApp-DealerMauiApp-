@@ -1,6 +1,7 @@
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using MyApp.View.Account;
+using MyApp.View.Home;
 using MyApp.ViewModel;
 
 namespace MyApp;
@@ -285,7 +286,7 @@ public partial class UpdatePictureView : ContentPage
 
     private async void back1(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(AuditStatusView));
+        await Shell.Current.GoToAsync(nameof(HomePage));
     }
     
     private async void SubmitButtonClicked(object sender, EventArgs e)

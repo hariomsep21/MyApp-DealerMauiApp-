@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace MyApp.Models
 {
+    public enum PurchaseVehicleStatus
+    {
+        True,
+        False
+        
+        // Add other statuses as needed
+    }
     public class Agg_DropDownMakeDTO
     {
         public int MakeId { get; set; }
@@ -82,6 +89,22 @@ namespace MyApp.Models
         public string OdometerPicture { get; set; } = string.Empty;
         public string VehiclePictureFromFront { get; set; } = string.Empty;
         public string VehiclePictureFromBack { get; set; } = string.Empty;
+    }
+    public class VehicleRecordsDto
+    {
+        public int CId { get; set; }
+        public string CarName { get; set; }
+        public string Variant { get; set; }
+        public int PurchaseId { get; set; }
+        public bool Challan { get; set; }
+        public bool RcStatus { get; set; }
+        public bool Fitness { get; set; }
+        public bool OwnerName { get; set; }
+        public bool Hypothecation { get; set; }
+        public bool Blacklist { get; set; }
+
+        public PurchaseVehicleStatus Status { get; set; }
+        public string ActionRequired { get; set; }
     }
 }
 

@@ -18,8 +18,8 @@ namespace MyApp.IService
         Task<bool> PostAggragatorDetails(PV_AggregatorDTO  aggregatorDTO);
         Task<bool> PostNewCarDealerDetails(PV_NewCarDealerDTO NewCarDetails);
         Task<bool> PostOpenMarketDetails(PV_OpenMarketDTO  openMarketDTO);
-
-
+        Task<IEnumerable<VehicleRecordsDto>> GetCarVehicleRecord();
+ 
 
     }
 }

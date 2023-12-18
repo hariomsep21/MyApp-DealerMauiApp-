@@ -37,13 +37,9 @@ namespace MyApp
             builder.Services.AddSingleton<StockAuditView>();
             builder.Services.AddSingleton<PaymentView>();
             builder.Services.AddSingleton<ImageView1>();
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<MainPage2>();
             builder.Services.AddSingleton<BasicDetailView>();
             builder.Services.AddSingleton<CarViewModel>();
             builder.Services.AddSingleton<BasicDetailsViewModel>();
-            builder.Services.AddSingleton<AuditPendingView>();
-            builder.Services.AddSingleton<AuditStatusView>();
             builder.Services.AddSingleton<UnregisteredView>();
             builder.Services.AddSingleton<VerificationViewModel>();
             builder.Services.AddSingleton<PaymentViewModel>();
@@ -63,7 +59,7 @@ namespace MyApp
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<BasicDetailView>();
             builder.Services.AddTransient<BasicDetailsViewModel>();
-            builder.Services.AddTransient<IBasicDetailsService,BasicDetailsService>();
+            builder.Services.AddTransient<IBasicDetailsService, BasicDetailsService>();
             builder.Services.AddTransient<IFullAggragatorService, FullAggragatorService>();
             builder.Services.AddTransient<FullAggragatorViewModel>();
             builder.Services.AddSingleton<IPostLogInService, PostLogInService>();
@@ -75,8 +71,9 @@ namespace MyApp
             builder.Services.AddSingleton<PostLoginViewModel>();
             builder.Services.AddSingleton<MobilePhone>();
             builder.Services.AddSingleton<EnterOtpPage>();
-         //   builder.Services.AddSingleton<ISignUpService, SignUpService>();
-            builder.Services.AddSingleton<ILoginUserPhoneServicecs, LoginUserPhoneServicecs>();
+            builder.Services.AddSingleton<DocPaymentProofPage>();
+            //   builder.Services.AddSingleton<ISignUpService, SignUpService>();
+
             builder.Services.AddHttpClient();
 
 #if DEBUG
@@ -84,12 +81,12 @@ namespace MyApp
 #endif
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
             {
-#if ANDROID              
+#if ANDROID
 handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent); 
-                #elif IOS   
+#elif IOS
 handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;   
 handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
-                #endif
+#endif
             });
 
             Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping("Borderless", (handler, view) =>

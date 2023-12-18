@@ -7,11 +7,10 @@ namespace MyApp;
 
 public partial class DocPaymentProofPage : ContentPage
 {
-    public DocPaymentProofPage()
+    public DocPaymentProofPage(PaymentViewModel paymentViewModel)
     {
         InitializeComponent();
-        BindingContext = new DocViewModel();
-
+        BindingContext = paymentViewModel;
     }
 
     // Define a property to set the image source
@@ -33,15 +32,34 @@ public partial class DocPaymentProofPage : ContentPage
 
     private async void capturedImage_Clicked(object sender, EventArgs e)
     {
-      
-        // Open the bottom sheet (PaymentProovView)
-        var paymentProovView = new PaymentProovView(this);
-        await paymentProovView.ShowAsync();
 
-        await Task.Delay(5000);
-        plusicon.IsVisible = false;
-        await paymentProovView.DismissAsync();
+        try
+        {
+            // Open the bottom sheet (PaymentProovView)
+            var paymentProovView = new PaymentProovView(this);
 
+            // Show the bottom sheet
+            await paymentProovView.ShowAsync();
+
+            // Wait for a delay (if needed)
+            await Task.Delay(5000);
+            plusicon.IsVisible = false;
+            // Dismiss the bottom sheet
+            await paymentProovView.DismissAsync();
+
+
+            await Task.Delay(5000);
+            // Access the selected image file name
+            string imageName = paymentProovView.SelectedImageFileName;
+
+            // Set the Text property of priceimg to the selected image file name
+            ImagebtnName.Text = imageName;
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions if any
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
     }
 
     private void Button_Clicked(object sender, EventArgs e)
@@ -49,5 +67,5 @@ public partial class DocPaymentProofPage : ContentPage
         Shell.Current.GoToAsync(nameof(PayAmount));
     }
 
-   
+
 }

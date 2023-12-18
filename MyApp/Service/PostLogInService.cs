@@ -155,7 +155,7 @@ namespace MyApp.Service
             }
             catch (Exception ex)
             {
-                // Handle exceptions (logging, error messages, etc.)
+                //Handle exceptions (logging, error messages, etc.)
                 return false;
             }
         }
@@ -251,9 +251,7 @@ namespace MyApp.Service
                     // Assuming your response body is a JWT token
                     var token = await response.Content.ReadAsStringAsync();
 
-                    // You can handle the token as needed (e.g., store it securely)
-                    // For simplicity, I'm just printing it here
-
+                   await SecureStorage.Default.SetAsync("JWTToken", token);
 
                     return "Sucess";
                 }

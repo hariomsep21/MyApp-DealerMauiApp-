@@ -33,8 +33,7 @@ public partial class PurchaseVehicleView : ContentPage
         SignButton.Clicked += Sign_Clicked;
         MarketButton.Clicked += Market_Button_Clicked;
         New_CarButton.Clicked += New_Car_Clicked;
-        Vehicle1.Clicked += Vehicle1_Clicked;
-        Vehicle2.Clicked += Vehicle2_Clicked;
+     
 
 
     }
@@ -160,6 +159,7 @@ public partial class PurchaseVehicleView : ContentPage
 
             // Set the Text property of priceimg to the selected image file name
             stockinimg.Text = imageName;
+            //string old = imageName;
         }
         catch (Exception ex)
         {
@@ -544,15 +544,6 @@ public partial class PurchaseVehicleView : ContentPage
             Console.WriteLine($"An error occurred: {ex.Message}");
         }
     }
-
-
-
-
-
-
-
-
-
 
 }
 

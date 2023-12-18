@@ -20,7 +20,7 @@ namespace MyApp
             Routing.RegisterRoute(nameof(ImageView1), typeof(ImageView1));
             Routing.RegisterRoute(nameof(UnregisteredView), typeof(UnregisteredView));
             Routing.RegisterRoute(nameof(PayAmount), typeof(PayAmount));
-            Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+          
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(MobilePhone), typeof(MobilePhone));
             Routing.RegisterRoute(nameof(EnterOtpPage), typeof(EnterOtpPage));
@@ -29,9 +29,7 @@ namespace MyApp
             Routing.RegisterRoute(nameof(Terms), typeof(Terms));
             Routing.RegisterRoute(nameof(DocPaymentProofPage), typeof(DocPaymentProofPage));
             Routing.RegisterRoute(nameof(PaymentProovView), typeof(PaymentProovView));
-            Routing.RegisterRoute(nameof(PV_Document), typeof(PV_Document));
-            Routing.RegisterRoute(nameof(PV_Apply), typeof(PV_Apply));
-            Routing.RegisterRoute(nameof(PV_Vehicle), typeof(PV_Vehicle));
+           
             Routing.RegisterRoute(nameof(ProfileInformationPage), typeof(ProfileInformationPage));
             Routing.RegisterRoute(nameof(ProfileInformationPage), typeof(ProfileInformationPage));
             Routing.RegisterRoute(nameof(SignUpPhone), typeof(SignUpPhone));

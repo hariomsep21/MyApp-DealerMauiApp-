@@ -9,7 +9,7 @@
             <Image Source="logout.png" WidthRequest="65" HeightRequest="109.48" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Label Text="Are You Sure?" TextColor="#191C1C" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button Text="Yes" WidthRequest="145.5" HeightRequest="40"  TextColor="#40a09b" FontSize="14" BackgroundColor="white" Clicked="Button_ClickedYes"/>
+                <Button Text="Yes" WidthRequest="145.5" HeightRequest="40"  TextColor="#40a09b" FontSize="14" BackgroundColor="white" Clicked="Button_Clicked_Yes"/>
                 <Button Text="No" WidthRequest="145.5" HeightRequest="40" CornerRadius="35" TextColor="white"  FontSize="14" BackgroundColor="#40a09b" Clicked="Button_Clicked_No"/>
             </StackLayout>
         </VerticalStackLayout>

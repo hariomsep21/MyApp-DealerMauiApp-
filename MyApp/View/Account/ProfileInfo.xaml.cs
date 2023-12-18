@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Views;
+using MyApp.IService;
 using MyApp.Service;
 using MyApp.ViewModel;
 
@@ -7,11 +8,13 @@ namespace MyApp.View.Account;
 public partial class ProfileInfo : ContentPage
 {
     private readonly AccountInfoViewmodel _viewModel;
-    public ProfileInfo()
+    private readonly IPostLogInService postLogInService;
+    public ProfileInfo(IPostLogInService postLogIn)
 	{
 		InitializeComponent();
         _viewModel = new AccountInfoViewmodel(new AccountInfoService(new HttpClient())); // Provide necessary dependencies here
         BindingContext = _viewModel;
+        postLogInService = postLogIn;
     }
     protected override async void OnAppearing()
     {
@@ -46,7 +49,7 @@ public partial class ProfileInfo : ContentPage
 
     private void Logout(object sender, EventArgs e)
     {
-        var popupPage = new LogoutPage(); // Assuming "NewPopup" is the name of your popup page
+        var popupPage = new LogoutPage(postLogInService); // Assuming "NewPopup" is the name of your popup page
         Shell.Current.CurrentPage.ShowPopup(popupPage);
     }
 }

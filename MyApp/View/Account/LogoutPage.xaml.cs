@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Views;
+using MyApp.IService;
 using MyApp.Service;
 using MyApp.View.Login;
 using MyApp.ViewModel;
@@ -8,33 +9,41 @@ namespace MyApp.View.Account;
 public partial class LogoutPage : Popup
 {
     private readonly PostLoginViewModel postLogin;
-    public LogoutPage()
+    private readonly PostLoginViewModel _viewModel;
+    private readonly IPostLogInService _postLogInService;
+    public LogoutPage(IPostLogInService postLogInService)
     {
         InitializeComponent();
-        postLogin = new PostLoginViewModel(new PostLogInService(new HttpClient()));
+        _postLogInService = postLogInService;
+        BindingContext = _viewModel;
+        // Save the reference to the ViewModel
     }
-    private async void Button_ClickedYes(object sender, EventArgs e)
+    private async void Button_Clicked_Yes(object sender, EventArgs e)
     {
         try
         {
-            if (postLogin != null)
-            {
-                // Execute the LogoutCommand in the ViewModel
-                if (postLogin.LogoutCommand.CanExecute(null))
-                {
-                    postLogin.LogoutCommand.Execute(null);
-                }
+            bool loggedOut = await _postLogInService.Logout();
 
-                // Additional logic if needed
-                //await Shell.Current.Navigation.PopToRootAsync(); // Clears the navigation stack
-                //await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-                //popupmessage.IsVisible = false;
+            if (loggedOut)
+            {
+                SecureStorage.Remove("JWTToken");
+
+                await Shell.Current.Navigation.PopToRootAsync(); // Clears the navigation stack
+
+                await Shell.Current.GoToAsync($"/{nameof(LoginPage)}");
+
             }
+            else
+            {
+                // Show an error message or handle accordingly if logout fails
+                await Shell.Current.DisplayAlert("Logout Failed", "Failed to logout. Please try again.", "OK");
+            }
+
+            popupmessage.IsVisible = false;
         }
         catch (Exception ex)
         {
-            // Handle exceptions more gracefully (e.g., display an error message)
-            await Shell.Current.DisplayAlert("Error", $"Logout failed: {ex.Message}", "OK");
+            // Handle exceptions
         }
     }
 

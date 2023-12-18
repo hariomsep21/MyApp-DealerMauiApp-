@@ -1,4 +1,5 @@
 ﻿using MyApp.Model;
+using MyApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,6 @@ namespace MyApp.IService
         Task<List<PaymentDetailDto>> GetPaymentStatus();
         Task<List<PaymentDetailDto>> GetUpcomingPayment();
         Task<PaymentDetailDto> GetPaymentDetails(int paymentId);
-       
+        Task<string> PaymentProof(int Id, PaymentProofImgDTO paymentProof);
     }
 }
