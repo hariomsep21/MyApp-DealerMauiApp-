@@ -14,6 +14,8 @@ using System.Windows.Input;
 using MyApp.IService;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using MyApp.View.Account;
+using MyApp.Models;
 
 namespace MyApp.ViewModel
 {
@@ -30,6 +32,16 @@ namespace MyApp.ViewModel
 
         }
 
+        private PaymentProofImgDTO proofImage = new PaymentProofImgDTO();
+        public PaymentProofImgDTO ProofImage
+        {
+            get => proofImage;
+            set
+            {
+                proofImage = value;
+                OnPropertyChanged(nameof(ProofImage));
+            }
+        }
         private bool _isFrameVisible;
 
         public bool IsFrameVisible
@@ -44,7 +56,46 @@ namespace MyApp.ViewModel
                 }
             }
         }
+        private PaymentDetailDto _selectPayment;
+        private int _selectedPaymentId;
 
+        public PaymentDetailDto SelectPayment
+        {
+            get => _selectPayment;
+            set
+            {
+                _selectPayment = value;
+                OnPropertyChanged(nameof(SelectPayment));
+
+                // Update the SelectedPaymentId whenever SelectedPayment changes
+                SelectedPaymentId = value?.Id ?? 0; // Assuming Id is an int property
+            }
+        }
+
+        public int SelectedPaymentId
+        {
+            get => _selectedPaymentId;
+            set
+            {
+                _selectedPaymentId = value;
+                OnPropertyChanged(nameof(SelectedPaymentId));
+            }
+        }
+
+        [RelayCommand]
+        private async Task PaymentProof(PaymentDetailDto selectedPayment)
+        {
+            try
+            {
+
+                // Navigate to the page where you'll upload the image
+                await Shell.Current.GoToAsync(nameof(DocPaymentProofPage));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
         private string _userName;
 
         public string UserName
@@ -262,6 +313,95 @@ namespace MyApp.ViewModel
         public async Task ProcurementDetail()
         {
             await Shell.Current.GoToAsync(nameof(ProcurementDetailView));
+        }
+
+
+        [RelayCommand]
+        private async Task UploadImageForPayment()
+        {
+            try
+            {
+                if (SelectedPaymentId != 0)
+                {
+                    int selectedPaymentId = SelectedPaymentId;
+
+                    if (selectedPaymentId != 0) // Replace this condition with the appropriate check
+                    {
+
+                        string result = await _paymentService.PaymentProof(selectedPaymentId, ProofImage);
+
+                        if (result == "Sucess")
+                        {
+                            await Shell.Current.GoToAsync("///HomePage");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Fail");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No payment selected to upload an image.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
+
+
+
+        private ImageSource _capturedImageSource;
+        public ImageSource CapturedImageSource
+        {
+            get => _capturedImageSource;
+            set
+            {
+                _capturedImageSource = value;
+                OnPropertyChanged(nameof(CapturedImageSource));
+            }
+        }
+
+
+
+
+
+
+
+
+        [RelayCommand]
+        private async Task NavigateToNotificationPage()
+        {
+            await Shell.Current.GoToAsync(nameof(NotificationPage));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [RelayCommand]
+        public async Task Back11()
+        {
+            await Shell.Current.GoToAsync("/PaymentView");
         }
     }
 }

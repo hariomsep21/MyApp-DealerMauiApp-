@@ -155,7 +155,7 @@ namespace MyApp.Service
             }
             catch (Exception ex)
             {
-                // Handle exceptions (logging, error messages, etc.)
+                //Handle exceptions (logging, error messages, etc.)
                 return false;
             }
         }

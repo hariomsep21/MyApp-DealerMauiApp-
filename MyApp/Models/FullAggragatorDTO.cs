@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace MyApp.Models
 {
+    public enum PurchaseVehicleStatus
+    {
+        True,
+        False
+        
+        // Add other statuses as needed
+    }
     public class Agg_DropDownMakeDTO
     {
         public int MakeId { get; set; }
@@ -96,7 +103,8 @@ namespace MyApp.Models
         public bool Hypothecation { get; set; }
         public bool Blacklist { get; set; }
 
-
+        public PurchaseVehicleStatus Status { get; set; }
+        public string ActionRequired { get; set; }
     }
 }
 

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyApp.Models
 {
-    public class RememberUserDTO
+    public class PaymentProofImgDTO
     {
-
-        public int ActiveId { get; set; }
-        public int UserValue { get; set; }
+      
+        public string PaymentProofImg { get; set; } = string.Empty;
     }
 }

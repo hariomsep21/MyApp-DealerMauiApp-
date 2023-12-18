@@ -1,52 +1,90 @@
-﻿using Syncfusion.Licensing;
+﻿using MyApp.IService;
+using MyApp.Service;
+using Syncfusion.Licensing;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace MyApp
 {
     public partial class App : Application
     {
+        // private readonly ITokenService _tokenRefreshService;
+
         public App()
         {
-            
+
 
             InitializeComponent();
 
 
             MainPage = new AppShell();
+            //_tokenRefreshService = new TokenService(new HttpClient());
         }
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             base.OnStart();
+            //_tokenRefreshService.StartTokenRefreshTimer();
+            bool tokenExists = await CheckTokenExists();
 
-            int initialRoute = GetInitialRoute(); // Get the initial route based on your logic
-
-            // Set the initial route of the Shell based on the value
-            switch (initialRoute)
+            if (tokenExists)
             {
-                case 1:
-                    Shell.Current.GoToAsync("//HomePage");
-                    break;
-                case 2:
-                    Shell.Current.GoToAsync("//LoginPage");
-                    break;
+                bool isTokenExpired = await IsTokenExpired();
 
+                if (isTokenExpired)
+                {
+                    // Token exists but is expired; remove it and redirect to login
+                    SecureStorage.Remove("JWTToken");
+                    await Shell.Current.GoToAsync("//LoginPage");
+                }
+                else
+                {
+                    // Token exists and is not expired; navigate to home page
+                    await Shell.Current.GoToAsync("//HomePage");
+                }
+            }
+            else
+            {
+                // No token found; redirect to login
+                await Shell.Current.GoToAsync("//LoginPage");
             }
         }
-        private int GetInitialRoute()
-        {
-            // Check if the token exists in the secure storage
-            bool tokenExists = CheckTokenExists();
 
-            // Return the route based on the token existence
-            return tokenExists ? 1 : 2; // For example, 1 for Home (token exists), 2 for Login (token doesn't exist)
+        private async Task<bool> CheckTokenExists()
+        {
+            try
+            {
+                string token = await SecureStorage.GetAsync("JWTToken");
+                return !string.IsNullOrEmpty(token);
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions related to token retrieval
+                return false;
+            }
         }
 
-        private bool CheckTokenExists()
+        private async Task<bool> IsTokenExpired()
         {
-            // Check if the token exists in the secure storage
-            // Implement your logic to check for the token's presence
-            // For example:
-            string token = SecureStorage.GetAsync("JWTToken").Result;
-            return !string.IsNullOrEmpty(token);
+            try
+            {
+                string token = await SecureStorage.GetAsync("JWTToken");
+
+                if (!string.IsNullOrEmpty(token))
+                {
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var jwtToken = tokenHandler.ReadJwtToken(token);
+
+                    // Check the token expiration
+                    return jwtToken.ValidTo < DateTime.UtcNow;
+                }
+
+                return true; // Token not found or empty
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions related to token retrieval or parsing
+                return true; // Consider expired for safety
+            }
         }
     }
 }
+

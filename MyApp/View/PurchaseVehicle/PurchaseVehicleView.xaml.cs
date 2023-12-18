@@ -545,15 +545,6 @@ public partial class PurchaseVehicleView : ContentPage
         }
     }
 
-
-
-
-
-
-
-
-
-
 }
 
 

@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+
 using MyApp.IService;
 using MyApp.Model;
 using MyApp.Models;
-using MyApp.Service;
 using MyApp.View.Home;
 using MyApp.View.Login;
 using MyApp.View.PurchaseVehicle;
@@ -20,43 +20,55 @@ namespace MyApp.ViewModel
     {
         private readonly IFullAggragatorService _aggService;
 
-        public FullAggragatorViewModel()
+        public FullAggragatorViewModel() : this(null)
         {
-            // Initialize any default values or setup here
+            // Default constructor can call the parameterized constructor with null or default values
+            try
+            {
+                // Logging to help diagnose the issue
+                System.Diagnostics.Debug.WriteLine("Default constructor called");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Exception in default constructor: {ex.Message}");
+            }
         }
+
+        // Parameterized constructor
         public FullAggragatorViewModel(IFullAggragatorService aggService)
         {
-            _aggService = aggService ?? throw new ArgumentNullException(nameof(aggService));
+            try
+            {
+                // Logging to help diagnose the issue
+                System.Diagnostics.Debug.WriteLine($"Parameterized constructor called with {aggService}");
 
+                _aggService = aggService ?? throw new ArgumentNullException(nameof(aggService));
 
-            StateListOpenMarket = new ObservableCollection<PV_OpenMarketDTO>();
-            StateListNewCardDealer = new ObservableCollection<PV_NewCarDealerDTO>(); // Initialize the collection in the constructor
+                StateListOpenMarket = new ObservableCollection<PV_OpenMarketDTO>();
+                StateListNewCardDealer = new ObservableCollection<PV_NewCarDealerDTO>();
 
-            LoadMake();
-            LoadModel();
-            LoadVariant();
-            Loadyear();
-            LoadVehicleRecord();
+                LoadMake();
+                LoadModel();
+                LoadVariant();
+                Loadyear();
+                LoadVehicleRecords();
+            }
+            catch (Exception ex)
+            {
+                // Logging to help diagnose the issue
+                System.Diagnostics.Debug.WriteLine($"Exception in parameterized constructor: {ex.Message}");
+            }
         }
+
 
 
         private ObservableCollection<PV_NewCarDealerDTO> _NewCarDealerDTOs;
         private ObservableCollection<PV_OpenMarketDTO> _OpenMarketDTOs;
-
-        //open market
-
-
-
-        //Make
         public ObservableCollection<PV_OpenMarketDTO> StateListOpenMarket
         {
             get => _OpenMarketDTOs;
             private set => SetProperty(ref _OpenMarketDTOs, value);
         }
-
-
-      
-
         private ObservableCollection<Agg_DropDownMakeDTO> _make;
         private Agg_DropDownMakeDTO _selectedMake;
 
@@ -83,34 +95,7 @@ namespace MyApp.ViewModel
             }
         }
 
-        private ObservableCollection<VehicleRecordsDto> _vehiclesRecord;
-        public ObservableCollection<VehicleRecordsDto> VehiclesRecord
-        {
-            get => _vehiclesRecord;
-            set
-            {
-                _vehiclesRecord = value;
-                OnPropertyChanged(nameof(VehiclesRecord));
-            }
-        }
-        public async Task LoadVehicleRecord()
-        {
-            try
-            {
-                var Record = await _aggService.GetCarVehicleRecord();
-                VehiclesRecord = new ObservableCollection<VehicleRecordsDto>(Record);
-
-                // Log or debug to check the content of VehiclesRecord
-                Debug.WriteLine($"Number of records: {VehiclesRecord.Count}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-        }
-
-
-
+      
 
         //Model
         private ObservableCollection<Agg_DropDownModelDTO> _model;
@@ -275,6 +260,30 @@ namespace MyApp.ViewModel
             }
         }
 
+
+        private ObservableCollection<VehicleRecordsDto> _vehicleRecords;
+
+        public ObservableCollection<VehicleRecordsDto> VehicleRecords
+        {
+            get => _vehicleRecords;
+            private set => SetProperty(ref _vehicleRecords, value);
+        }
+
+     
+        private async Task LoadVehicleRecords()
+        {
+            try
+            {
+                // Assuming there is a method in _aggService to fetch vehicle records
+                var records = await _aggService.GetCarVehicleRecord();
+                VehicleRecords = new ObservableCollection<VehicleRecordsDto>(records);
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine($"An error occurred while loading vehicle records: {ex.Message}");
+            }
+        }
 
         //New car dealer
         private ObservableCollection<PV_NewCarDealerDTO> _dueCustomer;

@@ -8,11 +8,11 @@ namespace MyApp
     public partial class PaymentProovView : BottomSheet
     {
         private DocPaymentProofPage _parentPage;
-        private PV_Apply _pvapply;
+
         private PurchaseVehicleView _purchaseVehicleView;
         public string SelectedImageFileName { get; private set; }
 
-        public PaymentProovView(PurchaseVehicleView  purchaseVehicleView)
+        public PaymentProovView(PurchaseVehicleView purchaseVehicleView)
         {
             _purchaseVehicleView = purchaseVehicleView;
             InitializeComponent();
@@ -24,11 +24,7 @@ namespace MyApp
             InitializeComponent();
         }
 
-        public PaymentProovView(PV_Apply pvapply)
-        {
-            _pvapply = pvapply;
-            InitializeComponent();
-        }
+
 
         public void HideBottomSheet()
         {
@@ -44,10 +40,7 @@ namespace MyApp
             {
                 await _parentPage.DisplayAlert("Error", errorMessage, "Ok");
             }
-            if (_pvapply != null)
-            {
-                await _pvapply.DisplayAlert("Error", errorMessage, "Ok");
-            }
+
         }
 
         private async void CameraTapped(object sender, EventArgs e)
@@ -75,10 +68,7 @@ namespace MyApp
                         {
                             _parentPage.CapturedImageSource = ImageSource.FromFile(localFilePath);
                         }
-                        if (_pvapply != null)
-                        {
-                            _pvapply.CapturedImageSource = ImageSource.FromFile(localFilePath);
-                        }
+
                     }
                     else
                     {
@@ -115,10 +105,7 @@ namespace MyApp
                     {
                         _parentPage.CapturedImageSource = ImageSource.FromFile(localFilePath);
                     }
-                    if (_pvapply != null)
-                    {
-                        _pvapply.CapturedImageSource = ImageSource.FromFile(localFilePath);
-                    }
+
                 }
             }
             else

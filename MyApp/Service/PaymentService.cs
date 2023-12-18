@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyApp.IService;
+using MyApp.Models;
 
 namespace MyApp.Services
 {
@@ -141,7 +142,42 @@ namespace MyApp.Services
                 throw new Exception($"Exception: {ex.Message}");
             }
         }
-     
+
+        public async Task<string> PaymentProof(int Id, PaymentProofImgDTO paymentProof)
+        {
+            try
+            {
+                var requestBody = new StringContent(
+                    JsonConvert.SerializeObject(paymentProof),
+                    Encoding.UTF8,
+                    "application/json"
+                );
+
+
+                using var response = await _httpClient.PostAsync($"http://10.0.2.2:5137/api/PaymentProofImg/PaymentPic?Id={Id}", requestBody);
+
+
+                if (response.IsSuccessStatusCode)
+                {
+
+                    // Assuming your response body is a JWT token
+                    var token = await response.Content.ReadAsStringAsync();
+
+                    // You can handle the token as needed (e.g., store it securely)
+                    // For simplicity, I'm just printing it here
+
+
+                    return "Sucess";
+                }
+
+                return "Failed";
+            }
+            catch (HttpRequestException)
+            {
+                return "Failed";
+            }
+        }
+
     }
 }
 

@@ -340,13 +340,14 @@ namespace MyApp.ViewModel
                     return "Failed";
                 }
 
-                if (!UserDetails.UserEmail.Contains("@gmail.com"))
+                if (!string.IsNullOrEmpty(UserDetails.UserEmail) && !UserDetails.UserEmail.Contains("@gmail.com"))
                 {
                     // Handle the case where the email is not a Gmail address
                     // For example, show an alert or message to the user
                     await Shell.Current.DisplayAlert("Failed", "Enter a valid Gmail address", "OK");
                     return "Failed";
                 }
+
 
                 // Create or update the UserDetails object with the selected state ID
                 UserDetails.SId = SelectedState.StateId;
