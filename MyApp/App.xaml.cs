@@ -20,7 +20,7 @@ namespace MyApp
             //_tokenRefreshService = new TokenService(new HttpClient());
         }
         protected override async void OnStart()
-        {
+       {
             base.OnStart();
             //_tokenRefreshService.StartTokenRefreshTimer();
             bool tokenExists = await CheckTokenExists();

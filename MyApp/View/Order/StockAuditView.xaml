@@ -61,7 +61,7 @@ xmlns:model="clr-namespace:MyApp.Model"
             ItemsSource="{Binding PendingAudit}"
             SelectionMode="None" Margin="0,16,0,0">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="model:UpcomingAuditModel" >
+                                    <DataTemplate  >
 
                                         <Frame Style="{StaticResource FrameAuditDue}" CornerRadius="8" HasShadow="True"   VerticalOptions="Start" HorizontalOptions="Center" Margin="0,0,0,16">
                                             <Grid RowDefinitions="auto,auto">
@@ -83,22 +83,29 @@ xmlns:model="clr-namespace:MyApp.Model"
                                                 </Grid>
                                                 <Grid Grid.Row="1" ColumnDefinitions="auto,auto" Margin="0,15,0,0" >
 
-                                                    <Frame Padding="0" IsVisible="{Binding IsVerified, Converter={StaticResource InvertedBooleanConverter}}" BorderColor="#6F7978" CornerRadius="100" HeightRequest="40" WidthRequest="216" Margin="15,0,5,0" Background="#FAFDFB">
+                                                    <Frame Padding="0" IsVisible="{Binding IsVerified, Converter={StaticResource InvertedBooleanConverter}}" BorderColor="#6F7978" CornerRadius="100" HeightRequest="40" WidthRequest="216" Margin="15,0,15,0" Background="#FAFDFB">
                                                         <!--<editors:SfComboBox x:Name="comboBox" HeightRequest="56" BackgroundColor="Transparent"   Placeholder="Purpose" FontSize="14" PlaceholderColor="#4AA09B"  
                                                             ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.Status}"
                                                         
 SelectedItem="{Binding SelectedStatus}"                Stroke="Transparent" TextColor="#3F4948" VerticalOptions="Center" Margin="15,0,15,0" />-->
                                                         <Grid ColumnDefinitions="*,auto">
-                                                            <Picker ZIndex="1" WidthRequest="216"
+                                                            <Picker ZIndex="1" WidthRequest="158"
                                                                     
 Title="Status"
 FontSize="14"
 TitleColor="#50afaa"
-Margin="70,0,15,0"
+Margin="15,0,15,0"
+                                                                 
+                                                                    
 TextColor="#4AA09B"
-ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.Status}"
-SelectedItem="{Binding SelectedStatus}">
-                                                                
+ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.Address}"
+   SelectedItem="{Binding Source={x:Reference collectionViewName}, Path=BindingContext.SelectedAddress}" >
+
+
+                                                                <Picker.ItemDisplayBinding>
+                                                                    <Binding Path="Address" />
+                                                                    <!-- Replace 'FilterName' with your actual property name to display -->
+                                                                </Picker.ItemDisplayBinding>
                                                             </Picker>
                                                             <ImageButton   Source="dropdowngreen.png" Grid.Column="1" ZIndex="0" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="18" HeightRequest="18" Margin="0,0,15,0"  />
                                                         </Grid>
@@ -106,7 +113,7 @@ SelectedItem="{Binding SelectedStatus}">
 
 
                                                     </Frame>
-                                                    <Button IsVisible="{Binding IsVerified, Converter={StaticResource InvertedBooleanConverter}}" Grid.Column="1" BackgroundColor="#4AA09B" TextColor="White" Text="Verify" HeightRequest="40" WidthRequest="87" CommandParameter="{Binding .}"   Command="{Binding BindingContext.ShowPopupCommand, Source={x:Reference collectionViewName}}" CornerRadius="100" Margin="3,0,0,0"/>
+                                                    <Button IsVisible="{Binding IsVerified, Converter={StaticResource InvertedBooleanConverter}}"  Grid.Column="1" BackgroundColor="#4AA09B" TextColor="White" Text="Verify" HeightRequest="40" WidthRequest="87" CommandParameter="{Binding }"   Command="{Binding BindingContext.VerifyButtonCommand, Source={x:Reference collectionViewName}}" CornerRadius="100" Margin="3,0,0,0"/>
                                                     <Frame VerticalOptions="Center" CornerRadius="100" IsVisible="{Binding IsVerified}" Padding="0" WidthRequest="313" HeightRequest="40" BorderColor="#6F7978" Background="#FAFDFB" Margin="15,0,0,0">
                                                         <HorizontalStackLayout HorizontalOptions="Center">
                                                             <Label Text="Sold" TextColor="#4AA09B" VerticalOptions="Center" FontSize="14" FontAttributes="Bold"  HorizontalOptions="Center"/>
