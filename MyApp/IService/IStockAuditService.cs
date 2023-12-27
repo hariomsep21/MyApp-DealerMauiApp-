@@ -13,5 +13,7 @@ namespace MyApp.IService
         Task<List<UpcomingAuditModel>> GetPendingAudit();
 
         Task<List<UpcomingAuditModel>> GetAuditStatus();
+        Task<List<AddressDto>> GetAddress();
+        //Task<List<AddressDto>> UploadImage(int id, AddressDto address);
     }
 }
