@@ -159,7 +159,7 @@ namespace MyApp.ViewModel
             try
             {
                 var paymentDetails = await _paymentService.GetPaymentDetails(selectedPayment.Id);
-
+                SelectedPayment = paymentDetails;
                 // Navigate to the details page and pass the paymentDetails
                 await Shell.Current.GoToAsync($"{nameof(PayAmount)}?paymentDetails={Uri.EscapeDataString(JsonConvert.SerializeObject(paymentDetails))}");
             }
@@ -306,7 +306,7 @@ namespace MyApp.ViewModel
             try
             {
                 var paymentDetails = await _paymentService.GetPaymentDetails(selectedPayment.Id);
-
+                SelectedPayment = paymentDetails;
                 // Navigate to the details page and pass the paymentDetails
                 await Shell.Current.GoToAsync($"{nameof(UpcomingPaymentPage)}?paymentDetails={Uri.EscapeDataString(JsonConvert.SerializeObject(paymentDetails))}");
             }
