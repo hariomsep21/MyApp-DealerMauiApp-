@@ -43,17 +43,19 @@ public partial class DocPaymentProofPage : ContentPage
 
             // Wait for a delay (if needed)
             await Task.Delay(5000);
-            plusicon.IsVisible = false;
+           
             // Dismiss the bottom sheet
             await paymentProovView.DismissAsync();
+            plusicon.IsVisible = false;
 
+            await Task.Delay(10000);
 
-            await Task.Delay(5000);
             // Access the selected image file name
             string imageName = paymentProovView.SelectedImageFileName;
 
             // Set the Text property of priceimg to the selected image file name
             ImagebtnName.Text = imageName;
+         
         }
         catch (Exception ex)
         {
