@@ -83,11 +83,11 @@ namespace MyApp.ViewModel
         }
 
         [RelayCommand]
-        private async Task PaymentProof(PaymentDetailDto selectedPayment)
+        private async Task PaymentProof()
         {
             try
             {
-                if (selectedPayment != null)
+                if (SelectPayment != null)
                 {
                     // Navigate to the page where you'll upload the image
                     await Shell.Current.GoToAsync(nameof(DocPaymentProofPage));
