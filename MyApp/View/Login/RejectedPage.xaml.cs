@@ -11,6 +11,6 @@ public partial class RejectedPage : ContentPage
 		InitializeComponent();
 
 
-        Shell.Current.GoToAsync(nameof(HomePage));
+   //     Shell.Current.GoToAsync(nameof(HomePage));
     }
 }

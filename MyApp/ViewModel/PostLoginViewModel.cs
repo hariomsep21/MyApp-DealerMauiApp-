@@ -216,33 +216,46 @@ namespace MyApp.ViewModel
                 if (!string.IsNullOrEmpty(jwtToken))
                 {
                     // Store the JWT token in Secure Storage
-
-
-
                     // Reset the phone and OTP fields
-                    phone = string.Empty;
-                    OTP = 0;
+                    
 
-                    //await Shell.Current.DisplayAlert("Success", "Login successful!", "OK");
-                    await Shell.Current.GoToAsync("//HomePage");
-                    // Perform navigation upon successful signup
+                    // Call another service method to get user status after login
+                    var userStatus = await _postLoginService.GetUserStatus(phone);
 
-                    return "Login succesfully";
+                    // Process the user status to navigate accordingly
+                    if (userStatus.Active == true)
+                    {
+                        await Shell.Current.GoToAsync("//HomePage");
+                        return "User is active, navigated to Home.";
+                    }
+                    else if (userStatus.Rejected == true)
+                    {
+                        await Shell.Current.GoToAsync(nameof(RejectedPage));
+                        return "User is rejected, navigated to Rejected Page.";
+                    }
+                    else if (userStatus.Active == false && userStatus.Rejected == false)
+                    {
+                        await Shell.Current.GoToAsync(nameof(ProcessPage));
+                        return "User status pending, navigated to Pending Page.";
+                    }
+                    else
+                    {
+                        return "Internal server error";
+                    }
                 }
                 else
                 {
                     await Shell.Current.DisplayAlert("Failed", "Login Failed!", "OK");
-
+                    return "Login Failed!";
                 }
-                return jwtToken;
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Exception: {ex.Message}");
                 return "Failed";
-
             }
         }
-        [RelayCommand]
+            [RelayCommand]
         private async Task LogoutAsync()
         {
             try
