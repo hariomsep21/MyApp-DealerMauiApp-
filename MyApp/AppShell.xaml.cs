@@ -20,7 +20,8 @@ namespace MyApp
             Routing.RegisterRoute(nameof(ImageView1), typeof(ImageView1));
             Routing.RegisterRoute(nameof(UnregisteredView), typeof(UnregisteredView));
             Routing.RegisterRoute(nameof(PayAmount), typeof(PayAmount));
-          
+
+
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(MobilePhone), typeof(MobilePhone));
             Routing.RegisterRoute(nameof(EnterOtpPage), typeof(EnterOtpPage));

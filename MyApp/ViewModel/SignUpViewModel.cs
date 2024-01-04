@@ -9,6 +9,7 @@ using MyApp.IService;
 using MyApp.Service;
 using CommunityToolkit.Mvvm.Input;
 using MyApp.View.Login;
+using Newtonsoft.Json.Linq;
 
 namespace MyApp.ViewModel
 {
@@ -353,40 +354,47 @@ namespace MyApp.ViewModel
                 UserDetails.SId = SelectedState.StateId;
 
                 // Call the service to check if the phone number is valid and get the token
-                string jwtToken = await _postLoginService.SignUpComplete(phone, UserDetails);
+                var result = await _postLoginService.SignUpComplete(phone, UserDetails); ;
 
-                if (!string.IsNullOrEmpty(jwtToken))
+                // Check the result and navigate based on user status
+                if (!string.IsNullOrEmpty(result))
                 {
-                    // Store the JWT token in Secure Storage (implement this part based on your requirements)
+                    // Call another service method to get user status after signup
+                    var userStatus = await _postLoginService.GetUserStatus(phone);
 
-                    // Reset the phone and OTP fields
-                    phone = string.Empty;
-                    OTP = 0;
-
-                    // Use Shell.Current.Navigation to perform navigation upon successful signup
-                    await Shell.Current.GoToAsync("//HomePage");
-
-                    // Return a success message
-                    return "Login successfully";
+                    // Process the user status to navigate accordingly
+                    if (userStatus.Active == true)
+                    {
+                        await Shell.Current.GoToAsync("//HomePage");
+                        return "User is active, navigated to Home.";
+                    }
+                    else if (userStatus.Rejected == true)
+                    {
+                        await Shell.Current.GoToAsync(nameof(RejectedPage));
+                        return "User is rejected, navigated to Rejected Page.";
+                    }
+                    else if(userStatus.Active == false && userStatus.Rejected == false) 
+                    {
+                        await Shell.Current.GoToAsync(nameof(ProcessPage));
+                        return "User status pending, navigated to Pending Page.";
+                    }else
+                    {
+                        return "Internal server error";
+                    }
                 }
                 else
                 {
-                    // Handle the case where login failed
-                    // For example, show an alert or message to the user
-                    await Shell.Current.DisplayAlert("Failed", "Login Failed!", "OK");
-                    return "Failed";
+                    // Handle the case where signup failed
+                    await Shell.Current.DisplayAlert("Failed", "Signup Failed!", "OK");
+                    return "Signup Failed!";
                 }
             }
             catch (Exception ex)
             {
                 // Handle other exceptions that might occur
-                // For example, log the exception for debugging purposes
                 Console.WriteLine($"Exception: {ex.Message}");
                 return "Failed";
             }
-
-
-
         }
     }
 }

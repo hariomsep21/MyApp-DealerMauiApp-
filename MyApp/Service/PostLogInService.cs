@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Twilio.Types;
 using MyApp.IService;
 using MyApp.Models;
+using MyApp.Model;
 
 namespace MyApp.Service
 {
@@ -214,7 +215,7 @@ namespace MyApp.Service
                     // You can handle the token as needed (e.g., store it
 
                     // Assuming your response body is a JWT token
-                  
+
 
                     // You can handle the token as needed (e.g., store it securely)
                     // For simplicity, I'm just printing it here
@@ -251,7 +252,7 @@ namespace MyApp.Service
                     // Assuming your response body is a JWT token
                     var token = await response.Content.ReadAsStringAsync();
 
-                   await SecureStorage.Default.SetAsync("JWTToken", token);
+                    await SecureStorage.Default.SetAsync("JWTToken", token);
 
                     return "Sucess";
                 }
@@ -288,7 +289,34 @@ namespace MyApp.Service
             }
         }
 
-    }
+        public async Task<UserStatusDto> GetUserStatus(string phoneNumber)
+        {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync($"http://10.0.2.2:5137/api/LoginUserPhoneAPI/userstatus?phoneNumber={phoneNumber}");
 
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<UserStatusDto>(responseBody);
+                }
+                else
+                {
+                    // Handle non-success status codes
+                    throw new Exception($"Error: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                throw new Exception($"Exception: {ex.Message}");
+            }
+        }
+
+
+
+
+
+    }
 }
 

@@ -1,4 +1,5 @@
-﻿using MyApp.Models;
+﻿using MyApp.Model;
+using MyApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace MyApp.IService
         Task<bool> Signup(string mobileNumber);
         Task<string> SignUpComplete(string mobileNumber, BasicDetailsDTO basicDetailsDTO);
         Task<List<DropDownStateDTO>> GetState();
+
+        Task<UserStatusDto> GetUserStatus(string mobliePhone);
     }
 }
